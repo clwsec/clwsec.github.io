@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="learning,">
+  <meta name="keywords" content="crypto,python,">
 
 
 
@@ -85,18 +85,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="learning">
+<meta name="description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S RC4有两个主要算法：   密钥调度算法（KSA）：用于打乱S盒的初始排列">
+<meta name="keywords" content="crypto,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/02/28/hello-world/index.html">
+<meta property="og:title" content="序列密码之RC4">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/RC4/index.html">
 <meta property="og:site_name" content="clwsec">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S RC4有两个主要算法：   密钥调度算法（KSA）：用于打乱S盒的初始排列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-01T02:34:26.158Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181230223103545.png">
+<meta property="og:updated_time" content="2019-03-01T02:35:31.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="序列密码之RC4">
+<meta name="twitter:description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S RC4有两个主要算法：   密钥调度算法（KSA）：用于打乱S盒的初始排列">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181230223103545.png">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/28/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/RC4/">
 
 
 
 
 
-  <title>Hello World | clwsec</title>
+  <title>序列密码之RC4 | clwsec</title>
   
 
 
@@ -279,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/RC4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -296,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">序列密码之RC4</h1>
         
 
         <div class="post-meta">
@@ -308,7 +310,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T19:20:36+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T22:49:48+08:00">
                 2019-02-28
               </time>
             
@@ -331,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
+                  <a href="/categories/crypto/" itemprop="url" rel="index">
+                    <span itemprop="name">crypto</span>
                   </a>
                 </span>
 
@@ -389,15 +391,42 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
+<li>RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。</li>
+<li>RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S</li>
+<li>种子密钥长度为<code>1~ 256</code>个字节（<code>8~2048</code>比特）的可变长度，用于初始化256个字节的初始向量S</li>
+<li>RC4有两个主要算法：</li>
+</ol>
+<ul>
+<li>密钥调度算法（KSA）：用于打乱S盒的初始排列。</li>
+<li>伪随机数生成算法（PRGA）：用于输出随机序列并修改S的当前排列。</li>
+</ul>
+<ol start="5">
+<li>具体过程如下：</li>
+</ol>
+<ul>
+<li>首先初始化S 即<code>S[i] = i</code> 同时建立数组T用于填充秘钥K（若<code>len(K)&lt;256</code>, 则按序反复填充，直到T被填满）</li>
+<li>然后，对于每个S[i]，根据T[i]的值将S[i] 与S中的另一个字节对换。</li>
+<li>最后，利用PRGA生成秘钥流。从S中随机选取一个元素输出，并置换S以便下一次选取，选取过程取决于索引<code>i , j</code>。</li>
+<li>加密时，K的值与明文字节异或；解密时，K的值与密文异或。</li>
+</ul>
+<hr>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># KSA 初始化S盒</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">InitSbox</span><span class="params">(k)</span>:</span></span><br><span class="line">    <span class="comment"># 初始化S盒 存初始值0-255</span></span><br><span class="line">    S = list(range(<span class="number">256</span>))</span><br><span class="line">    T = [] <span class="comment"># 用于轮转存放key</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">        T.append(ord(k[i % len(k)]))  <span class="comment"># 存放轮转的256位key</span></span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">        j = (j + S[i] + T[i]) % <span class="number">256</span></span><br><span class="line">        <span class="comment"># 通过交换，打乱S盒</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]</span><br><span class="line">    <span class="keyword">return</span> S</span><br><span class="line"></span><br><span class="line"><span class="comment"># PRGA生成密钥流</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(m, k)</span>:</span></span><br><span class="line">    c = <span class="string">""</span></span><br><span class="line">    i = j = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 调用已经初始化的S盒</span></span><br><span class="line">    S = InitSbox(k)</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(len(m)):</span><br><span class="line">        i = (i + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">        j = (j + S[i]) % <span class="number">256</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]  <span class="comment"># 交换 打乱S盒</span></span><br><span class="line">        t = (S[i] + S[j]) % <span class="number">256</span></span><br><span class="line">        <span class="comment"># 将生成的密钥流key逐一与明文进行异或，格式化成16进制字符串</span></span><br><span class="line">        c += <span class="string">'%02x'</span> % (ord(m[x]) ^ S[t])</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 加密</span></span><br><span class="line">    m = <span class="string">"ifnottothesunforsmilingwarmisstillinthesuntherebutwewilllaughmoreconfidentcalmifturnedtofoundhisownshadowappropriateescapethesunwillbethroughtheheartwarmeachplacebehindthecornerifanoutstretchedpalmcannotfallbutterflythenclenchedwavingarmsgivenpowerificanthavebrightsmileitwillfacetothesunshineandsunshinesmiletogetherinfullbloom"</span></span><br><span class="line">    k = <span class="string">"qwertyuiop"</span></span><br><span class="line">    ans = encrypt(m, k)</span><br><span class="line">    print(<span class="string">"加密后得到的内容为： \n"</span> + ans)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解密</span></span><br><span class="line">    c = ans <span class="comment">#获取密文</span></span><br><span class="line">    b = <span class="string">""</span></span><br><span class="line">    text = <span class="string">""</span></span><br><span class="line">    <span class="comment"># 将16进制字符串转换为相应字符，存入字符串b中</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(c), <span class="number">2</span>):</span><br><span class="line">        b += str(chr(int(c[i : i + <span class="number">2</span>], <span class="number">16</span>)))</span><br><span class="line">    <span class="comment"># 解密其实就是再次与密钥流进行异或，再次调用encrypt函数</span></span><br><span class="line">    res = encrypt(b, k)</span><br><span class="line">    <span class="comment"># 异或后的16进制对应相应的明文字符，转换为相应字符</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(res), <span class="number">2</span>):</span><br><span class="line">        text += str(chr(int(res[i : i + <span class="number">2</span>], <span class="number">16</span>)))</span><br><span class="line">    print(<span class="string">"解密后得到的明文为： \n"</span> + text)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h3><p>加密与解密使用同一个加密函数，因为解密其实就是再次与密钥流进行异或。结果如下。<br><img src="https://img-blog.csdnimg.cn/20181230223103545.png" alt></p>
+<hr>
+<h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p>算法主要包含密钥调度算法（KSA）：用于打乱S盒的初始排列 和伪随机数生成算法（PRGA）用于输出随机序列并修改S的当前排列。前者的所有操作仅仅是改变位置。后者的秘钥序列生成过程较为复杂（很好地打乱），但加解密使用的是同一个秘钥K，故随机生成后的秘钥序列依然是相同的，加上加解密只是简单的异或运算，故算法正确。</p>
+<hr>
+<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
+<li>由算法的实现可知，RC4算法的加解密对种子秘钥的依赖十分强烈。故需要保证种子秘钥的安全性。对于此，可进行相关攻击。</li>
+</ol>
+<ul>
+<li>可以进行穷举搜素攻击，故为了保证安全强度，目前要求秘钥长度至少为128位。</li>
+<li>弱密钥攻击，弱密钥会产生重复的密钥流，一旦子密钥序列出现了重复，密文就有可能被破解。</li>
+</ul>
+<ol start="2">
+<li>算法存在无效的初始置换，<code>j = (j + S[i] + T[i]) mod 256</code> 取 <code>(j+T[i])mod 256 ≡ 0</code> 即<code>T[i]=[0,0,255,254,253,...,2]</code>这样的情况下，S盒完全不会被搅乱，都是无效替换。这样便可以通过统计分析破解。</li>
+</ol>
 
       
     </div>
@@ -418,7 +447,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/02/28/hello-world/" title="Hello World">http://yoursite.com/2019/02/28/hello-world/</a>
+    <a href="http://yoursite.com/2019/02/28/RC4/" title="序列密码之RC4">http://yoursite.com/2019/02/28/RC4/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -433,7 +462,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/learning/" rel="tag"># learning</a>
+            <a href="/tags/crypto/" rel="tag"># crypto</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -446,14 +477,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/28/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/28/RC4/" rel="prev" title="序列密码之RC4">
-                序列密码之RC4 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/01/markdown-with-hexo/" rel="prev" title="markdown with hexo">
+                markdown with hexo <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -604,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现"><span class="nav-number">2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密与解密"><span class="nav-number">3.</span> <span class="nav-text">加密与解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性"><span class="nav-number">4.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性分析"><span class="nav-number">5.</span> <span class="nav-text">安全性分析</span></a></li></ol></div>
             
 
           </div>
