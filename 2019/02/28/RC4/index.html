@@ -85,19 +85,19 @@
 
 
 
-<meta name="description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S RC4有两个主要算法：   密钥调度算法（KSA）：用于打乱S盒的初始排列">
+<meta name="description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S">
 <meta name="keywords" content="crypto,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列密码之RC4">
 <meta property="og:url" content="https://clwsec.github.io/2019/02/28/RC4/index.html">
 <meta property="og:site_name" content="clwsec">
-<meta property="og:description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S RC4有两个主要算法：   密钥调度算法（KSA）：用于打乱S盒的初始排列">
+<meta property="og:description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-dd57905378270560.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-01T11:06:58.639Z">
+<meta property="og:updated_time" content="2019-03-02T02:36:25.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列密码之RC4">
-<meta name="twitter:description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S RC4有两个主要算法：   密钥调度算法（KSA）：用于打乱S盒的初始排列">
+<meta name="twitter:description" content="算法分析 RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。 RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S 种子密钥长度为1~ 256个字节（8~2048比特）的可变长度，用于初始化256个字节的初始向量S">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-dd57905378270560.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -169,7 +169,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">No pains no gains</p>
+        <p class="site-subtitle">No pains No gains</p>
       
   </div>
 
@@ -354,6 +354,39 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
 
           
 
@@ -373,7 +406,7 @@
         <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
 <li>RC4是一个典型的基于非线性数组变换的序列密码。它以一个足够大的数组S为基础，对其进行非线性变换，产生非线性的密钥流序列。</li>
 <li>RC4算法S盒的大小根据参数n的值而变化，通常n=8，这样RC4可生成256个元素的数组S</li>
-<li>种子密钥长度为<code>1~ 256</code>个字节（<code>8~2048</code>比特）的可变长度，用于初始化256个字节的初始向量S</li>
+<li>种子密钥长度为<code>1~ 256</code>个字节（<code>8~2048</code>比特）的可变长度，用于初始化256个字节的初始向量S<a id="more"></a></li>
 <li>RC4有两个主要算法：</li>
 </ol>
 <ul>
@@ -547,7 +580,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +602,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -640,7 +673,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-snowflake-o"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lei</span>
 
@@ -652,20 +685,14 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">4.2k</span>
   
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
