@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="crypto,python,">
 
 
 
@@ -85,18 +85,22 @@
 
 
 
-<meta name="description" content="谨记:业精于勤 荒于嬉 行成于思 毁于随   想听音乐: 网易云音乐 QQ音乐 虾米音乐   喜欢的诗: 面朝大海 春暖花开 【作者】海子从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人">
-<meta name="keywords" content="blogs">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="https://clwsec.github.io/about/index.html">
+<meta name="description" content="算法分析 MD5算法是输入长度小于2^64比特的消息，输出为128比特的消息摘要。 输入消息以512比特的分组为单位处理。 具体过程如下:   附加填充位：保证消息长度L=448（mod512）然后将原始消息长度以64比特附在填充结果后面。从而使消息长度恰好为512比特的整数倍。 初始化链接变量：使用4个32位的寄存器A，B，C，D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用">
+<meta name="keywords" content="crypto,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希函数之MD5">
+<meta property="og:url" content="https://clwsec.github.io/2019/03/05/哈希函数之MD5/index.html">
 <meta property="og:site_name" content="clwsec">
-<meta property="og:description" content="谨记:业精于勤 荒于嬉 行成于思 毁于随   想听音乐: 网易云音乐 QQ音乐 虾米音乐   喜欢的诗: 面朝大海 春暖花开 【作者】海子从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人">
+<meta property="og:description" content="算法分析 MD5算法是输入长度小于2^64比特的消息，输出为128比特的消息摘要。 输入消息以512比特的分组为单位处理。 具体过程如下:   附加填充位：保证消息长度L=448（mod512）然后将原始消息长度以64比特附在填充结果后面。从而使消息长度恰好为512比特的整数倍。 初始化链接变量：使用4个32位的寄存器A，B，C，D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-02T06:48:14.057Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-b4ac32a5cc754027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-d673e11bc493f58d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-220a8c127ae1201f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-06T12:04:32.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="谨记:业精于勤 荒于嬉 行成于思 毁于随   想听音乐: 网易云音乐 QQ音乐 虾米音乐   喜欢的诗: 面朝大海 春暖花开 【作者】海子从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人">
+<meta name="twitter:title" content="哈希函数之MD5">
+<meta name="twitter:description" content="算法分析 MD5算法是输入长度小于2^64比特的消息，输出为128比特的消息摘要。 输入消息以512比特的分组为单位处理。 具体过程如下:   附加填充位：保证消息长度L=448（mod512）然后将原始消息长度以64比特附在填充结果后面。从而使消息长度恰好为512比特的整数倍。 初始化链接变量：使用4个32位的寄存器A，B，C，D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-b4ac32a5cc754027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -126,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://clwsec.github.io/about/">
+  <link rel="canonical" href="https://clwsec.github.io/2019/03/05/哈希函数之MD5/">
 
 
 
 
 
-  <title>About | clwsec</title>
+  <title>哈希函数之MD5 | clwsec</title>
   
 
 
@@ -267,68 +271,244 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.github.io/2019/03/05/哈希函数之MD5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clwsec">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">About</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
-          <h3 id="谨记"><a href="#谨记" class="headerlink" title="谨记:"></a>谨记:</h3><center><br><font face="黑体" size="4"><strong>业精于勤 荒于嬉 行成于思 毁于随</strong></font><br></center>
-
-<hr>
-<h3 id="想听音乐"><a href="#想听音乐" class="headerlink" title="想听音乐:"></a>想听音乐:</h3><ol>
-<li><a href="https://music.163.com" target="_blank" rel="noopener">网易云音乐</a></li>
-<li><a href="https://y.qq.com" target="_blank" rel="noopener">QQ音乐</a></li>
-<li><a href="https://www.xiami.com" target="_blank" rel="noopener">虾米音乐</a></li>
-</ol>
-<hr>
-<h3 id="喜欢的诗"><a href="#喜欢的诗" class="headerlink" title="喜欢的诗:"></a>喜欢的诗:</h3><center> <strong>面朝大海 春暖花开</strong> </center><br><center>【作者】海子</center><br><center>从明天起，做一个幸福的人</center><br><center>喂马，劈柴，周游世界</center><br><center>从明天起，关心粮食和蔬菜</center><br><center>我有一所房子，面朝大海，春暖花开</center><br><center>从明天起，和每一个亲人通信</center><br><center>告诉他们我的幸福</center><br><center>那幸福的闪电告诉我的</center><br><center>我将告诉每一个人</center><br><center>给每一条河每一座山取一个温暖的名字</center><br><center>陌生人，我也为你祝福</center><br><center>愿你有一个灿烂的前程</center><br><center>愿你有情人终成眷属</center><br><center>愿你在尘世获得幸福</center><br><center>我只愿面朝大海，春暖花开</center>
-
-<hr>
-<h3 id="喜欢的歌"><a href="#喜欢的歌" class="headerlink" title="喜欢的歌:"></a>喜欢的歌:</h3><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=26113988&auto=0&height=66"><br></iframe>
-
-<hr>
-<h3 id="读过的书："><a href="#读过的书：" class="headerlink" title="读过的书："></a>读过的书：</h3><ol>
-<li>三体</li>
-<li>活着</li>
-<li>岛上书店</li>
-<li>上海堡垒</li>
-<li>摆渡人</li>
-<li>……</li>
-</ol>
-<hr>
-<h3 id="喜欢的电影"><a href="#喜欢的电影" class="headerlink" title="喜欢的电影:"></a>喜欢的电影:</h3><ol>
-<li>阿凡达</li>
-<li>无名之辈</li>
-<li>无双</li>
-<li>我不是药神</li>
-<li>速度与激情系列</li>
-<li>肖申克的救赎</li>
-<li>谍影重重系列</li>
-<li>…… </li>
-</ol>
-<hr>
-
+          <h1 class="post-title" itemprop="name headline">哈希函数之MD5</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T19:47:22+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/crypto/" itemprop="url" rel="index">
+                    <span itemprop="name">crypto</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  494
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
+<li>MD5算法是输入长度小于<code>2^64</code>比特的消息，输出为128比特的消息摘要。</li>
+<li>输入消息以512比特的分组为单位处理。</li>
+<li>具体过程如下:<br><img src="https://upload-images.jianshu.io/upload_images/9216631-b4ac32a5cc754027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+</ol>
+<ul>
+<li>附加填充位：保证消息长度<code>L=448（mod512）</code>然后将原始消息长度以64比特附在填充结果后面。从而使消息长度恰好为512比特的整数倍。</li>
+<li>初始化链接变量：使用4个32位的寄存器A，B，C，D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用于第一轮的迭代。</li>
+<li>分组处理（迭代压缩）： 由4轮组成，512比特按32比特分为16组，参与每轮16步函数运算。每步的输入是4个32比特的链接变量和一个32比特的消息子分组。净果轮共64步后，得到4个寄存器的值分别与输入链接变量进行模加，即的此次分组处理的输出链接变量。</li>
+<li>步函数的具体过程为：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-d673e11bc493f58d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+</ul>
+<hr>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接使用Python中的hashlib模块，并将加密结果以16进制形式显示</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="comment"># 生成md5数字指纹。</span></span><br><span class="line">s = <span class="string">b'abc'</span>  <span class="comment"># 定义字节型字符串</span></span><br><span class="line">md = hashlib.md5()  <span class="comment"># 导入md5算法</span></span><br><span class="line">md.update(s)  <span class="comment"># 把值传给md5算法</span></span><br><span class="line">print(<span class="string">'消息摘要：'</span>,  md.hexdigest())</span><br><span class="line">print(<span class="string">'长度: '</span>, len(md.hexdigest())*<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="生成消息摘要"><a href="#生成消息摘要" class="headerlink" title="生成消息摘要"></a>生成消息摘要</h3><p>当消息<code>s = “abc”</code>时，生成的消息摘要为：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-220a8c127ae1201f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
+<li>MD5算法中，输出的每一位都是输入的每一位的函数，逻辑函数F、G、H、I的复杂迭代使得输出对输入的依赖非常小。</li>
+<li>对单轮的MD5算法，利用差分分析，可以在合理时间内找出碰撞的两条消息。到2004年，便只需1小时就可找出MD5的碰撞。</li>
+<li>MD5算法抗密码分析的能力较弱，生日攻击所需代价是试验2^64个消息。</li>
+</ol>
+<hr>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.github.io/2019/03/05/哈希函数之MD5/" title="哈希函数之MD5">https://clwsec.github.io/2019/03/05/哈希函数之MD5/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
+          
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/03/A5加密解密/" rel="next" title="A5加密解密">
+                <i class="fa fa-chevron-left"></i> A5加密解密
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/06/RSA/" rel="prev" title="公钥密码之RSA">
+                公钥密码之RSA <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -485,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#谨记"><span class="nav-number">1.</span> <span class="nav-text">谨记:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#想听音乐"><span class="nav-number">2.</span> <span class="nav-text">想听音乐:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#喜欢的诗"><span class="nav-number">3.</span> <span class="nav-text">喜欢的诗:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#喜欢的歌"><span class="nav-number">4.</span> <span class="nav-text">喜欢的歌:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读过的书："><span class="nav-number">5.</span> <span class="nav-text">读过的书：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#喜欢的电影"><span class="nav-number">6.</span> <span class="nav-text">喜欢的电影:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现"><span class="nav-number">2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成消息摘要"><span class="nav-number">3.</span> <span class="nav-text">生成消息摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性分析"><span class="nav-number">4.</span> <span class="nav-text">安全性分析</span></a></li></ol></div>
             
 
           </div>

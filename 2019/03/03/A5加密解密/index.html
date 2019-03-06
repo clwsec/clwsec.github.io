@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="crypto,python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="算法分析 A5算法已被应用于GSM通信系统中，用于加密从手机到基站的连接，以保护语音通信。一个GSM语言消息被转换成一系列的帧，每帧长228位，每帧用A5进行加密。 A5算法主要由三个长度不同的线性移位寄存器组成，即A, B, C。其中A有19位，B有22位，C有23位。 移位由时钟控制的，且遵循“择多”的原则。即从每个寄存器中取出一个中间位，三个数中占多数的寄存器参加移位，其余的不移位。可以参考">
+<meta name="keywords" content="crypto,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A5加密解密">
+<meta property="og:url" content="https://clwsec.github.io/2019/03/03/A5加密解密/index.html">
+<meta property="og:site_name" content="clwsec">
+<meta property="og:description" content="算法分析 A5算法已被应用于GSM通信系统中，用于加密从手机到基站的连接，以保护语音通信。一个GSM语言消息被转换成一系列的帧，每帧长228位，每帧用A5进行加密。 A5算法主要由三个长度不同的线性移位寄存器组成，即A, B, C。其中A有19位，B有22位，C有23位。 移位由时钟控制的，且遵循“择多”的原则。即从每个寄存器中取出一个中间位，三个数中占多数的寄存器参加移位，其余的不移位。可以参考">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-06f197089c14e466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-7b846d104195b78a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-2de9bc3b3b6fc13b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-06T12:04:34.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A5加密解密">
+<meta name="twitter:description" content="算法分析 A5算法已被应用于GSM通信系统中，用于加密从手机到基站的连接，以保护语音通信。一个GSM语言消息被转换成一系列的帧，每帧长228位，每帧用A5进行加密。 A5算法主要由三个长度不同的线性移位寄存器组成，即A, B, C。其中A有19位，B有22位，C有23位。 移位由时钟控制的，且遵循“择多”的原则。即从每个寄存器中取出一个中间位，三个数中占多数的寄存器参加移位，其余的不移位。可以参考">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-06f197089c14e466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.github.io/2019/03/03/A5加密解密/">
+
+
+
+
+
+  <title>A5加密解密 | clwsec</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">clwsec</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.github.io/2019/03/03/A5加密解密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clwsec">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">A5加密解密</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-03T19:52:35+08:00">
+                2019-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/crypto/" itemprop="url" rel="index">
+                    <span itemprop="name">crypto</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  965
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
+<li>A5算法已被应用于GSM通信系统中，用于加密从手机到基站的连接，以保护语音通信。一个GSM语言消息被转换成一系列的帧，每帧长<code>228</code>位，每帧用A5进行加密。</li>
+<li>A5算法主要由三个长度不同的线性移位寄存器组成，即A, B, C。其中A有19位，B有22位，C有23位。</li>
+<li>移位由时钟控制的，且遵循“择多”的原则。即从每个寄存器中取出一个中间位，三个数中占多数的寄存器参加移位，其余的不移位。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-06f197089c14e466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="A5算法示意图"><br>可以参考：<a href="https://www.cnblogs.com/gambler/p/9074356.html" target="_blank" rel="noopener">A5算法理解</a></li>
+</ol>
+<hr>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-7b846d104195b78a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GSM中使用A5流密码算法"></p>
+<hr>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createkey</span><span class="params">(key,Fn)</span>:</span></span><br><span class="line">    tem = strtobin(key)</span><br><span class="line">    <span class="comment"># 线性反馈移位寄存器LFSR A,B,C</span></span><br><span class="line">    A = list(tem[:<span class="number">19</span>])</span><br><span class="line">    B = list(tem[<span class="number">19</span>:<span class="number">41</span>])</span><br><span class="line">    C = list(tem[<span class="number">41</span>:])</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">114</span>):</span><br><span class="line">        resa = int(A[<span class="number">13</span>]) ^ int(A[<span class="number">16</span>]) ^ int(A[<span class="number">17</span>]) ^ int(A[<span class="number">18</span>])</span><br><span class="line">        resb = int(B[<span class="number">12</span>]) ^ int(A[<span class="number">16</span>]) ^ int(B[<span class="number">20</span>]) ^ int(B[<span class="number">21</span>])</span><br><span class="line">        resc = int(C[<span class="number">17</span>]) ^ int(C[<span class="number">18</span>]) ^ int(C[<span class="number">21</span>]) ^ int(C[<span class="number">22</span>])</span><br><span class="line">        <span class="keyword">if</span> int(A[<span class="number">9</span>]) ^ int(B[<span class="number">11</span>]) ^ int(C[<span class="number">11</span>]) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span>  A[<span class="number">9</span>] == <span class="string">'1'</span> <span class="keyword">and</span> B[<span class="number">11</span>] == <span class="string">'1'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">            <span class="keyword">elif</span> A[<span class="number">9</span>] == <span class="string">'1'</span> <span class="keyword">and</span> C[<span class="number">11</span>] == <span class="string">'1'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> A[<span class="number">9</span>] == <span class="string">'0'</span> <span class="keyword">and</span> B[<span class="number">11</span>] == <span class="string">'0'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">            <span class="keyword">elif</span> A[<span class="number">9</span>] == <span class="string">'0'</span> <span class="keyword">and</span> C[<span class="number">11</span>] == <span class="string">'0'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">        res.append(int(A[<span class="number">18</span>]) ^ int(B[<span class="number">21</span>]) ^ int(C[<span class="number">22</span>]))</span><br><span class="line">    Fn = list(Fn)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">22</span>):</span><br><span class="line">        B[i] = int(B[i]) ^ int(Fn[i])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">114</span>):</span><br><span class="line">        resa = int(A[<span class="number">13</span>]) ^ int(A[<span class="number">16</span>]) ^ int(A[<span class="number">17</span>]) ^ int(A[<span class="number">18</span>])</span><br><span class="line">        resb = int(B[<span class="number">12</span>]) ^ int(A[<span class="number">16</span>]) ^ int(B[<span class="number">20</span>]) ^ int(B[<span class="number">21</span>])</span><br><span class="line">        resc = int(C[<span class="number">17</span>]) ^ int(C[<span class="number">18</span>]) ^ int(C[<span class="number">21</span>]) ^ int(C[<span class="number">22</span>])</span><br><span class="line">        <span class="keyword">if</span> int(A[<span class="number">9</span>]) ^ int(B[<span class="number">11</span>]) ^ int(C[<span class="number">11</span>]) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> A[<span class="number">9</span>] == <span class="string">'1'</span> <span class="keyword">and</span> B[<span class="number">11</span>] == <span class="string">'1'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">            <span class="keyword">elif</span> A[<span class="number">9</span>] == <span class="string">'1'</span> <span class="keyword">and</span> C[<span class="number">11</span>] == <span class="string">'1'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> A[<span class="number">9</span>] == <span class="string">'0'</span> <span class="keyword">and</span> B[<span class="number">11</span>] == <span class="string">'0'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">            <span class="keyword">elif</span> A[<span class="number">9</span>] == <span class="string">'0'</span> <span class="keyword">and</span> C[<span class="number">11</span>] == <span class="string">'0'</span>:</span><br><span class="line">                A[<span class="number">1</span>: <span class="number">18</span>] = A[<span class="number">0</span>: <span class="number">17</span>]</span><br><span class="line">                A[<span class="number">0</span>] = str(resa)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                B[<span class="number">1</span>: <span class="number">21</span>] = B[<span class="number">0</span>: <span class="number">20</span>]</span><br><span class="line">                B[<span class="number">0</span>] = str(resb)</span><br><span class="line">                C[<span class="number">1</span>: <span class="number">22</span>] = C[<span class="number">0</span>: <span class="number">21</span>]</span><br><span class="line">                C[<span class="number">0</span>] = str(resc)</span><br><span class="line">        res.append(int(A[<span class="number">18</span>]) ^ int(B[<span class="number">21</span>]) ^ int(C[<span class="number">22</span>]))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串转换为二进制字符串</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strtobin</span><span class="params">(s)</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        tem = bin(ord(c)).replace(<span class="string">'b'</span>, <span class="string">''</span>)</span><br><span class="line">        <span class="comment"># 转为字符串时，后7位中，如果存在前面为0，会自动去掉，需要加回来，使之满足8位</span></span><br><span class="line">        <span class="keyword">if</span> len(tem) &lt; <span class="number">8</span>:</span><br><span class="line">            tem = <span class="string">"0"</span> + tem</span><br><span class="line">        res.append(tem)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">''</span>.join(res)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制转字符串</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bintostr</span><span class="params">(s)</span>:</span></span><br><span class="line">    tem = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        tem += str(chr(int(i, base=<span class="number">2</span>)))</span><br><span class="line">    <span class="keyword">return</span> tem</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将明文字符串分割为指定长度字符串并存于列表中</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_text</span><span class="params">(text, lenth)</span>:</span></span><br><span class="line">    tem = re.findall(<span class="string">'.&#123;'</span> + str(lenth) + <span class="string">'&#125;'</span>, text)</span><br><span class="line">    tem.append(text[(len(tem) * lenth):])</span><br><span class="line">    <span class="comment"># 由于分割后，末尾出现一个空字符，故去掉</span></span><br><span class="line">    result = [i <span class="keyword">for</span> i <span class="keyword">in</span> tem <span class="keyword">if</span> i != <span class="string">''</span>]</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 明文</span></span><br><span class="line">    plaintext = <span class="string">"ifnottothesunforsmilingwarmisstillinthesuntherebutwewilllaughmoreconfidentcalmifturnedtofoundhisownshadowappropriateescapethesunwillbethroughtheheartwarmeachplacebehindthecornerifanoutstretchedpalmcannotfallbutterflythenclenchedwavingarmsgivenpowerificanthavebrightsmileitwillfacetothesunshineandsunshinesmiletogetherinfullbloom"</span></span><br><span class="line">    <span class="comment"># 秘钥</span></span><br><span class="line">    key = <span class="string">"asdfghjk"</span></span><br><span class="line">    <span class="comment"># 转换成二进制</span></span><br><span class="line">    mtext = strtobin(plaintext)</span><br><span class="line">    key = strtobin(key)</span><br><span class="line">    <span class="comment"># 帧号码Fn 22位</span></span><br><span class="line">    Fn = <span class="string">"0101101000110101010101"</span></span><br><span class="line">    <span class="comment"># 生成密钥流</span></span><br><span class="line">    keystream = createkey(key, Fn)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加密</span></span><br><span class="line">    mlist = cut_text(mtext, <span class="number">228</span>)</span><br><span class="line">    ciphertext = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> mlist:</span><br><span class="line">         <span class="comment"># 对每组明文分别加密</span></span><br><span class="line">         <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t)):</span><br><span class="line">             ciphertext += str(int(keystream[i]) ^ int(t[i]))</span><br><span class="line">    print(<span class="string">"加密后得到的密文为： \n"</span> + hex(int(ciphertext,<span class="number">2</span>)).upper()[<span class="number">2</span>:])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解密</span></span><br><span class="line">    clist = cut_text(ciphertext, <span class="number">228</span>)</span><br><span class="line">    res = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> clist:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t)):</span><br><span class="line">            res += str(int(keystream[i]) ^ int(t[i]))</span><br><span class="line">    result = cut_text(res, <span class="number">8</span>)</span><br><span class="line">    end = bintostr(result)</span><br><span class="line">    print(<span class="string">"解密后得到的明文为： \n"</span> + end)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h3><p><img src="https://upload-images.jianshu.io/upload_images/9216631-2de9bc3b3b6fc13b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.github.io/2019/03/03/A5加密解密/" title="A5加密解密">https://clwsec.github.io/2019/03/03/A5加密解密/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
+          
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/02/DES/" rel="next" title="分组密码之DES">
+                <i class="fa fa-chevron-left"></i> 分组密码之DES
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/哈希函数之MD5/" rel="prev" title="哈希函数之MD5">
+                哈希函数之MD5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤荒于嬉 行成于思毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:13041941978@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现"><span class="nav-number">2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加解密"><span class="nav-number">3.</span> <span class="nav-text">加解密</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

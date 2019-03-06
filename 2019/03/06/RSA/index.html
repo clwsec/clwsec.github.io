@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="crypto,python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="算法分析 RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。 RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。 RSA算法主要由密钥生成、加密和解密三个部分组成。   密钥生成：a 选择两个大素数𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）b 计算𝑛=𝑝×𝑞， φ(n) =(𝑝－1)×(𝑞－1)c 选择整数 𝑒 使 (φ(n)，𝑒) =1,">
+<meta name="keywords" content="crypto,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公钥密码之RSA">
+<meta property="og:url" content="https://clwsec.github.io/2019/03/06/RSA/index.html">
+<meta property="og:site_name" content="clwsec">
+<meta property="og:description" content="算法分析 RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。 RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。 RSA算法主要由密钥生成、加密和解密三个部分组成。   密钥生成：a 选择两个大素数𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）b 计算𝑛=𝑝×𝑞， φ(n) =(𝑝－1)×(𝑞－1)c 选择整数 𝑒 使 (φ(n)，𝑒) =1,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190101221153403.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190101220329136.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190101220741723.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190101220910385.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190111210315332.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190111211658308.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190111211254656.png">
+<meta property="og:updated_time" content="2019-03-06T12:04:31.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公钥密码之RSA">
+<meta name="twitter:description" content="算法分析 RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。 RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。 RSA算法主要由密钥生成、加密和解密三个部分组成。   密钥生成：a 选择两个大素数𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）b 计算𝑛=𝑝×𝑞， φ(n) =(𝑝－1)×(𝑞－1)c 选择整数 𝑒 使 (φ(n)，𝑒) =1,">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190101221153403.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.github.io/2019/03/06/RSA/">
+
+
+
+
+
+  <title>公钥密码之RSA | clwsec</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">clwsec</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.github.io/2019/03/06/RSA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clwsec">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">公钥密码之RSA</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T18:38:41+08:00">
+                2019-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/crypto/" itemprop="url" rel="index">
+                    <span itemprop="name">crypto</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
+<li>RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。</li>
+<li>RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。</li>
+<li>RSA算法主要由密钥生成、加密和解密三个部分组成。</li>
+</ol>
+<ul>
+<li>密钥生成：<br>a 选择两个大素数<code>𝑝和𝑞</code>,（<code>𝑝≠𝑞</code>，需要保密，步骤4以后建议销毁）<br>b 计算<code>𝑛=𝑝×𝑞，</code> <code>φ(n) =(𝑝－1)×(𝑞－1)</code><br>c 选择整数 𝑒 使 <code>(φ(n)，𝑒) =1</code>,  <code>1&lt;𝑒&lt; φ(n)</code><br>d 计算𝑑，使<code>𝑑 = e^(-1) (modφ(n))</code>, 得到：公钥为<code>{𝑒, 𝑛}</code>； 私钥为<code>{𝑑}</code></li>
+<li>加密:<br>用<code>𝒆，𝒏</code>： 明文<code>𝑀&lt;𝑛</code>， 密文<code>𝐶=M^e (𝑚𝑜𝑑 𝑛)</code></li>
+<li>解密：<br>用<code>𝒅，𝒏</code>： 密文<code>𝐶</code>， 明文<code>𝑀 =C^d (𝑚𝑜𝑑 𝑛)</code></li>
+</ul>
+<hr>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 欧几里得算法求两个数字的最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> gcd(b, a % b)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">扩展欧几里的算法</span></span><br><span class="line"><span class="string">计算 ax + by = 1中的x与y的整数解（a与b互质）</span></span><br><span class="line"><span class="string">gcd(a, b) = a*xi + b*yi</span></span><br><span class="line"><span class="string">gcd(b, a %  b) = b*xi+1 + (a - [a/b]*b)*yi+1</span></span><br><span class="line"><span class="string">gcd(a, b) = gcd(b, a %  b)   =&gt;   a*xi + b*yi = a*yi+1 + b*(xi+1 - [a/b]*yi+1)</span></span><br><span class="line"><span class="string">xi = yi+1</span></span><br><span class="line"><span class="string">yi = xi+1 - [a/b]*yi+1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ext_gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        x1 = <span class="number">1</span></span><br><span class="line">        y1 = <span class="number">0</span></span><br><span class="line">        x = x1</span><br><span class="line">        y = y1</span><br><span class="line">        r = a</span><br><span class="line">        <span class="keyword">return</span> r, x, y</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        r, x1, y1 = ext_gcd(b, a % b)</span><br><span class="line">        x = y1</span><br><span class="line">        y = x1 - (a // b ) * y1</span><br><span class="line">        <span class="keyword">return</span> r, x, y        </span><br><span class="line"> <span class="comment"># 使用快速幂取模计算法进行加密解密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(a, b, c)</span>:</span></span><br><span class="line">    s = <span class="number">1</span></span><br><span class="line">    a %=c</span><br><span class="line">    <span class="keyword">while</span> b !=<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> b % <span class="number">2</span> ==<span class="number">1</span>:</span><br><span class="line">            s = (s * a) % c</span><br><span class="line">        b = b // <span class="number">2</span></span><br><span class="line">        a = (a * a) % c</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"> <span class="comment"># 生成公钥私钥，p、q为两个超大质数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_key</span><span class="params">(p, q)</span>:</span></span><br><span class="line">    n = p * q</span><br><span class="line">    fn = (p - <span class="number">1</span>) * (q - <span class="number">1</span>) <span class="comment"># 计算与n互质的整数个数 欧拉函数</span></span><br><span class="line">    e = <span class="number">3889</span></span><br><span class="line">    a = e</span><br><span class="line">    b = fn</span><br><span class="line">    r, x, y = ext_gcd(a, b)</span><br><span class="line">    print(<span class="string">"选取的公钥为： \n"</span>, e)</span><br><span class="line">    print(<span class="string">"生成的私钥为： \n"</span>, x)</span><br><span class="line">    d = x</span><br><span class="line">    <span class="comment"># 返回公钥   私钥</span></span><br><span class="line">    <span class="keyword">return</span>    (n, e), (n, d)</span><br><span class="line"> <span class="comment"># 加密 m是被加密的信息 加密成为c</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(m, pubkey)</span>:</span></span><br><span class="line">    n = pubkey[<span class="number">0</span>]</span><br><span class="line">    e = pubkey[<span class="number">1</span>]</span><br><span class="line">    c = power(m, e, n)</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"> <span class="comment"># 解密 c是密文，解密为明文m</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(c, selfkey)</span>:</span></span><br><span class="line">    n = selfkey[<span class="number">0</span>]</span><br><span class="line">    d = selfkey[<span class="number">1</span>]</span><br><span class="line">    m = power(c, d, n)</span><br><span class="line">    <span class="keyword">return</span> m</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="string">'''公钥私钥中用到的两个大素数数p,q，都是1024位'''</span></span><br><span class="line">    p = <span class="number">106697219132480173106064317148705638676529121742557567770857687729397446898790451577487723991083173010242416863238099716044775658681981821407922722052778958942891831033512463262741053961681512908218003840408526915629689432111480588966800949428079015682624591636010678691927285321708935076221951173426894836169</span></span><br><span class="line">    q = <span class="number">144819424465842307806353672547344125290716753535239658417883828941232509622838692761917211806963011168822281666033695157426515864265527046213326145174398018859056439431422867957079149967592078894410082695714160599647180947207504108618794637872261572262805565517756922288320779308895819726074229154002310375209</span></span><br><span class="line">    <span class="string">'''生成公钥私钥'''</span></span><br><span class="line">    pub_key, self_key = gen_key(p, q)</span><br><span class="line">    <span class="string">'''需要被加密的信息转化成数字，长度小于n的长度，如果信息长度大于n的长度，那么分段进行加密，分段解密即可。'''</span></span><br><span class="line">    m = <span class="number">1356205320457610288745198967657644166379972189839804389074591563666634066646564410685955217825048626066190866536592405966964024022236587593447122392540038493893121248948780525117822889230574978651418075403357439692743398250207060920929117606033490559159560987768768324823011579283223392964454439904542675637683985296529882973798752471233683249209762843835985174607047556306705224118165162905676610067022517682197138138621344578050034245933990790845007906416093198845798901781830868021761765904777531676765131379495584915533823288125255520904108500256867069512326595285549579378834222350197662163243932424184772115345</span></span><br><span class="line">    print(<span class="string">"明文为： \n"</span>, m)</span><br><span class="line"> <span class="string">'''信息加密，m被加密的信息，c是加密后的信息'''</span></span><br><span class="line">    c = encrypt(m, pub_key)</span><br><span class="line">    print(<span class="string">"加密后的密文为： \n"</span>, c)</span><br><span class="line">    <span class="string">'''信息解密'''</span></span><br><span class="line">    d = decrypt(c, self_key)</span><br><span class="line">    print(<span class="string">"解密后的明文为： \n"</span>, d)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h3><p>公钥私钥中用到的两个大素数数p,q，都是1024位，首先生成相应的公钥和私钥。然后，将需要被加密的信息转化成十进制，长度小于n的长度，如果信息长度大于n的长度，那么分段进行加密，分段解密即可。具体例子如下：<br><img src="https://img-blog.csdnimg.cn/20190101221153403.png" alt></p>
+<hr>
+<h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p>证明接收者可以使用私钥及解密算法恢复出明文。分两种情况讨论：<br><img src="https://img-blog.csdnimg.cn/20190101220329136.png" alt></p>
+<hr>
+<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
+<li>RSA的安全性依赖于大数分解，但是否等同于大数分解一直未能得到理论上的证明，因为没有证明破解RSA就一定需要作大数分解。</li>
+<li>对于RSA的攻击，存在以下攻击：</li>
+</ol>
+<ul>
+<li>针对𝑛分解的攻击，需要完全尝试所有小于√n的素数。</li>
+<li>循环攻击：攻击者得到密文𝑐后，对密文𝑐依次进行如下变换：<br><img src="https://img-blog.csdnimg.cn/20190101220741723.png" alt></li>
+</ul>
+<ol start="3">
+<li>共模攻击：假设𝑚是明文，两用户的公钥分别是𝑒1和𝑒2，且(𝑒1,𝑒2)=1，共同的模数𝑁，两个密文分别为：<br><img src="https://img-blog.csdnimg.cn/20190101220910385.png" alt><br>知道<code>𝑁，𝑒1，𝑒2，𝑐1</code>和<code>𝑐2</code>，可如下恢复明文𝑚。<br><code>(𝑒1,𝑒2)=1</code>，由欧几里德算法可找出<code>𝑟,𝑠</code>满足<code>𝑟𝑒1＋𝑠𝑒2＝1</code>。<br><img src="https://img-blog.csdnimg.cn/20190111210315332.png" alt><br>无需秘密密钥𝑑，就可以得到明文𝑚</li>
+<li>选择密文攻击：需要破译密文和骗取签名。<br>RSA模幂运算的性质：<br><img src="https://img-blog.csdnimg.cn/20190111211658308.png" alt></li>
+</ol>
+<ul>
+<li>用户A公钥为<code>(𝑒,𝑛)</code>，攻击者监听到发给A的密文<code>𝑐=𝑚^𝑒 𝑚𝑜𝑑 𝑛</code></li>
+<li>攻击者随机选取一个<code>𝑟 &lt;𝑛</code>，计算<code>𝑦＝𝑟^𝑒 𝑚𝑜𝑑 𝑛，𝑡＝𝑦𝑐 (𝑚𝑜𝑑 𝑛)</code></li>
+<li>攻击者发送𝑡给A，要求A对消息𝑡签名(A用私钥签名)</li>
+<li>A把签名返回给攻击者，攻击者就得到了<code>𝑠＝𝑡^𝑑 𝑚𝑜𝑑 𝑛</code> 攻击者计算：<br><img src="https://img-blog.csdnimg.cn/20190111211254656.png" alt><br>于是攻击者获得了明文𝑚</li>
+</ul>
+<ol start="5">
+<li>低加密指数攻击：小的公钥可加快加密的速度，但过小的公钥易受到攻击。</li>
+</ol>
+<ul>
+<li>如果3个用户都使用3作为公钥，对同一个明文𝑚加密，则<br><code>c1＝m3 (mod n1)，c2＝m3 (mod n2)，c3＝m3 (mod n3)， gcd⁡(n1,n2,n3)=1</code>，且<code>𝑚＜𝑛1，𝑚＜𝑛2，𝑚＜𝑛3</code></li>
+<li>由中国剩余定理可从<code>𝑐1，𝑐2，𝑐3</code>计算出𝑐，且<code>c＝m3 mod (n1n2n3 )</code>，显然<code>m3＜n1n2n3</code>，所以<code>m＝c^(1/3)</code></li>
+</ul>
+<ol start="6">
+<li>时间攻击：时间攻击主要针对RSA核心运算是非常耗时的模乘，只要能够精确监视RSA的解密过程，就能估算出私有密钥𝑑。</li>
+</ol>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.github.io/2019/03/06/RSA/" title="公钥密码之RSA">https://clwsec.github.io/2019/03/06/RSA/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
+          
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/哈希函数之MD5/" rel="next" title="哈希函数之MD5">
+                <i class="fa fa-chevron-left"></i> 哈希函数之MD5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/06/基于RSA的数字签名方案/" rel="prev" title="基于RSA的数字签名方案">
+                基于RSA的数字签名方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤荒于嬉 行成于思毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:13041941978@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现"><span class="nav-number">2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密与解密"><span class="nav-number">3.</span> <span class="nav-text">加密与解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性"><span class="nav-number">4.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性分析"><span class="nav-number">5.</span> <span class="nav-text">安全性分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

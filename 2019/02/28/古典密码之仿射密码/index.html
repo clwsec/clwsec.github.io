@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="crypto,python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="算法分析 仿射密码结合了移位密码和乘数密码的特点，是移位密码和乘数密码的组合。 仿射密码的加密算法就是一个线性变化，即对明文字符x，对应的密文字符为y=ax+b(mod26)其中，a, b属于Z26且gcd(a,b)=1 实现过程：   选取a，b两个参数，其中gcd(a, 26)＝1 加密变换：  c＝ a∗𝑚＋b 𝑚𝑜𝑑 26a=1时，移位密码b=1时，乘数密码 解密变换：  𝑚＝">
+<meta name="keywords" content="crypto,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="古典密码之仿射密码">
+<meta property="og:url" content="https://clwsec.github.io/2019/02/28/古典密码之仿射密码/index.html">
+<meta property="og:site_name" content="clwsec">
+<meta property="og:description" content="算法分析 仿射密码结合了移位密码和乘数密码的特点，是移位密码和乘数密码的组合。 仿射密码的加密算法就是一个线性变化，即对明文字符x，对应的密文字符为y=ax+b(mod26)其中，a, b属于Z26且gcd(a,b)=1 实现过程：   选取a，b两个参数，其中gcd(a, 26)＝1 加密变换：  c＝ a∗𝑚＋b 𝑚𝑜𝑑 26a=1时，移位密码b=1时，乘数密码 解密变换：  𝑚＝">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5e1882c47a2b6dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-c481e66e6875e7f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0e01f127b631a6c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-7ca0e8eee0d95c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-06T12:04:40.317Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="古典密码之仿射密码">
+<meta name="twitter:description" content="算法分析 仿射密码结合了移位密码和乘数密码的特点，是移位密码和乘数密码的组合。 仿射密码的加密算法就是一个线性变化，即对明文字符x，对应的密文字符为y=ax+b(mod26)其中，a, b属于Z26且gcd(a,b)=1 实现过程：   选取a，b两个参数，其中gcd(a, 26)＝1 加密变换：  c＝ a∗𝑚＋b 𝑚𝑜𝑑 26a=1时，移位密码b=1时，乘数密码 解密变换：  𝑚＝">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-5e1882c47a2b6dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.github.io/2019/02/28/古典密码之仿射密码/">
+
+
+
+
+
+  <title>古典密码之仿射密码 | clwsec</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">clwsec</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.github.io/2019/02/28/古典密码之仿射密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="clwsec">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">古典密码之仿射密码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T18:51:17+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/crypto/" itemprop="url" rel="index">
+                    <span itemprop="name">crypto</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
+<li>仿射密码结合了移位密码和乘数密码的特点，是移位密码和乘数密码的组合。</li>
+<li>仿射密码的加密算法就是一个线性变化，即对明文字符x，对应的密文字符为<code>y=ax+b(mod26)</code>其中，<code>a, b</code>属于Z<code>26</code>且<code>gcd(a,b)=1</code></li>
+<li>实现过程：</li>
+</ol>
+<ul>
+<li>选取<code>a，b</code>两个参数，其中<code>gcd(a, 26)＝1</code></li>
+<li>加密变换：  <code>c＝ a∗𝑚＋b 𝑚𝑜𝑑 26</code><br><code>a=1</code>时，移位密码<br><code>b=1</code>时，乘数密码</li>
+<li>解密变换：  <code>𝑚＝ (c−b)∗a^(−1) 𝑚𝑜𝑑 26</code></li>
+</ul>
+<hr>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暴力破解</span></span><br><span class="line">la = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">21</span>, <span class="number">23</span>, <span class="number">25</span>]</span><br><span class="line">lb = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>,</span><br><span class="line">      <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        tem = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = tem</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(m, c, a, b)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(m)):</span><br><span class="line">        <span class="comment"># 加密成相应的大写字母</span></span><br><span class="line">        c.append(chr(((ord(m[i]) - <span class="number">97</span>) * a + b) % <span class="number">26</span> + <span class="number">65</span>))</span><br><span class="line">    d = <span class="string">''</span>.join(c)</span><br><span class="line">    print(d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求逆元</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">niyuan</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    ny = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> (a * ny) % b != <span class="number">1</span>:</span><br><span class="line">        ny += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ny</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(c, k, b)</span>:</span></span><br><span class="line">    mw = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(c)):</span><br><span class="line">        tem = ord(c[i]) - <span class="number">65</span> - b</span><br><span class="line">        <span class="keyword">if</span> tem &lt; <span class="number">0</span>:</span><br><span class="line">            tem += <span class="number">26</span></span><br><span class="line">        mw.append(chr((k * tem) % <span class="number">26</span> + <span class="number">97</span>))</span><br><span class="line">    print(<span class="string">"k="</span> + str(k) + <span class="string">", b="</span> + str(b) + <span class="string">"时，解密后的明文为："</span>)</span><br><span class="line">    res = <span class="string">''</span>.join(mw)</span><br><span class="line">    print(res)</span><br><span class="line"></span><br><span class="line"><span class="comment">#实现</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 明文</span></span><br><span class="line">    m = <span class="string">'ifnottothesunforsmilingwarmisstillinthesuntherebutwewilllaughmoreconfidentcalmifturnedtofoundhisownshadowappropriateescapethesunwillbethroughtheheartwarmeachplacebehindthecornerifanoutstretchedpalmcannotfallbutterflythenclenchedwavingarmsgivenpowerificanthavebrightsmileitwillfacetothesunshineandsunshinesmiletogetherinfullbloom'</span></span><br><span class="line">    <span class="comment"># 密文</span></span><br><span class="line">    c = []</span><br><span class="line">    x, y = input(<span class="string">"请输入a和b: "</span>).split()</span><br><span class="line">    a = int(x)</span><br><span class="line">    b = int(y)</span><br><span class="line">    <span class="keyword">while</span> gcd(a, b) != <span class="number">1</span>:</span><br><span class="line">        x, y = input(<span class="string">"a和b不互素，请重新输入a和b: "</span>).split()</span><br><span class="line">        a = int(x)</span><br><span class="line">        b = int(y)</span><br><span class="line">    print(<span class="string">"明文内容为："</span>)</span><br><span class="line">    print(m)</span><br><span class="line">    print(<span class="string">"加密后的密文为："</span>)</span><br><span class="line">    encrypt(m, c, a, b)</span><br><span class="line">    print(<span class="string">"知道密钥破解："</span>)</span><br><span class="line">    k = niyuan(a, <span class="number">26</span>)</span><br><span class="line">    decrypt(c, k, b)</span><br><span class="line">    print(<span class="string">"不知道秘钥破解，暴力破解如下： "</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">12</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">26</span>):</span><br><span class="line">            decrypt(c, la[i], lb[j])</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h3><ul>
+<li>加密：输入<code>a = 3, b = 4</code>时，加密结果如图所示：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5e1882c47a2b6dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>解密：知道秘钥<code>k = 9, b = 4</code> （k为a的逆元）时，解出相应明文。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-c481e66e6875e7f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+</ul>
+<hr>
+<h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p>由于算法的前提要求<code>gcd(a,26)==1</code>, 从而使加密函数<code>c＝ a∗𝑚＋b 𝑚𝑜𝑑 26</code>是一个单射函数，故其解必然是唯一的。即，<code>gcd(a,26)==1</code>保证了仿射加密函数是一个双射函数，故算法正确。</p>
+<hr>
+<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
+<li>此密码算法安全性较弱。由算法的实现可知，此算法的秘钥空间大小为<code>12*26 – 1 ==311</code>（去除<code>a = 1, b = 0</code>时的情况）且<code>a = 1,3,5,7,9,11,15,17,19,21,23,25</code> 故很容易便能够通过暴力破解获得明文。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-0e01f127b631a6c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>还可以通过统计分析破解：代码如下<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#统计破解仿射密码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        tem = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = tem</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># a = 3， b = 4时的密文</span></span><br><span class="line">    m = <span class="string">"CTRUJJUJZQGMRTUDGOCLCRWSEDOCGGJCLLCRJZQGMRJZQDQHMJSQSCLLLEMWZOUDQKURTCNQRJKELOCTJMDRQNJUTUMRNZCGUSRGZENUSEXXDUXDCEJQQGKEXQJZQGMRSCLLHQJZDUMWZJZQZQEDJSEDOQEKZXLEKQHQZCRNJZQKUDRQDCTERUMJGJDQJKZQNXELOKERRUJTELLHMJJQDTLYJZQRKLQRKZQNSEPCRWEDOGWCPQRXUSQDCTCKERJZEPQHDCWZJGOCLQCJSCLLTEKQJUJZQGMRGZCRQERNGMRGZCRQGOCLQJUWQJZQDCRTMLLHLUUO"</span></span><br><span class="line">    <span class="comment"># 根据统计而得出的实际各字母出现的概率</span></span><br><span class="line">    reality = dict(a=<span class="number">0.082</span>, b=<span class="number">0.015</span>, c=<span class="number">0.028</span>, d=<span class="number">0.043</span>, e=<span class="number">0.127</span>, f=<span class="number">0.022</span>, g=<span class="number">0.02</span>, h=<span class="number">0.061</span>, i=<span class="number">0.07</span>,</span><br><span class="line">                   j=<span class="number">0.002</span>, k=<span class="number">0.008</span>, l=<span class="number">0.04</span>, m=<span class="number">0.024</span>, n=<span class="number">0.067</span>, o=<span class="number">0.075</span>, p=<span class="number">0.019</span>, q=<span class="number">0.001</span>, r=<span class="number">0.06</span>,</span><br><span class="line">                   s=<span class="number">0.063</span>, t=<span class="number">0.091</span>, u=<span class="number">0.028</span>, v=<span class="number">0.01</span>, w=<span class="number">0.023</span>, x=<span class="number">0.001</span>, y=<span class="number">0.02</span>, z=<span class="number">0.001</span>)</span><br><span class="line">    <span class="comment"># 对字典中各字母出现的概率进行降序排序</span></span><br><span class="line">    order = dict(sorted(reality.items(), key = <span class="keyword">lambda</span> x:x[<span class="number">1</span>], reverse = <span class="literal">True</span>))</span><br><span class="line">    print(<span class="string">"统计中各字母出现的概率从小到大如下： "</span>)</span><br><span class="line">    print(order)</span><br><span class="line">    <span class="comment"># 统计密文中各字母出现的次数</span></span><br><span class="line">    example = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> m:</span><br><span class="line">      example[i] = m.count(i)</span><br><span class="line">    <span class="comment"># 对字典中各字母出现的次数进行降序排序</span></span><br><span class="line">    result = dict(sorted(example.items(), key = <span class="keyword">lambda</span> x:x[<span class="number">1</span>], reverse = <span class="literal">True</span>))</span><br><span class="line">    print(<span class="string">"计算得的密文中个字母的出现的次数从大到小如下： "</span>)</span><br><span class="line">    print(result)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># #从结果可推测：Q由e加密而得，J由t加密而得，进行验算。</span></span><br><span class="line">    <span class="comment"># (a*4+b)%26==16</span></span><br><span class="line">    <span class="comment"># (a*19+b)%26==9</span></span><br><span class="line">    <span class="comment"># 从而计算出a=3,b=4</span></span><br><span class="line">    <span class="comment"># (a*K)%26==1,求得k=9</span></span><br><span class="line">    <span class="comment"># 用k=9,b=4进行解密可得出明文</span></span><br><span class="line">    print(<span class="string">"根据统计分析，加密所用的a, b可能为："</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">26</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">26</span>):</span><br><span class="line">            <span class="keyword">if</span> (i*<span class="number">4</span>+j)%<span class="number">26</span>==<span class="number">16</span> <span class="keyword">and</span> (i*<span class="number">19</span>+j)%<span class="number">26</span>==<span class="number">9</span>:</span><br><span class="line">                <span class="keyword">if</span> gcd(i, j)==<span class="number">1</span>:</span><br><span class="line">                    print(<span class="string">"a="</span>+str(i), <span class="string">"b="</span>+str(j))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>运行结果为（此处以破解<code>a=3, b=4</code>时得出的密文）：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-7ca0e8eee0d95c5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>  如图所示，正确解出<code>a, b</code>再用<code>(a*k)%26==1</code>,求得<code>k=9</code>用<code>k=9,b=4</code>进行解密可得出明文。</p>
+<ol start="3">
+<li>还可以通过差分分析进行破解。对于仿射密码来说，“差分”是模26减法，那么，在不知道两对明密文对<code>（M1，C1）（M2, C2）</code>的情况下，只需要知道<code>M1-M2</code>和<code>C1-C2</code>便可以确定a。因为<blockquote>
+<p>C1 = a<em>M1 + b(mod26)<br>C2 = a</em>M2 + b(mod26)<br>易得，a = (C1 – C2)/(M1 – M2) (mod26) </p>
+</blockquote>
+</li>
+</ol>
+<p>得到a 后，进一步找到b就很容易了。</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.github.io/2019/02/28/古典密码之仿射密码/" title="古典密码之仿射密码">https://clwsec.github.io/2019/02/28/古典密码之仿射密码/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
+          
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/28/markdown-with-hexo/" rel="next" title="Markdown With Hexo">
+                <i class="fa fa-chevron-left"></i> Markdown With Hexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/28/RC4/" rel="prev" title="序列密码之RC4">
+                序列密码之RC4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤荒于嬉 行成于思毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:13041941978@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现"><span class="nav-number">2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密与解密"><span class="nav-number">3.</span> <span class="nav-text">加密与解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性"><span class="nav-number">4.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性分析"><span class="nav-number">5.</span> <span class="nav-text">安全性分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
