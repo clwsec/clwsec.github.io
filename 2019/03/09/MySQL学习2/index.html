@@ -111,7 +111,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-27dd6f12d4d2557d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-808d25f96ef910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1020d0c49de85977.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-10T09:15:29.653Z">
+<meta property="og:updated_time" content="2019-03-10T09:32:21.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL学习2">
 <meta name="twitter:description" content="数据库的导入导出1.cmd命令：找到安装mysql的路径，如：F:\tool\phpstudy\PHPTutorial\MySQL\bin2.导出：输入导出命令:如：F:\tool\phpstudy\PHPTutorial\MySQL\bin&amp;gt; mysqldump -uroot -p***** security &amp;gt; sc.sql 注： 此处-uroot，-u后跟用户名（root）；-p">
@@ -437,15 +437,9 @@
 </ul>
 <p>2.MyISAM Merge引擎：这种类型是MyISAM类型的一种变种。合并表是将几个相同的MyISAM表合并为一个虚表。常应用于日志和数据仓库。<br>3.<strong>InnoDB：</strong>InnoDB表类型可以看作是对MyISAM的进一步更新产品，它提供了事务、行级锁机制和外键约束的功能。<br>4.memory(heap)：这种类型的数据表只存在于内存中。它使用散列索引，所以数据的存取速度非常快。因为是存在于内存中，所以这种类型常应用于临时表中。<br>5.archive：这种类型只支持select 和 insert语句，而且不支持索引。常应用于日志记录和聚合分析方面。 当然MySql支持的表类型不止上面几种。</p>
 <hr>
-<h3 id="mysql复制表和复制表结构"><a href="#mysql复制表和复制表结构" class="headerlink" title="mysql复制表和复制表结构"></a>mysql复制表和复制表结构</h3><p>1.结构复制： </p>
-<ul>
-<li>方法一：<code>create table 新表 select * from 旧表 where 1&lt;&gt;1;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-86b5fa86d9cb7f93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
+<h3 id="mysql复制表和复制表结构"><a href="#mysql复制表和复制表结构" class="headerlink" title="mysql复制表和复制表结构"></a>mysql复制表和复制表结构</h3><p>1.结构复制：<br>(1)方法一：<code>create table 新表 select * from 旧表 where 1&lt;&gt;1;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-86b5fa86d9cb7f93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>查看users表的表结构：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-552de58050518ff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>如图所示，成功复制结构。</p>
-<ul>
-<li>方法二：<code>create table新表  like 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-176455d44956561f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
+<p>如图所示，成功复制结构。<br>(2)方法二：<code>create table新表  like 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-176455d44956561f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>2.整表复制： <code>create table 新表 select * from 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-27997e1bca91370e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>内容如下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-e17d76df02dca581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>3.得到建表语句： <code>show create table 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-b6d337a9d38ccee3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
@@ -458,10 +452,13 @@
 </ul>
 <p>此例表结构一样的，都源于<code>security.users</code></p>
 <hr>
-<h3 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h3><p>1.可使用常见的算术操作符。<br><strong>注意：</strong>就 -、 +和 *而言, 若两个参数均为正数，则其计算结果的精确度为 BIGINT (64比特)，若其中一个参数为无符号整数， 而其它参数也是整数, 则结果为无符号整数。如： mysql&gt; <code>SELECT 3+5;</code><br>2.DIV整数除法。 类似于 FLOOR()，然而使用BIGINT 算法也是可靠的。<br><strong>注意：</strong>数学函数若发生错误，所有数学函数会返回 NULL 。如除0错误：<code>select 5/0;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-d8c2a888fc97593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>3.ABS(X)返回X 的绝对值。<br>4.下面的函数支持使用BIGINT值。</p>
+<h3 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h3><p>1.可使用常见的算术操作符。<br><strong>注意：</strong>就 -、 +和 *而言, 若两个参数均为正数，则其计算结果的精确度为 BIGINT (64比特)，若其中一个参数为无符号整数， 而其它参数也是整数, 则结果为无符号整数。如： mysql&gt; <code>SELECT 3+5;</code><br>2.DIV整数除法。 类似于 FLOOR()，然而使用BIGINT 算法也是可靠的。<br><strong>注意：</strong>数学函数若发生错误，所有数学函数会返回 NULL 。如除0错误：<code>select 5/0;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-d8c2a888fc97593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>3.ABS(X)返回X 的绝对值。<br>4.下面的函数支持使用BIGINT值。</p>
 <ul>
-<li>ACOS(X)返回X 反余弦, 即, 余弦是X的值。若X 不在-1到 1的范围之内，则返回 NULL<br><img src="https://upload-images.jianshu.io/upload_images/9216631-27dd6f12d4d2557d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>ASIN(X)返回X 的反正弦，即，正弦为X 的值。若X  若X 不在-1到 1的范围之内，则返回 NULL 。</li>
+<li><p>ACOS(X)返回X 反余弦, 即, 余弦是X的值。若X 不在-1到 1的范围之内，则返回 NULL<br><img src="https://upload-images.jianshu.io/upload_images/9216631-27dd6f12d4d2557d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+</li>
+<li><p>ASIN(X)返回X 的反正弦，即，正弦为X 的值。若X  若X 不在-1到 1的范围之内，则返回 NULL 。</p>
+</li>
 <li>ATAN(X)返回X 的反正切，即，正切为X 的值。</li>
 <li>ATAN(Y,X) , ATAN2(Y,X)返回两个变量X 及Y的反正切。 它类似于 Y 或 X的反正切计算, 除非两个参数的符号均用于确定结果所在象限。</li>
 </ul>
