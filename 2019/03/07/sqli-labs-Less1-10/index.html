@@ -143,7 +143,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-4068fff492bb2df0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1830cfc0a1edeceb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-8ec7278bdd9ec84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-13T15:42:09.775Z">
+<meta property="og:updated_time" content="2019-03-14T09:08:39.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqli-Labs-Less1-10">
 <meta name="twitter:description" content="写在前面此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。 做题过程中的各种知识 在mysql数据库中，单行注释有#和--，在实际操作中#号一般用%23来表示。而–则用--+来表示。因为在URL中，如果在最后加上– ，浏览器在发送请求的时候会把URL末尾的空格舍去，而用--+代替– ，原因是+在URL被URL编码后会变成空格。。">
@@ -497,7 +497,7 @@
 </ul>
 <ol>
 <li>各个参数就不一一说明了，请参考这篇文章:<a href="https://www.cnblogs.com/ichunqiu/p/5805108.html" target="_blank" rel="noopener">11种常见SQLMAP使用方法详解</a></li>
-<li>首先，指定相关参数，如注入类型，数据库类型等:<code>python2 sqlmap.py -u http://localhost:8088/sqlilabs/Less-1/?id=1 --technique UE --dbms mysql --batch</code> 得到相关信息。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-4333f4a9c157b299.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>首先，直接指定相关参数，如注入类型，数据库类型等:<code>python2 sqlmap.py -u http://localhost:8088/sqlilabs/Less-1/?id=1 --technique UE --dbms mysql --batch</code> 得到相关信息。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-4333f4a9c157b299.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
 <li><p>开始注入，爆出数据库名：<code>python2 sqlmap.py -u http://localhost:8088/sqlilabs/Less-1/?id=1 --technique UE --dbms mysql --batch --dbs</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-4b5cec38773dd5dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 </li>
 <li><p>爆出<code>security</code>中所有表名: <code>python2 sqlmap.py -u http://localhost:8088/sqlilabs/Less-1/?id=1 --technique UE --dbms mysql -D security --tables --batch</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-d8469108dce28040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
@@ -643,7 +643,6 @@
 <li><a href="https://blog.csdn.net/Leep0rt/article/details/78556440" target="_blank" rel="noopener">详细讲解双查询注入</a></li>
 <li><a href="https://www.cnblogs.com/peterpan0707007/p/7620048.html" target="_blank" rel="noopener">sqli-labs Less(1-35) 小结</a></li>
 <li><a href="https://www.cnblogs.com/sutdy/p/8724426.html" target="_blank" rel="noopener">基于时间型盲注和基于布尔型盲注</a></li>
-<li><a href="https://blog.csdn.net/zpy1998zpy/article/details/80631036" target="_blank" rel="noopener">基于extractvalue()和updatexml()的报错注入</a></li>
 </ol>
 </blockquote>
 <hr>
@@ -944,7 +943,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.6k</span>
+    <span title="Site words total count">19.8k</span>
   
 </div>
 
