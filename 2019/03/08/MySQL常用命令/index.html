@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="写在前面最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。 连接与退出MySQL 格式：mysql -h主机地址 -u用户名 -p用户密码 连接到本机上的MySQL：   首先打开DOS窗口，然后进入目录mysql/bin，再键入命令mysql -u root -p，回车后提示你输密码。 注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否">
+<meta name="description" content="前言：最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。 连接与退出MySQL 格式：mysql -h主机地址 -u用户名 -p用户密码 连接到本机上的MySQL：   首先打开DOS窗口，然后进入目录mysql/bin，再键入命令mysql -u root -p，回车后提示你输密码。 注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否则">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL常用命令">
 <meta property="og:url" content="https://clwsec.top/2019/03/08/MySQL常用命令/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="写在前面最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。 连接与退出MySQL 格式：mysql -h主机地址 -u用户名 -p用户密码 连接到本机上的MySQL：   首先打开DOS窗口，然后进入目录mysql/bin，再键入命令mysql -u root -p，回车后提示你输密码。 注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否">
+<meta property="og:description" content="前言：最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。 连接与退出MySQL 格式：mysql -h主机地址 -u用户名 -p用户密码 连接到本机上的MySQL：   首先打开DOS窗口，然后进入目录mysql/bin，再键入命令mysql -u root -p，回车后提示你输密码。 注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-09T06:57:13.481Z">
+<meta property="og:updated_time" content="2019-03-17T10:26:25.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL常用命令">
-<meta name="twitter:description" content="写在前面最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。 连接与退出MySQL 格式：mysql -h主机地址 -u用户名 -p用户密码 连接到本机上的MySQL：   首先打开DOS窗口，然后进入目录mysql/bin，再键入命令mysql -u root -p，回车后提示你输密码。 注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否">
+<meta name="twitter:description" content="前言：最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。 连接与退出MySQL 格式：mysql -h主机地址 -u用户名 -p用户密码 连接到本机上的MySQL：   首先打开DOS窗口，然后进入目录mysql/bin，再键入命令mysql -u root -p，回车后提示你输密码。 注意用户名前可以有空格也可以没有空格，但是密码前必须没有空格，否则">
 
 
 
@@ -410,7 +410,7 @@
       
 
       
-        <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。</p>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。</p>
 <h3 id="连接与退出MySQL"><a href="#连接与退出MySQL" class="headerlink" title="连接与退出MySQL"></a>连接与退出MySQL</h3><ol>
 <li>格式：<code>mysql -h主机地址 -u用户名 -p用户密码</code></li>
 <li>连接到本机上的MySQL：</li>
@@ -780,7 +780,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接与退出MySQL"><span class="nav-number">2.</span> <span class="nav-text">连接与退出MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">3.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局管理权限"><span class="nav-number">4.</span> <span class="nav-text">全局管理权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库-数据表-数据列权限："><span class="nav-number">5.</span> <span class="nav-text">数据库/数据表/数据列权限：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特别的权限："><span class="nav-number">6.</span> <span class="nav-text">特别的权限：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份数据库"><span class="nav-number">7.</span> <span class="nav-text">备份数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加深运用"><span class="nav-number">8.</span> <span class="nav-text">加深运用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接与退出MySQL"><span class="nav-number">2.</span> <span class="nav-text">连接与退出MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">3.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局管理权限"><span class="nav-number">4.</span> <span class="nav-text">全局管理权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库-数据表-数据列权限："><span class="nav-number">5.</span> <span class="nav-text">数据库/数据表/数据列权限：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特别的权限："><span class="nav-number">6.</span> <span class="nav-text">特别的权限：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份数据库"><span class="nav-number">7.</span> <span class="nav-text">备份数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加深运用"><span class="nav-number">8.</span> <span class="nav-text">加深运用</span></a></li></ol></div>
             
 
           </div>

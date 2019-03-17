@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://clwsec.top/"/>
-  <updated>2019-03-16T14:33:55.839Z</updated>
+  <updated>2019-03-17T10:29:16.894Z</updated>
   <id>https://clwsec.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://clwsec.top/2019/03/16/%E5%AD%A6%E4%B9%A0CTF/"/>
     <id>https://clwsec.top/2019/03/16/学习CTF/</id>
     <published>2019-03-16T14:30:31.000Z</published>
-    <updated>2019-03-16T14:33:55.839Z</updated>
+    <updated>2019-03-17T10:29:16.894Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;此文用于记录做ctf时遇到的知识，主要为了巩固和查阅。&lt;/p&gt;
+          &lt;h3 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h3&gt;&lt;p&gt;此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&quot;bugku-变量1&quot;&gt;&lt;a
         
@@ -105,7 +105,7 @@
     <link href="https://clwsec.top/2019/03/08/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>https://clwsec.top/2019/03/08/MySQL常用命令/</id>
     <published>2019-03-08T09:31:35.000Z</published>
-    <updated>2019-03-09T06:57:13.481Z</updated>
+    <updated>2019-03-17T10:26:25.111Z</updated>
     
     <summary type="html">
     
@@ -113,7 +113,7 @@
       
         
         
-          &lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。&lt;/p&gt;
+          &lt;h3 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h3&gt;&lt;p&gt;最近在学习SQL注入，以sqli-labs练习，可是自己对MySQL感到很陌生，故在此学习一下。&lt;/p&gt;
 &lt;h3
         
       
@@ -132,7 +132,7 @@
     <link href="https://clwsec.top/2019/03/07/sqli-labs-Less1-10/"/>
     <id>https://clwsec.top/2019/03/07/sqli-labs-Less1-10/</id>
     <published>2019-03-07T10:49:15.000Z</published>
-    <updated>2019-03-14T09:08:39.509Z</updated>
+    <updated>2019-03-17T10:26:01.144Z</updated>
     
     <summary type="html">
     
@@ -140,7 +140,7 @@
       
         
         
-          &lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
         
       
     
@@ -387,7 +387,7 @@
     <link href="https://clwsec.top/2019/02/28/markdown-with-hexo/"/>
     <id>https://clwsec.top/2019/02/28/markdown-with-hexo/</id>
     <published>2019-02-28T07:32:54.000Z</published>
-    <updated>2019-03-09T07:46:46.862Z</updated>
+    <updated>2019-03-17T10:23:36.168Z</updated>
     
     <summary type="html">
     
