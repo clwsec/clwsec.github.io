@@ -96,24 +96,30 @@
 
 
 
-<meta name="description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  bugku 变量11234567891011121314http://123.206.87.240:8004/index1.phpflag In the variable ! &amp;lt;?php   error_reporting(0);                    // 关闭php错误显示include &quot;flag">
+<meta name="description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  记录各种知识1.stripos(字符串a，字符串b)函数查找字符串b在字符串a中第一次出现的位置（不区分大小写）2.file_get_contents 将整个文件读入一个字符串3.eregi(&amp;quot;111&amp;quot;.substr($b,0,1),&amp;quot;1114&amp;quot;) 判断”1114”这个字符串里面是否有">
 <meta name="keywords" content="CTF,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习CTF">
 <meta property="og:url" content="https://clwsec.top/2019/03/16/学习CTF/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  bugku 变量11234567891011121314http://123.206.87.240:8004/index1.phpflag In the variable ! &amp;lt;?php   error_reporting(0);                    // 关闭php错误显示include &quot;flag">
+<meta property="og:description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  记录各种知识1.stripos(字符串a，字符串b)函数查找字符串b在字符串a中第一次出现的位置（不区分大小写）2.file_get_contents 将整个文件读入一个字符串3.eregi(&amp;quot;111&amp;quot;.substr($b,0,1),&amp;quot;1114&amp;quot;) 判断”1114”这个字符串里面是否有">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-2994b030600172b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0ab6182d26e288d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-32cb66edd653821b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-7aeef8e54d653ac9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5d6ed46bf7c0b068.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-e33e994a250d07d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-4008ee8d1ac87a2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-17T10:29:16.894Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-e1fd9d0e8d06eff0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed212e53e71cb7de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-cf363cd0c7b29147.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-621c0e91c4373ace.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-3d0b8c04b9d309c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-21T12:57:57.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习CTF">
-<meta name="twitter:description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  bugku 变量11234567891011121314http://123.206.87.240:8004/index1.phpflag In the variable ! &amp;lt;?php   error_reporting(0);                    // 关闭php错误显示include &quot;flag">
+<meta name="twitter:description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  记录各种知识1.stripos(字符串a，字符串b)函数查找字符串b在字符串a中第一次出现的位置（不区分大小写）2.file_get_contents 将整个文件读入一个字符串3.eregi(&amp;quot;111&amp;quot;.substr($b,0,1),&amp;quot;1114&amp;quot;) 判断”1114”这个字符串里面是否有">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-2994b030600172b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -342,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-17T18:29:16+08:00">
-                2019-03-17
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-21T20:57:57+08:00">
+                2019-03-21
               </time>
             
           </span>
@@ -404,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  2.5k
                 </span>
               
 
@@ -431,6 +437,17 @@
       
         <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。</p>
 <hr>
+<h3 id="记录各种知识"><a href="#记录各种知识" class="headerlink" title="记录各种知识"></a>记录各种知识</h3><p>1.<code>stripos(字符串a，字符串b)函数</code>查找字符串b在字符串a中第一次出现的位置（不区分大小写）<br>2.<code>file_get_contents</code> 将整个文件读入一个字符串<br>3.<code>eregi(&quot;111&quot;.substr($b,0,1),&quot;1114&quot;)</code> 判断”1114”这个字符串里面是否有符合”111”.substr($b,0,1)这个规则的<br>4.关于正则：</p>
+<ul>
+<li>表达式直接写出来的字符串直接利用，如key</li>
+<li>“.”代表任意字符，除 “\n” 之外</li>
+<li>“*”代表一个或一序列字符重复出现的次数，即前一个字符重复任意次</li>
+<li><code>\/</code>代表“/”</li>
+<li>[a-z]代表a-z中的任意一个字符</li>
+<li>[[:punct:]]代表任意一个字符，包括各种符号</li>
+<li>/i代表大小写不敏感</li>
+<li>更多：1.<a href="https://blog.csdn.net/qq_26090065/article/details/81606045" target="_blank" rel="noopener">正则表达式小记</a> 2.<a href="https://www.jqhtml.com/6915.html" target="_blank" rel="noopener">15个常用的javaScript正则表达式</a> 3.<a href="https://www.cnblogs.com/afarmer/archive/2011/08/29/2158860.html" target="_blank" rel="noopener">正则表达式中各种字符的含义</a></li>
+</ul>
 <h3 id="bugku-变量1"><a href="#bugku-变量1" class="headerlink" title="bugku 变量1"></a>bugku 变量1</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//123.206.87.240:8004/index1.php</span></span><br><span class="line">flag In the variable !</span><br><span class="line"> <span class="meta">&lt;?php</span>   </span><br><span class="line">error_reporting(<span class="number">0</span>);                    <span class="comment">// 关闭php错误显示</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">"flag1.php"</span>;                   <span class="comment">// 引入flag1.php文件代码</span></span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);              <span class="comment">//对文件进行语法高亮显示</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'args'</span>]))&#123;              <span class="comment">// 条件判断 get方法传递的args参数是否存在 </span></span><br><span class="line">    $args = $_GET[<span class="string">'args'</span>];             <span class="comment">//赋值给变量  $args</span></span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,$args))&#123;  <span class="comment">//判断是否匹配 /^开始, \w表示任意一个单词字符，即[a-zA-Z0-9_] , +将前面的字符匹配一次或多次，$/结尾</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"args error!"</span>);            <span class="comment">//，不匹配则输出args error!</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">"var_dump($$args);"</span>);         <span class="comment">// 将字符串作为php代码执行，结尾加分号。 var_dump()函数显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。$$args 可以理解为$($args)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>最关键的是最后的<code>eval(&quot;var_dump($$args);&quot;);</code> 其中</p>
 <ul>
@@ -456,7 +473,7 @@
 <hr>
 <h3 id="bugku-flag在index里"><a href="#bugku-flag在index里" class="headerlink" title="bugku flag在index里"></a>bugku flag在index里</h3><p>1.文件包含漏洞: 此题学习关于文件包含漏洞。<br>2.点击显示test5的url <code>http://120.24.86.145:8005/post/index.php?file=show.php</code>中参数有<code>file</code>选项，联想到了文件包含漏洞。<br>3.构造：<code>http://123.206.87.240:8005/post/index.php?file=php://filter/read=convert.base64-encode/resource=index.php</code> 返回指定文件源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PGh0bWw+DQogICAgPHRpdGxlPkJ1Z2t1LWN0ZjwvdGl0bGU+DQogICAgDQo8P3BocA0KCWVycm9yX3JlcG9ydGluZygwKTsNCglpZighJF9HRVRbZmlsZV0pe2VjaG8gJzxhIGhyZWY9Ii4vaW5kZXgucGhwP2ZpbGU9c2hvdy5waHAiPmNsaWNrIG1lPyBubzwvYT4nO30NCgkkZmlsZT0kX0dFVFsnZmlsZSddOw0KCWlmKHN0cnN0cigkZmlsZSwiLi4vIil8fHN0cmlzdHIoJGZpbGUsICJ0cCIpfHxzdHJpc3RyKCRmaWxlLCJpbnB1dCIpfHxzdHJpc3RyKCRmaWxlLCJkYXRhIikpew0KCQllY2hvICJPaCBubyEiOw0KCQlleGl0KCk7DQoJfQ0KCWluY2x1ZGUoJGZpbGUpOyANCi8vZmxhZzpmbGFne2VkdWxjbmlfZWxpZl9sYWNvbF9zaV9zaWh0fQ0KPz4NCjwvaHRtbD4NCg==</span><br></pre></td></tr></table></figure></p>
 <p>进行转码：即得到flag<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    &lt;title&gt;Bugku-ctf&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	error_reporting(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span>(!$_GET[file])&#123;<span class="keyword">echo</span> <span class="string">'&lt;a href="./index.php?file=show.php"&gt;click me? no&lt;/a&gt;'</span>;&#125;</span><br><span class="line">	$file=$_GET[<span class="string">'file'</span>];</span><br><span class="line">	<span class="keyword">if</span>(strstr($file,<span class="string">"../"</span>)||stristr($file, <span class="string">"tp"</span>)||stristr($file,<span class="string">"input"</span>)||stristr($file,<span class="string">"data"</span>))&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">"Oh no!"</span>;</span><br><span class="line">		<span class="keyword">exit</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">include</span>($file); </span><br><span class="line"><span class="comment">//flag:flag&#123;edulcni_elif_lacol_si_siht&#125;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>具体说说<code>file=php://filter/read=convert.base64-encode/resource=index.php的</code>含义</p>
+<p>具体说说<code>file=php://filter/read=convert.base64-encode/resource=index.php的</code>含义<br>首先：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5d6ed46bf7c0b068.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <blockquote>
 <p>1.首先这是一个file关键字的get参数传递，php://是一种协议名称，php://filter/是一种访问本地文件的协议，/read=convert.base64-encode/表示读取的方式是base64编码后，resource=index.php表示目标文件为index.php。<br>2.通过传递这个参数可以得到index.php的源码，下面说说为什么，看到源码中的include函数，这个表示从外部引入php文件并执行，如果执行不成功，就返回文件的源码。<br>3.而include的内容是由用户控制的，所以通过我们传递的file参数，是include（）函数引入了index.php的base64编码格式，因为是base64编码格式，所以执行不成功，返回源码，所以我们得到了源码的base64格式，解码即可。<br>如果不进行base64编码传入，就会直接执行，而flag的信息在注释中，是得不到的。<br>自：<a href="https://blog.csdn.net/zpy1998zpy/article/details/80585443" target="_blank" rel="noopener">https://blog.csdn.net/zpy1998zpy/article/details/80585443</a></p>
 </blockquote>
@@ -471,16 +488,37 @@
 <hr>
 <h3 id="Bugku-备份是个好习惯"><a href="#Bugku-备份是个好习惯" class="headerlink" title="Bugku 备份是个好习惯"></a>Bugku 备份是个好习惯</h3><p>1.得到的字符串应该细心观察，此题的字符串分两段而且相同，均为<code>d41d8cd98f00b204e9800998ecf8427e</code>。<br>2.提示备份，网站中应该存在相应文档，一般为<code>.bak</code>文档（bak为网站的备份文件）<br>3.可以使用御剑扫描（没成功）或脚本<a href="https://coding.net/u/yihangwang/p/SourceLeakHacker/git?public=true" target="_blank" rel="noopener">大佬写的脚本</a>进行扫描。<br>4.得到文件<code>index.php.bak</code>，打开：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by PhpStorm.</span></span><br><span class="line"><span class="comment"> * User: Norse</span></span><br><span class="line"><span class="comment"> * Date: 2017/8/6</span></span><br><span class="line"><span class="comment"> * Time: 20:22</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include_once</span> <span class="string">"flag.php"</span>;</span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = strstr($_SERVER[<span class="string">'REQUEST_URI'</span>], <span class="string">'?'</span>);<span class="comment">//将url中？(包含？)后边的字符串赋值给变量str</span></span><br><span class="line">$str = substr($str,<span class="number">1</span>);<span class="comment">//从第一个字符开始，后边的字符串赋值给变量str，去掉?</span></span><br><span class="line">$str = str_replace(<span class="string">'key'</span>,<span class="string">''</span>,$str);<span class="comment">//使用空字符串替换$str中的key，过滤字段key</span></span><br><span class="line">parse_str($str);<span class="comment">//parse_str() 函数把查询字符串解析到变量中，即key1和key2</span></span><br><span class="line"><span class="keyword">echo</span> md5($key1);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> md5($key2);</span><br><span class="line"><span class="keyword">if</span>(md5($key1) == md5($key2) &amp;&amp; $key1 !== $key2)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $flag.<span class="string">"取得flag"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>5.分析代码：<br>(1)strstr() 返回关键字之后的字符串一直到末尾。<br><code>strstr(string,search,before_search)</code> string(必须)被搜索的字符串，search(必须)关键字，beore_search(可选)默认为”false”的布尔值，如果设置为”ture”，它将返回search参数第一次出现之前的字符串部分<br>(2)<code>parse_str() 函数</code>把查询字符串解析到变量中    parse_str(string,array)     如果未设置 array 参数，则由该函数设置的变量将覆盖已存在的同名变量，这里即覆盖到key1和key2<br>(3)其他函数分析，请参考：<a href="https://bbs.pediy.com/thread-247863.htm" target="_blank" rel="noopener">BugkuCTF –WEB-备份是个好习惯</a></p>
-<p>6.最后的条件判断为关键，即想办法满足<code>if(md5($key1) == md5($key2) &amp;&amp; $key1 !== $key2)</code>这个条件，这个条件的意思是，通过参数对<code>key1</code>,<code>key2</code>的值进行md5加密，并进行比较，如果md5加密的值一样而未加密的值不同，就输出flag。此外，需要绕过过滤，可用<code>kekeyy</code><br>7.要满足条件有两种方法：<br>(1)md5()函数无法处理数组，如果传入的为数组，会返回NULL，所以两个数组经过加密后得到的都是NULL,也就是相等的。<br>(2)利用==比较漏洞，如果两个字符经MD5加密后的值为 0exxxxx形式，就会被认为是科学计数法，且表示的是0*10的xxxx次方，还是0，都是相等的。有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">QNKCDZO</span><br><span class="line">0e830400451993494058024219903391</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line">  </span><br><span class="line">s155964671a</span><br><span class="line">0e342768416822451524974117254469</span><br><span class="line">  </span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line">  </span><br><span class="line">s214587387a</span><br><span class="line">0e848240448830537924465865611904</span><br><span class="line">  </span><br><span class="line">s878926199a</span><br><span class="line">0e545993274517709034328855841020</span><br><span class="line">  </span><br><span class="line">s1091221200a</span><br><span class="line">0e940624217856561557816327384675</span><br><span class="line">  </span><br><span class="line">s1885207154a</span><br><span class="line">0e509367213418206700842008763514</span><br></pre></td></tr></table></figure></p>
+<p>6.最后的条件判断为关键，即想办法满足<code>if(md5($key1) == md5($key2) &amp;&amp; $key1 !== $key2)</code>这个条件，这个条件的意思是，通过参数对<code>key1</code>,<code>key2</code>的值进行md5加密，并进行比较，如果md5加密的值一样而未加密的值不同，就输出flag。此外，需要绕过过滤，可用<code>kekeyy</code><br>7.要满足条件有两种方法：<br>(1)md5()函数无法处理数组，如果传入的为数组，会返回NULL，所以两个数组经过加密后得到的都是NULL,也就是相等的。<br>(2)利用==比较漏洞，如果两个字符经MD5加密后的值为 0exxxxx形式，就会被认为是科学计数法，且表示的是0*10的xxxx次方，还是0，都是相等的。有：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">QNKCDZO</span><br><span class="line"><span class="number">0e830400451993494058024219903391</span></span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line"><span class="number">0e545993274517709034328855841020</span></span><br><span class="line">  </span><br><span class="line">s155964671a</span><br><span class="line"><span class="number">0e342768416822451524974117254469</span></span><br><span class="line">  </span><br><span class="line">s214587387a</span><br><span class="line"><span class="number">0e848240448830537924465865611904</span></span><br><span class="line">  </span><br><span class="line">s214587387a</span><br><span class="line"><span class="number">0e848240448830537924465865611904</span></span><br><span class="line">  </span><br><span class="line">s878926199a</span><br><span class="line"><span class="number">0e545993274517709034328855841020</span></span><br><span class="line">  </span><br><span class="line">s1091221200a</span><br><span class="line"><span class="number">0e940624217856561557816327384675</span></span><br><span class="line">  </span><br><span class="line">s1885207154a</span><br><span class="line"><span class="number">0e509367213418206700842008763514</span></span><br></pre></td></tr></table></figure></p>
 <p>8.尝试：<br>(1)<code>http://123.206.87.240:8002/web16/index.php?kkeyey1[]=something&amp;kkeyey2[]=anything</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-e33e994a250d07d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>(2)<code>http://123.206.87.240:8002/web16/index.php?kekeyy1=s878926199a&amp;kekeyy2=s155964671a</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-4008ee8d1ac87a2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <blockquote>
 <ol>
 <li><a href="https://bbs.pediy.com/thread-247863.htm" target="_blank" rel="noopener">BugkuCTF –WEB-备份是个好习惯</a></li>
 <li><a href="https://www.cnblogs.com/Mrsm1th/p/6745532.html" target="_blank" rel="noopener">php 弱类型总结</a></li>
+<li><a href="http://php.net/manual/zh/types.comparisons.php" target="_blank" rel="noopener">PHP 类型比较表</a></li>
 </ol>
 </blockquote>
 <hr>
+<h3 id="Bugku-never-give-up"><a href="#Bugku-never-give-up" class="headerlink" title="Bugku  never give up"></a>Bugku  never give up</h3><blockquote>
+<p><a href="https://ciphersaw.me/2017/12/26/%E3%80%90Bugku%20CTF%E3%80%91%20Web%20%E2%80%94%E2%80%94%20never%20give%20up/" target="_blank" rel="noopener">【Bugku CTF】 Web —— never give up</a>（写的很细，多看看）</p>
+</blockquote>
+<hr>
+<h3 id="Bugku-welcome-to-the-bugkuctf"><a href="#Bugku-welcome-to-the-bugkuctf" class="headerlink" title="Bugku welcome to the bugkuctf"></a>Bugku welcome to the bugkuctf</h3><p>此题不知怎的，老没反应，以后再试试。<br>1.了解关于序列化与反序列化<br><code>serialize()</code> 产生一个可存储的值的表示，serialize() 返回字符串，此字符串包含了表示 value 的字节流，可以存储于任何地方。<br><code>unserialize()</code>  从已存储的<code>表示</code>中创建 PHP 的值，即对单一的已序列化的变量进行操作，将其转换回 PHP 的值。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-e1fd9d0e8d06eff0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-ed212e53e71cb7de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>2.学习 <code>php://input</code>协议:<br><img src="https://upload-images.jianshu.io/upload_images/9216631-cf363cd0c7b29147.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>在这里：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$user = $_GET[<span class="string">"txt"</span>];  </span><br><span class="line">$file = $_GET[<span class="string">"file"</span>];  </span><br><span class="line">$pass = $_GET[<span class="string">"password"</span>];  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($user)&amp;&amp;(file_get_contents($user,<span class="string">'r'</span>)===<span class="string">"welcome to the bugkuctf"</span>))&#123;  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"hello admin!&lt;br&gt;"</span>;  </span><br><span class="line">    <span class="keyword">include</span>($file); <span class="comment">//hint.php  </span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"you are not admin ! "</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当传进去的参数(<code>txt</code>)作为文件名变量(<code>$user</code>)去打开文件时，可以将参数<code>php://</code>传进，同时post方式传进去值作为<code>文件内容</code>，供php代码执行时当做文件内容读取。</p>
+<p>大致的意思是让<code>txt=php://input</code> 之后，再post过去一个字符串作为内容。</p>
+<p>3.<code>file_get_contents</code>是把整个文件读入字符串中，这里也就是把user这个变量（user显然要是一个文件）的内容以字符串的方式读出来并且要和“welcome to the bugkuctf”完全相等（类型，内容）所以使用上面的方法才可以达到题目的要求。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/wy_97/article/details/77771026" target="_blank" rel="noopener">CTF/CTF练习平台-welcome to bugkuctf</a></p>
+</blockquote>
+<hr>
+<h3 id="Bugku-过狗一句话"><a href="#Bugku-过狗一句话" class="headerlink" title="Bugku 过狗一句话"></a>Bugku 过狗一句话</h3><p>1.关于<code>explode()</code> exlpde()以<code>#</code>分割<code>a#s#s#e#r#t</code>为相应数组<br><img src="https://upload-images.jianshu.io/upload_images/9216631-621c0e91c4373ace.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>2.解题payload:<br><code>?s=print_r(scandir(&#39;./&#39;))</code> 查看当前目录内容，然后在访问相应内容即可。<br>3.技巧：利用此漏洞查询其他内容<br>返回上级目录payload：<code>?s=print_r(scandir(&#39;../&#39;))</code> 依次访问相应的内容即可。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_41420747/article/details/82193325" target="_blank" rel="noopener">过狗一句话</a></p>
+</blockquote>
+<h3 id="Bugku-getshell"><a href="#Bugku-getshell" class="headerlink" title="Bugku getshell"></a>Bugku getshell</h3><p>这次还是没直接做出来，之前做过类似的，用php5就绕过了，这个要修改三个地方：<br>1、扩展名<br>2、Content-Type:image/jpeg（如果上传前的本就是图片则不需要）<br>3、Content-Type字段，进行大小写绕过，也就是把multipart/form-data中任意一个字母改成大写即可<br>关于扩展名：<br>可尝试php2, php3, php4, php5，phps, pht, phtm, phtml<br><img src="https://upload-images.jianshu.io/upload_images/9216631-3d0b8c04b9d309c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 
       
     </div>
@@ -531,8 +569,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/12/sqli-labs-Less11-21/" rel="next" title="Sqli-Labs-Less11-21">
-                <i class="fa fa-chevron-left"></i> Sqli-Labs-Less11-21
+              <a href="/2019/03/12/sqli-labs-Less11-20/" rel="next" title="Sqli-Labs-Less11-20">
+                <i class="fa fa-chevron-left"></i> Sqli-Labs-Less11-20
               </a>
             
           </div>
@@ -540,6 +578,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/21/Python常用函数总结/" rel="prev" title="Python常用函数总结">
+                Python常用函数总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -623,7 +665,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -739,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugku-变量1"><span class="nav-number">2.</span> <span class="nav-text">bugku 变量1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugku-flag在index里"><span class="nav-number">3.</span> <span class="nav-text">bugku flag在index里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bugku-备份是个好习惯"><span class="nav-number">4.</span> <span class="nav-text">Bugku 备份是个好习惯</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#记录各种知识"><span class="nav-number">2.</span> <span class="nav-text">记录各种知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugku-变量1"><span class="nav-number">3.</span> <span class="nav-text">bugku 变量1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bugku-flag在index里"><span class="nav-number">4.</span> <span class="nav-text">bugku flag在index里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bugku-备份是个好习惯"><span class="nav-number">5.</span> <span class="nav-text">Bugku 备份是个好习惯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bugku-never-give-up"><span class="nav-number">6.</span> <span class="nav-text">Bugku  never give up</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bugku-welcome-to-the-bugkuctf"><span class="nav-number">7.</span> <span class="nav-text">Bugku welcome to the bugkuctf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bugku-过狗一句话"><span class="nav-number">8.</span> <span class="nav-text">Bugku 过狗一句话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bugku-getshell"><span class="nav-number">9.</span> <span class="nav-text">Bugku getshell</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +816,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.5k</span>
+    <span title="Site words total count">24.9k</span>
   
 </div>
 

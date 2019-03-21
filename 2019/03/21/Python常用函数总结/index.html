@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="MySQL,">
+  <meta name="keywords" content="python,algorithm,">
 
 
 
@@ -96,35 +96,24 @@
 
 
 
-<meta name="description" content="数据库的导入导出1.cmd命令：找到安装mysql的路径，如：F:\tool\phpstudy\PHPTutorial\MySQL\bin2.导出：输入导出命令:如：F:\tool\phpstudy\PHPTutorial\MySQL\bin&amp;gt; mysqldump -uroot -p***** security &amp;gt; sc.sql 注： 此处-uroot，-u后跟用户名（root）；-p">
-<meta name="keywords" content="MySQL">
+<meta name="description" content="前言：此文用于记录学习过程中常用到的函数（较高效的算法）。同时，对函数的原理进行描述，对于相关的更为细致的描述，可以参考文中的参考，写的很好，值得多看。 求最大公因子1.迭代：12345678# 欧几里得算法求两个数字的最大公约数# 迭代：def gcd(a, b):    while b != 0:        tem = a % b        a = b        b = tem">
+<meta name="keywords" content="python,algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL学习2">
-<meta property="og:url" content="https://clwsec.top/2019/03/09/MySQL学习2/index.html">
+<meta property="og:title" content="Python常用函数总结">
+<meta property="og:url" content="https://clwsec.top/2019/03/21/Python常用函数总结/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="数据库的导入导出1.cmd命令：找到安装mysql的路径，如：F:\tool\phpstudy\PHPTutorial\MySQL\bin2.导出：输入导出命令:如：F:\tool\phpstudy\PHPTutorial\MySQL\bin&amp;gt; mysqldump -uroot -p***** security &amp;gt; sc.sql 注： 此处-uroot，-u后跟用户名（root）；-p">
+<meta property="og:description" content="前言：此文用于记录学习过程中常用到的函数（较高效的算法）。同时，对函数的原理进行描述，对于相关的更为细致的描述，可以参考文中的参考，写的很好，值得多看。 求最大公因子1.迭代：12345678# 欧几里得算法求两个数字的最大公约数# 迭代：def gcd(a, b):    while b != 0:        tem = a % b        a = b        b = tem">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-63fff7469dd39d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1b14f12cbc91be90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-c99dd9c9250e42d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-ce4ca6c66201ad95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-86b5fa86d9cb7f93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-552de58050518ff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-176455d44956561f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-27997e1bca91370e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-e17d76df02dca581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-b6d337a9d38ccee3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-691b8e989c428925.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-4abcebd90d685ab1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-d8c2a888fc97593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-27dd6f12d4d2557d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-808d25f96ef910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1020d0c49de85977.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-10T09:32:21.577Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-7c870d50dd3237a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0dec589436b6b0f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-a2f5b971923a1981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5188cb7f04516279.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-20cbf7d070b093e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-21T12:57:52.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL学习2">
-<meta name="twitter:description" content="数据库的导入导出1.cmd命令：找到安装mysql的路径，如：F:\tool\phpstudy\PHPTutorial\MySQL\bin2.导出：输入导出命令:如：F:\tool\phpstudy\PHPTutorial\MySQL\bin&amp;gt; mysqldump -uroot -p***** security &amp;gt; sc.sql 注： 此处-uroot，-u后跟用户名（root）；-p">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-63fff7469dd39d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Python常用函数总结">
+<meta name="twitter:description" content="前言：此文用于记录学习过程中常用到的函数（较高效的算法）。同时，对函数的原理进行描述，对于相关的更为细致的描述，可以参考文中的参考，写的很好，值得多看。 求最大公因子1.迭代：12345678# 欧几里得算法求两个数字的最大公约数# 迭代：def gcd(a, b):    while b != 0:        tem = a % b        a = b        b = tem">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-7c870d50dd3237a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -154,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="https://clwsec.top/2019/03/09/MySQL学习2/">
+  <link rel="canonical" href="https://clwsec.top/2019/03/21/Python常用函数总结/">
 
 
 
 
 
-  <title>MySQL学习2 | 煊奕</title>
+  <title>Python常用函数总结 | 煊奕</title>
   
 
 
@@ -307,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/03/09/MySQL学习2/">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/03/21/Python常用函数总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lei">
@@ -324,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL学习2</h1>
+          <h1 class="post-title" itemprop="name headline">Python常用函数总结</h1>
         
 
         <div class="post-meta">
@@ -336,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-09T19:21:46+08:00">
-                2019-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T20:41:41+08:00">
+                2019-03-21
               </time>
             
 
@@ -352,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T17:32:21+08:00">
-                2019-03-10
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-21T20:57:52+08:00">
+                2019-03-21
               </time>
             
           </span>
@@ -371,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -388,7 +377,7 @@
 
           
           
-             <span id="/2019/03/09/MySQL学习2/" class="leancloud_visitors" data-flag-title="MySQL学习2">
+             <span id="/2019/03/21/Python常用函数总结/" class="leancloud_visitors" data-flag-title="Python常用函数总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -414,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.2k
+                  786
                 </span>
               
 
@@ -439,60 +428,39 @@
       
 
       
-        <h3 id="数据库的导入导出"><a href="#数据库的导入导出" class="headerlink" title="数据库的导入导出"></a>数据库的导入导出</h3><p>1.cmd命令：找到安装mysql的路径，如：<code>F:\tool\phpstudy\PHPTutorial\MySQL\bin</code><br>2.导出：输入导出命令:<br>如：F:\tool\phpstudy\PHPTutorial\MySQL\bin&gt; <code>mysqldump -uroot -p***** security &gt; sc.sql</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-63fff7469dd39d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><strong>注：</strong> 此处<code>-uroot，-u后跟用户名（root）</code>；<code>-p后跟用户密码（******）</code>；<code>sc</code>为目标数据库名，<code>sc.sql</code>为保存sql脚本的名称。自定义；在上述导出的<code>sc.sql</code>文件存放在<code>F:\tool\phpstudy\PHPTutorial\MySQL\bin下</code>。若加上<code>-A</code> 则为导出所有数据库<br>3.导入：输入导入命令</p>
-<ul>
-<li>方式一：F:\tool\phpstudy\PHPTutorial\MySQL\bin&gt; <code>mysql -uroot -p****** &gt;&gt;sc.sql sctarget</code><br>此处，<code>sc.sql</code>为需要导入的sql脚本文件，<code>sctarget</code>为目标数据库，即将<code>sc.sql</code>导入到<code>sctarget</code>数据库中<br>实现时卡了，放弃了。</li>
-<li>方式二：<br>1）cmd进入mysql安装路径，如<code>F:\tool\phpstudy\PHPTutorial\MySQL\bin</code><br>2）输入<code>mysql -uroot -p******</code>回车<br>3）输入命令<code>use sctarget</code>回车<br>4）输入：<code>source F:/tool/phpstudy/PHPTutorial/MySQL/bin/sc.sql;</code>回车<br><code>use sctarget</code>是指：打开目标数据库<code>sctarget</code>；<code>source F:/tool/phpstudy/PHPTutorial/MySQL/bin/sc.sql;</code>是指：被导入的脚本文件<code>dback.sql</code>所在的路径源；<br>先查看一下内容，如图所示，为空：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-1b14f12cbc91be90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>导入：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-c99dd9c9250e42d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>已经导入成功：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-ce4ca6c66201ad95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-</ul>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>此文用于记录学习过程中常用到的函数（较高效的算法）。同时，对函数的原理进行描述，对于相关的更为细致的描述，可以参考文中的参考，写的很好，值得多看。</p>
+<h3 id="求最大公因子"><a href="#求最大公因子" class="headerlink" title="求最大公因子"></a>求最大公因子</h3><p>1.迭代：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 欧几里得算法求两个数字的最大公约数</span></span><br><span class="line"><span class="comment"># 迭代：</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        tem = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = tem</span><br><span class="line">    <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure></p>
+<p>2.递归：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 欧几里得算法求两个数字的最大公约数</span></span><br><span class="line"><span class="comment"># 递归：</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> gcd(b, a % b)</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h3><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><blockquote>
-<p>　存储引擎说白了就是如何存储数据、如何为存储的数据建立索引和如何更新、查询数据等技术的实现方法。因为在关系数据库中数据的存储是以表的形式存储的，所以存储引擎也可以称为表类型（即存储和操作此表的类型）。 在Oracle 和SQL Server等数据库中只有一种存储引擎，所有数据存储管理机制都是一样的。而MySql数据库提供了多种存储引擎。用户可以根据不同的需求为数据表选择不同的存储引擎，用户也可以根据自己的需要编写自己的存储引擎。</p>
+<h3 id="扩展欧几里的算法（求逆元）"><a href="#扩展欧几里的算法（求逆元）" class="headerlink" title="扩展欧几里的算法（求逆元）"></a>扩展欧几里的算法（求逆元）</h3><p>1.迭代：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 扩展欧几里的算法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extendedGCD</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="comment">#a*xi + b*yi = ri</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>, <span class="number">0</span>, a)</span><br><span class="line">    <span class="comment">#a*x1 + b*y1 = a</span></span><br><span class="line">    x1 = <span class="number">1</span></span><br><span class="line">    y1 = <span class="number">0</span></span><br><span class="line">    <span class="comment">#a*x2 + b*y2 = b</span></span><br><span class="line">    x2 = <span class="number">0</span></span><br><span class="line">    y2 = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        q = a // b</span><br><span class="line">        <span class="comment">#ri = r(i-2) % r(i-1)</span></span><br><span class="line">        r = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = r</span><br><span class="line">        <span class="comment">#xi = x(i-2) - q*x(i-1)</span></span><br><span class="line">        x = x1 - q*x2</span><br><span class="line">        x1 = x2</span><br><span class="line">        x2 = x</span><br><span class="line">        <span class="comment">#yi = y(i-2) - q*y(i-1)</span></span><br><span class="line">        y = y1 - q*y2</span><br><span class="line">        y1 = y2</span><br><span class="line">        y2 = y</span><br><span class="line">    <span class="keyword">return</span>(x1, y1, a)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-7c870d50dd3237a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>个人觉得不太好理解，可以通过下面列表计算来辅助理解：<br><strong>定理：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-0dec589436b6b0f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><strong>公式：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-a2f5b971923a1981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><strong>列表记录计算过程：</strong><br>|i|x<code>i</code>|y<code>i</code>|q<code>i</code>|r<code>i</code>|<br>|:–:|:–:|:–:|:–:|:–:|<br>|-3|||||<br>|-2|1|0||1859|<br>|-1|0|1||1573|<br>|0|1|-1|1|286|<br>|1|-5|6|5|143|<br>|2|-5|6|2|0|</p>
+<p>解释：<br>刚开始时，代码中的x1,y1代表表中x<code>-2</code>,y<code>-2</code>;  x2,y2代表x<code>-1</code>,y<code>-1</code> ; a,b分别代表表中r<code>-2</code>,r<code>-1</code> 此例经过三次迭代，b即为0，此时，x1,y1正好对应x<code>1</code>,y<code>1</code>,即-5,6（可以自己算一遍就好理解了，平时手动算时都比较喜欢这种，不容易出错。而且，通过列表计算后，同时也验证了上面的推导<code>因为 a*x + b*y = gcd(a, b)即有，a*xi + b*yi = ri   （中间的每一步）</code>，从而理解推导过程）</p>
+<p>2.递归：<br>基础：给出任意a, b，必有a<em>x + b</em>y = gcd(a, b)。<br>因为gcd(a, b) = gcd(b, a mod b)，所以一个简单实现是利用gcd算法算出gcd(a, b)再倒回去算 x 和 y 。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 扩展欧几里的算法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extendedGCD1</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>, <span class="number">0</span>, a)</span><br><span class="line">    (x, y, r) = extendedGCD1(b, a%b)</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    gcd(a, b) = a*xi + b*yi</span></span><br><span class="line"><span class="string">    gcd(b, a %  b) = b*xi+1 + (a - [a/b]*b)*yi+1</span></span><br><span class="line"><span class="string">    gcd(a, b) = gcd(b, a %  b)   =&gt;   a*xi + b*yi = a*yi+1 + b*(xi+1 - [a/b]*yi+1)</span></span><br><span class="line"><span class="string">    xi = yi+1</span></span><br><span class="line"><span class="string">    yi = xi+1 - [a/b]*yi+1</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    tmp = x</span><br><span class="line">    x = y</span><br><span class="line">    y = tmp - (a//b) * y</span><br><span class="line">    <span class="keyword">return</span> (x, y, r)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ol>
+<li><a href="https://www.cnblogs.com/7hat/p/3406494.html" target="_blank" rel="noopener">欧几里得算法与扩展欧几里得算法</a></li>
+</ol>
 </blockquote>
-<p>MySQL服务的默认引擎是 InnoDB</p>
-<h4 id="MySql中的存储引擎"><a href="#MySql中的存储引擎" class="headerlink" title="MySql中的存储引擎"></a>MySql中的存储引擎</h4><p>1.MyISAM：这种引擎是mysql最早提供的。这种引擎又可以分为静态MyISAM、动态MyISAM和压缩MyISAM三种：</p>
-<ul>
-<li>静态MyISAM：如果数据表中的各数据列的长度都是预先固定好的，服务器将自动选择这种表类型。因为数据表中每一条记录所占用的空间都是一样的，所以这种表存取和更新的效率非常高。当数据受损时，恢复工作也比较容易做。</li>
-<li>动态MyISAM：如果数据表中出现varchar、xxxtext或xxxBLOB字段时，服务器将自动选择这种表类型。相对于静态MyISAM，这种表存储空间比较小，但由于每条记录的长度不一，所以多次修改数据后，数据表中的数据就可能离散的存储在内存中，进而导致执行效率下降。同时，内存中也可能会出现很多碎片。因此，这种类型的表要经常用optimize table 命令或优化工具来进行碎片整理。</li>
-<li>压缩MyISAM：以上说到的两种类型的表都可以用myisamchk工具压缩。这种类型的表进一步减小了占用的存储，但是这种表压缩之后不能再被修改。另外，因为是压缩数据，所以这种表在读取的时候要先时行解压缩。 但是，不管是何种MyISAM表，目前它都不支持事务，行级锁和外键约束的功能。</li>
-</ul>
-<p>2.MyISAM Merge引擎：这种类型是MyISAM类型的一种变种。合并表是将几个相同的MyISAM表合并为一个虚表。常应用于日志和数据仓库。<br>3.<strong>InnoDB：</strong>InnoDB表类型可以看作是对MyISAM的进一步更新产品，它提供了事务、行级锁机制和外键约束的功能。<br>4.memory(heap)：这种类型的数据表只存在于内存中。它使用散列索引，所以数据的存取速度非常快。因为是存在于内存中，所以这种类型常应用于临时表中。<br>5.archive：这种类型只支持select 和 insert语句，而且不支持索引。常应用于日志记录和聚合分析方面。 当然MySql支持的表类型不止上面几种。</p>
 <hr>
-<h3 id="mysql复制表和复制表结构"><a href="#mysql复制表和复制表结构" class="headerlink" title="mysql复制表和复制表结构"></a>mysql复制表和复制表结构</h3><p>1.结构复制：<br>(1)方法一：<code>create table 新表 select * from 旧表 where 1&lt;&gt;1;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-86b5fa86d9cb7f93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>查看users表的表结构：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-552de58050518ff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>如图所示，成功复制结构。<br>(2)方法二：<code>create table新表  like 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-176455d44956561f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>2.整表复制： <code>create table 新表 select * from 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-27997e1bca91370e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>内容如下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-e17d76df02dca581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>3.得到建表语句： <code>show create table 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-b6d337a9d38ccee3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>4.INSERT INTO 方法复制数据到新表：</p>
+<h3 id="快速幂取模"><a href="#快速幂取模" class="headerlink" title="快速幂取模"></a>快速幂取模</h3><p>1.这次又花了点时间看这个算法，之前会但是不够清晰，导致自己写是老出问题。<br>主要需要明白：</p>
 <ul>
-<li><p>复制旧表的数据到新表(假设两个表结构一样)  <code>insert into 新表  select * from 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-691b8e989c428925.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>复制旧表的数据到新表(假设两个表结构不一样) <code>insert into 新表(字段1,字段2,…….)  select 字段1,字段2,…… from 旧表;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-4abcebd90d685ab1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
+<li>积的取余等于取余的积的取余，即<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5188cb7f04516279.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>分奇偶两种情况，如果是奇数，要多求一步，可以提前算到s中<br><img src="https://upload-images.jianshu.io/upload_images/9216631-20cbf7d070b093e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
 </ul>
-<p>此例表结构一样的，都源于<code>security.users</code></p>
-<hr>
-<h3 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h3><p>1.可使用常见的算术操作符。<br><strong>注意：</strong>就 -、 +和 *而言, 若两个参数均为正数，则其计算结果的精确度为 BIGINT (64比特)，若其中一个参数为无符号整数， 而其它参数也是整数, 则结果为无符号整数。如： mysql&gt; <code>SELECT 3+5;</code><br>2.DIV整数除法。 类似于 FLOOR()，然而使用BIGINT 算法也是可靠的。<br><strong>注意：</strong>数学函数若发生错误，所有数学函数会返回 NULL 。如除0错误：<code>select 5/0;</code><br><img src="https://upload-images.jianshu.io/upload_images/9216631-d8c2a888fc97593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>3.ABS(X)返回X 的绝对值。<br>4.下面的函数支持使用BIGINT值。</p>
-<ul>
-<li><p>ACOS(X)返回X 反余弦, 即, 余弦是X的值。若X 不在-1到 1的范围之内，则返回 NULL<br><img src="https://upload-images.jianshu.io/upload_images/9216631-27dd6f12d4d2557d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-</li>
-<li><p>ASIN(X)返回X 的反正弦，即，正弦为X 的值。若X  若X 不在-1到 1的范围之内，则返回 NULL 。</p>
-</li>
-<li>ATAN(X)返回X 的反正切，即，正切为X 的值。</li>
-<li>ATAN(Y,X) , ATAN2(Y,X)返回两个变量X 及Y的反正切。 它类似于 Y 或 X的反正切计算, 除非两个参数的符号均用于确定结果所在象限。</li>
-</ul>
-<p>5.CEILING(X) CEIL(X) 返回不小于X 的最小整数值。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-808d25f96ef910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>6.三角函数： COS(X) SIN(X) TAN(X) X 在弧度中被给定。<br>7.CRC32(expr)计算循环冗余码校验值并返回一个 32比特无符号值，若参数为NULL。<br>8.DEGREES(X)返回参数 X, 该参数由弧度被转化为度。<br>9.EXP(X) 返回e的X乘方后的值(自然对数的底)<br>10.FLOOR(X) 返回不大于X的最大整数值。<br>11.FORMAT(X,D) 将数字X 的格式写成’#,###,###.##’格式, 即保留小数点后 D位，而第D位的保留方式为四舍五入，然后将结果以字符串的形式返回。<br>12.LN(X) 返回X 的自然对数,即, X 相对于基数e 的对数。这个函数同LOG(X)具有相同意义。</p>
-<ul>
-<li>LOG(B,X) 若用一个参数调用，这个函数就会返回X 的自然对数。</li>
-<li>若用两个参数进行调用，这个函数会返回X 对于任意基数B 的对数。</li>
-</ul>
-<p>13.对于查出存储一个数字需要多少个比特，LOG2()非常有效。这个函数相当于表达式 LOG(X) / LOG(2)。LOG10(X) 返回X的基数为10的对数。<br>14.MOD(N,M) , N % M N MOD M 模操作。返回N 被 M除后的余数。<br>15.PI() 返回 (pi)的值。默认的显示小数位数是7位,然而 MySQL内部会使用完全双精度值。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-1020d0c49de85977.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>16.POW(X,Y) , POWER(X,Y)返回X 的Y乘方的结果值。<br>17.RADIANS(X) 返回由度转化为弧度的参数 X。<br>18.RAND() RAND(N) 返回一个随机浮点值 v ，范围在 0 到1 之间。<br>若要在<code>i ≤ R ≤ j</code>这个范围得到一个随机整数R ，需要用到表达式<code>FLOOR(i + RAND() * (j – i + 1))</code>。<br>19.ROUND(X) ROUND(X,D) 返回参数X, 其值接近于最近似的整数。在有两个参数的情况下，返回 X ，其值保留到小数点后D位，而第D位的保留方式为四舍五入。若要接保留X值小数点左边的D 位，可将 D 设为负值。<br>20.SIGN(X)返回参数作为-1、 0或1的符号，该符号取决于X 的值为负、零或正。<br>21.SQRT(X) 返回非负数X 的二次方根。<br>22.TRUNCATE(X,D) 返回被舍去至小数点后D位的数字X。若D 的值为 0, 则结果不带有小数点或不带有小数部分。可以将D设为负数,若要截去(归零，即所以数值都变成0) X小数点左起第D位开始后面所有低位的值。</p>
-<hr>
-<p>先到这吧，感觉内容比较乱，是看到什么感觉需要的就记录下的，希望对大家也有所帮助。</p>
+<p>2.迭代实现:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速幂取模算法</span></span><br><span class="line"><span class="comment"># 迭代：</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(a, b, c)</span>:</span></span><br><span class="line">    s = <span class="number">1</span></span><br><span class="line">    a %= c</span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> b % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            s = (s * a) % c</span><br><span class="line">        b = b // <span class="number">2</span></span><br><span class="line">        a = (a * a) % c</span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure></p>
+<p>可参考：</p>
+<blockquote>
+<ol>
+<li><a href="https://www.cnblogs.com/Howe-Young/p/4097277.html" target="_blank" rel="noopener">快速幂取模</a></li>
+<li><a href="https://www.cnblogs.com/wkfvawl/p/9125224.html" target="_blank" rel="noopener">快速幂取模算法</a></li>
+<li><a href="https://blog.csdn.net/water_zero_saber/article/details/78569693" target="_blank" rel="noopener">简单的快速幂算法</a>（算法中存在的问题）</li>
+</ol>
+</blockquote>
 <hr>
 
       
@@ -514,7 +482,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://clwsec.top/2019/03/09/MySQL学习2/" title="MySQL学习2">https://clwsec.top/2019/03/09/MySQL学习2/</a>
+    <a href="https://clwsec.top/2019/03/21/Python常用函数总结/" title="Python常用函数总结">https://clwsec.top/2019/03/21/Python常用函数总结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -529,7 +497,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"> <i class="fa fa-tag"></i> MySQL</a>
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/algorithm/" rel="tag"> <i class="fa fa-tag"></i> algorithm</a>
           
         </div>
       
@@ -542,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/08/MySQL常用命令/" rel="next" title="MySQL常用命令">
-                <i class="fa fa-chevron-left"></i> MySQL常用命令
+              <a href="/2019/03/16/学习CTF/" rel="next" title="学习CTF">
+                <i class="fa fa-chevron-left"></i> 学习CTF
               </a>
             
           </div>
@@ -552,8 +522,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/12/sqli-labs-Less11-20/" rel="prev" title="Sqli-Labs-Less11-20">
-                Sqli-Labs-Less11-20 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/21/sqli-labs-Less21-37/" rel="prev" title="Sqli-Labs-Less21-37">
+                Sqli-Labs-Less21-37 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -754,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的导入导出"><span class="nav-number">1.</span> <span class="nav-text">数据库的导入导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎"><span class="nav-number">2.</span> <span class="nav-text">存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念："><span class="nav-number">2.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySql中的存储引擎"><span class="nav-number">2.2.</span> <span class="nav-text">MySql中的存储引擎</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql复制表和复制表结构"><span class="nav-number">3.</span> <span class="nav-text">mysql复制表和复制表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关函数"><span class="nav-number">4.</span> <span class="nav-text">相关函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求最大公因子"><span class="nav-number">2.</span> <span class="nav-text">求最大公因子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展欧几里的算法（求逆元）"><span class="nav-number">3.</span> <span class="nav-text">扩展欧几里的算法（求逆元）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速幂取模"><span class="nav-number">4.</span> <span class="nav-text">快速幂取模</span></a></li></ol></div>
             
 
           </div>
