@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-a2f5b971923a1981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5188cb7f04516279.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-20cbf7d070b093e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-21T12:57:52.071Z">
+<meta property="og:updated_time" content="2019-03-21T13:12:42.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python常用函数总结">
 <meta name="twitter:description" content="前言：此文用于记录学习过程中常用到的函数（较高效的算法）。同时，对函数的原理进行描述，对于相关的更为细致的描述，可以参考文中的参考，写的很好，值得多看。 求最大公因子1.迭代：12345678# 欧几里得算法求两个数字的最大公约数# 迭代：def gcd(a, b):    while b != 0:        tem = a % b        a = b        b = tem">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-21T20:57:52+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-21T21:12:42+08:00">
                 2019-03-21
               </time>
             
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  786
+                  785
                 </span>
               
 
@@ -438,7 +438,55 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/9216631-0dec589436b6b0f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p><strong>公式：</strong></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9216631-a2f5b971923a1981.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><strong>列表记录计算过程：</strong><br>|i|x<code>i</code>|y<code>i</code>|q<code>i</code>|r<code>i</code>|<br>|:–:|:–:|:–:|:–:|:–:|<br>|-3|||||<br>|-2|1|0||1859|<br>|-1|0|1||1573|<br>|0|1|-1|1|286|<br>|1|-5|6|5|143|<br>|2|-5|6|2|0|</p>
+<p><strong>列表记录计算过程：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">i</th>
+<th style="text-align:center">x<code>i</code></th>
+<th style="text-align:center">y<code>i</code></th>
+<th style="text-align:center">q<code>i</code></th>
+<th style="text-align:center">r<code>i</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">1859</td>
+</tr>
+<tr>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">1573</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">286</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">143</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">-5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
 <p>解释：<br>刚开始时，代码中的x1,y1代表表中x<code>-2</code>,y<code>-2</code>;  x2,y2代表x<code>-1</code>,y<code>-1</code> ; a,b分别代表表中r<code>-2</code>,r<code>-1</code> 此例经过三次迭代，b即为0，此时，x1,y1正好对应x<code>1</code>,y<code>1</code>,即-5,6（可以自己算一遍就好理解了，平时手动算时都比较喜欢这种，不容易出错。而且，通过列表计算后，同时也验证了上面的推导<code>因为 a*x + b*y = gcd(a, b)即有，a*xi + b*yi = ri   （中间的每一步）</code>，从而理解推导过程）</p>
 <p>2.递归：<br>基础：给出任意a, b，必有a<em>x + b</em>y = gcd(a, b)。<br>因为gcd(a, b) = gcd(b, a mod b)，所以一个简单实现是利用gcd算法算出gcd(a, b)再倒回去算 x 和 y 。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 扩展欧几里的算法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extendedGCD1</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>, <span class="number">0</span>, a)</span><br><span class="line">    (x, y, r) = extendedGCD1(b, a%b)</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    gcd(a, b) = a*xi + b*yi</span></span><br><span class="line"><span class="string">    gcd(b, a %  b) = b*xi+1 + (a - [a/b]*b)*yi+1</span></span><br><span class="line"><span class="string">    gcd(a, b) = gcd(b, a %  b)   =&gt;   a*xi + b*yi = a*yi+1 + b*(xi+1 - [a/b]*yi+1)</span></span><br><span class="line"><span class="string">    xi = yi+1</span></span><br><span class="line"><span class="string">    yi = xi+1 - [a/b]*yi+1</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    tmp = x</span><br><span class="line">    x = y</span><br><span class="line">    y = tmp - (a//b) * y</span><br><span class="line">    <span class="keyword">return</span> (x, y, r)</span><br></pre></td></tr></table></figure></p>
 <blockquote>
