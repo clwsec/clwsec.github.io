@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-36b6ba4c6cb50f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1aae578db606c3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-caba7a504a3d98b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-24T12:38:11.567Z">
+<meta property="og:updated_time" content="2019-03-27T14:41:19.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习CTF">
 <meta name="twitter:description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  记录各种知识1.stripos(字符串a，字符串b)函数查找字符串b在字符串a中第一次出现的位置（不区分大小写）2.file_get_contents 将整个文件读入一个字符串3.eregi(&amp;quot;111&amp;quot;.substr($b,0,1),&amp;quot;1114&amp;quot;) 判断”1114”这个字符串里面是否有">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-24T20:38:11+08:00">
-                2019-03-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-27T22:41:19+08:00">
+                2019-03-27
               </time>
             
           </span>
@@ -459,7 +459,8 @@
 <li>/i代表大小写不敏感</li>
 <li>更多：1.<a href="https://blog.csdn.net/qq_26090065/article/details/81606045" target="_blank" rel="noopener">正则表达式小记</a> 2.<a href="https://www.jqhtml.com/6915.html" target="_blank" rel="noopener">15个常用的javaScript正则表达式</a> 3.<a href="https://www.cnblogs.com/afarmer/archive/2011/08/29/2158860.html" target="_blank" rel="noopener">正则表达式中各种字符的含义</a></li>
 </ul>
-<p>5.<a href="https://www.secpulse.com/archives/55286.html" target="_blank" rel="noopener">常见web源码泄露总结</a></p>
+<p>5.<a href="https://www.secpulse.com/archives/55286.html" target="_blank" rel="noopener">常见web源码泄露总结</a><br>6.<code>mysql_real_escape_string()</code>: <a href="http://www.w3school.com.cn/php/func_mysql_real_escape_string.asp" target="_blank" rel="noopener">PHP mysql_real_escape_string() 函数</a><br>7.<a href="https://blog.csdn.net/guoshaoqing001/article/details/46701363" target="_blank" rel="noopener">get_magic_quotes_gpc()与addslashes（）</a></p>
+<hr>
 <h3 id="bugku-变量1"><a href="#bugku-变量1" class="headerlink" title="bugku 变量1"></a>bugku 变量1</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//123.206.87.240:8004/index1.php</span></span><br><span class="line">flag In the variable !</span><br><span class="line"> <span class="meta">&lt;?php</span>   </span><br><span class="line">error_reporting(<span class="number">0</span>);                    <span class="comment">// 关闭php错误显示</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">"flag1.php"</span>;                   <span class="comment">// 引入flag1.php文件代码</span></span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);              <span class="comment">//对文件进行语法高亮显示</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'args'</span>]))&#123;              <span class="comment">// 条件判断 get方法传递的args参数是否存在 </span></span><br><span class="line">    $args = $_GET[<span class="string">'args'</span>];             <span class="comment">//赋值给变量  $args</span></span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/^\w+$/"</span>,$args))&#123;  <span class="comment">//判断是否匹配 /^开始, \w表示任意一个单词字符，即[a-zA-Z0-9_] , +将前面的字符匹配一次或多次，$/结尾</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"args error!"</span>);            <span class="comment">//，不匹配则输出args error!</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">eval</span>(<span class="string">"var_dump($$args);"</span>);         <span class="comment">// 将字符串作为php代码执行，结尾加分号。 var_dump()函数显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。$$args 可以理解为$($args)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>最关键的是最后的<code>eval(&quot;var_dump($$args);&quot;);</code> 其中</p>
 <ul>
@@ -530,7 +531,11 @@
 <blockquote>
 <p><a href="https://blog.csdn.net/qq_41420747/article/details/82193325" target="_blank" rel="noopener">过狗一句话</a></p>
 </blockquote>
-<h3 id="Bugku-getshell"><a href="#Bugku-getshell" class="headerlink" title="Bugku getshell"></a>Bugku getshell</h3><p>这次还是没直接做出来，之前做过类似的，用php5就绕过了，这个要修改三个地方：<br>1、扩展名<br>2、Content-Type:image/jpeg（如果上传前的本就是图片则不需要）<br>3、Content-Type字段，进行大小写绕过，也就是把multipart/form-data中任意一个字母改成大写即可<br>关于扩展名：<br>可尝试php2, php3, php4, php5，phps, pht, phtm, phtml<br><img src="https://upload-images.jianshu.io/upload_images/9216631-3d0b8c04b9d309c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="Bugku-getshell"><a href="#Bugku-getshell" class="headerlink" title="Bugku getshell"></a>Bugku getshell</h3><p>这次还是没直接做出来，之前做过类似的，用php5就绕过了，这个要修改三个地方：<br>1、扩展名<br>2、Content-Type:image/jpeg（如果上传前的本就是图片则不需要）<br>3、Content-Type字段，进行大小写绕过，也就是把multipart/form-data中任意一个字母改成大写即可<br>关于扩展名：<br>可尝试php2, php3, php4, php5，phps, pht, phtm, phtml</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-3d0b8c04b9d309c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_38680693/article/details/81700378" target="_blank" rel="noopener">上传绕过各种姿势</a></p>
+</blockquote>
 <hr>
 <h3 id="Bugku-INSERT-INTO注入"><a href="#Bugku-INSERT-INTO注入" class="headerlink" title="Bugku INSERT INTO注入"></a>Bugku INSERT INTO注入</h3><p>1.题目给了源码:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIp</span><span class="params">()</span></span>&#123;</span><br><span class="line">$ip = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>]))&#123;</span><br><span class="line">$ip = $_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>];</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">$ip = $_SERVER[<span class="string">'REMOTE_ADDR'</span>];</span><br><span class="line">&#125;</span><br><span class="line">$ip_arr = explode(<span class="string">','</span>, $ip);</span><br><span class="line"><span class="keyword">return</span> $ip_arr[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$host=<span class="string">"localhost"</span>;</span><br><span class="line">$user=<span class="string">""</span>;</span><br><span class="line">$pass=<span class="string">""</span>;</span><br><span class="line">$db=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">$connect = mysql_connect($host, $user, $pass) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Unable to connect"</span>);</span><br><span class="line"></span><br><span class="line">mysql_select_db($db) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Unable to select database"</span>);</span><br><span class="line"></span><br><span class="line">$ip = getIp();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'your ip is :'</span>.$ip;</span><br><span class="line">$sql=<span class="string">"insert into client_ip (ip) values ('$ip')"</span>;</span><br><span class="line">mysql_query($sql);</span><br></pre></td></tr></table></figure></p>
 <p>可知这是<code>X_FORWARDED_FOR</code>注入，但是过滤了<code>,</code> （在10行的时候<code>$ip</code>被截取了<code>$ip_arr = explode(&#39;,&#39;, $ip);</code> explode函数的作用是按规则拆分为数组） 在<code>,</code>被过滤的情况下，无法使用<code>if</code>语句。同时，也无法使用<code>substr()</code></p>
@@ -713,7 +718,7 @@ b2/.DS_Store</code><br><img src="https://upload-images.jianshu.io/upload_images/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -864,7 +869,7 @@ b2/.DS_Store</code><br><img src="https://upload-images.jianshu.io/upload_images/
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.3k</span>
+    <span title="Site words total count">28.7k</span>
   
 </div>
 

@@ -83,7 +83,7 @@
 
 
 
-  <meta name="keywords" content="python,crypto,">
+  <meta name="keywords" content="CTF,总结,">
 
 
 
@@ -96,25 +96,28 @@
 
 
 
-<meta name="description" content="算法分析 RSA签名方案是目前使用较多的一个签名方案，它的安全性是基于大整数因式分解的困难性。 主要包括算法：   秘钥生成算法： 签名算法： 验证算法：   算法实现123456789101112131415161718192021222324252627282930313233343536373839404142# 直接导入之前写好的RSA算法和hash函数的hashlib库from RSA">
-<meta name="keywords" content="python,crypto">
+<meta name="description" content="前言：记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。如想查看完整的writeup，可参考：   NCTF 南京邮电大学网络攻防训练平台 WriteUp 南京邮电大学网络攻防训练平台writeup   GBK Injection1.记录此题，主要学习关于宽字节注入。原理：在GBK编码时，mysql会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过">
+<meta name="keywords" content="CTF,总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于RSA的数字签名方案">
-<meta property="og:url" content="https://clwsec.top/2019/03/06/基于RSA的数字签名方案/index.html">
+<meta property="og:title" content="南邮CTF记录">
+<meta property="og:url" content="https://clwsec.top/2019/03/27/南邮CTF记录/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="算法分析 RSA签名方案是目前使用较多的一个签名方案，它的安全性是基于大整数因式分解的困难性。 主要包括算法：   秘钥生成算法： 签名算法： 验证算法：   算法实现123456789101112131415161718192021222324252627282930313233343536373839404142# 直接导入之前写好的RSA算法和hash函数的hashlib库from RSA">
+<meta property="og:description" content="前言：记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。如想查看完整的writeup，可参考：   NCTF 南京邮电大学网络攻防训练平台 WriteUp 南京邮电大学网络攻防训练平台writeup   GBK Injection1.记录此题，主要学习关于宽字节注入。原理：在GBK编码时，mysql会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-250e0206fa02a40f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-042c921e35053ae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5ade807394f868d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-b68a6aa461dc827c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-756a6a152874852f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-bd3d4d182754addc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-08T02:35:16.167Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-966090cab3ae75e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-58527787133fd108.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-c09f7d742d2b101d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-263b55dfd6c81874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-83f55022f2e186ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1fb52b0e98e93f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5b135c20de748bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0a8ba41111729a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-27T14:40:48.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于RSA的数字签名方案">
-<meta name="twitter:description" content="算法分析 RSA签名方案是目前使用较多的一个签名方案，它的安全性是基于大整数因式分解的困难性。 主要包括算法：   秘钥生成算法： 签名算法： 验证算法：   算法实现123456789101112131415161718192021222324252627282930313233343536373839404142# 直接导入之前写好的RSA算法和hash函数的hashlib库from RSA">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-250e0206fa02a40f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="南邮CTF记录">
+<meta name="twitter:description" content="前言：记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。如想查看完整的writeup，可参考：   NCTF 南京邮电大学网络攻防训练平台 WriteUp 南京邮电大学网络攻防训练平台writeup   GBK Injection1.记录此题，主要学习关于宽字节注入。原理：在GBK编码时，mysql会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -144,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="https://clwsec.top/2019/03/06/基于RSA的数字签名方案/">
+  <link rel="canonical" href="https://clwsec.top/2019/03/27/南邮CTF记录/">
 
 
 
 
 
-  <title>基于RSA的数字签名方案 | 煊奕</title>
+  <title>南邮CTF记录 | 煊奕</title>
   
 
 
@@ -297,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/03/06/基于RSA的数字签名方案/">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/03/27/南邮CTF记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lei">
@@ -314,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于RSA的数字签名方案</h1>
+          <h1 class="post-title" itemprop="name headline">南邮CTF记录</h1>
         
 
         <div class="post-meta">
@@ -326,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T19:50:08+08:00">
-                2019-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T22:39:12+08:00">
+                2019-03-27
               </time>
             
 
@@ -342,8 +345,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-08T10:35:16+08:00">
-                2019-03-08
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-27T22:40:48+08:00">
+                2019-03-27
               </time>
             
           </span>
@@ -361,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/crypto/" itemprop="url" rel="index">
-                    <span itemprop="name">crypto</span>
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
                   </a>
                 </span>
 
@@ -378,7 +381,7 @@
 
           
           
-             <span id="/2019/03/06/基于RSA的数字签名方案/" class="leancloud_visitors" data-flag-title="基于RSA的数字签名方案">
+             <span id="/2019/03/27/南邮CTF记录/" class="leancloud_visitors" data-flag-title="南邮CTF记录">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -404,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  618
+                  1.3k
                 </span>
               
 
@@ -429,27 +432,65 @@
       
 
       
-        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
-<li>RSA签名方案是目前使用较多的一个签名方案，它的安全性是基于大整数因式分解的困难性。</li>
-<li>主要包括算法：</li>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。<br>如想查看完整的writeup，可参考：</p>
+<blockquote>
+<ol>
+<li><a href="https://blog.csdn.net/qq_31481187/article/details/52097287#t33" target="_blank" rel="noopener">NCTF 南京邮电大学网络攻防训练平台 WriteUp</a></li>
+<li><a href="https://www.cnblogs.com/findneo/p/nupt-ctf-writeup.html" target="_blank" rel="noopener">南京邮电大学网络攻防训练平台writeup</a></li>
 </ol>
+</blockquote>
+<h3 id="GBK-Injection"><a href="#GBK-Injection" class="headerlink" title="GBK Injection"></a>GBK Injection</h3><p>1.记录此题，主要学习关于宽字节注入。<br>原理：在<code>GBK</code>编码时，<code>mysql</code>会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过转义之后的单引号<code>&#39;</code>会变为<code>\&#39;</code>，即<code>%5c%27</code>。构造<code>id=1%df%27%23</code>，在经过转义传递给<code>mysql</code>时，就是<code>id=1%df%5c%27%23</code>，mysql在解析时，会认为<code>%df%5c</code>是一个汉字，而<code>%27</code>就会闭合掉原本sql语句中的（左）单引号，即<code>select xxx from xxx where id=&#39;%df%5c&#39;#&#39;</code>，<code>%23</code>用于注释掉原本sql语句中的（右）单引号。这就是宽字节注入的原理。</p>
+<p>2.构造注入：<br>先查看数据库：<code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=-1%df%27 union select null,database()--+</code> 得<code>sae-chinalover</code></p>
+<p>然后查表：<code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=-1%df%27 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()  --+</code> 这个比较过分，有5个表：<code>ctf,ctf2,ctf3,ctf4,news</code></p>
+<p>因为引号被过滤，按常规的注入，得绕很多。这里猜测flag字段为<code>flag</code>，然后一个一个表查，发现是在表<code>ctf4</code> 语句为：<code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=-1%d6%27 union select 1,(select flag from ctf4) --+</code> 更换表名查即可。</p>
+<p>参考：</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_29419013/article/details/81205291" target="_blank" rel="noopener">深入探究宽字节注入漏洞与修补原理</a></p>
+</blockquote>
+<h3 id="x00"><a href="#x00" class="headerlink" title="/x00"></a>/x00</h3><p>1.这是一道很纯粹的代码审计题，提示说了有多种做法，故记录一下。<br>这是给出的源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">view-source:</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">isset</span> ($_GET[<span class="string">'nctf'</span>])) &#123;</span><br><span class="line">       <span class="keyword">if</span> (@ereg (<span class="string">"^[1-9]+$"</span>, $_GET[<span class="string">'nctf'</span>]) === <span class="keyword">FALSE</span>)</span><br><span class="line">           <span class="keyword">echo</span> <span class="string">'必须输入数字才行'</span>;</span><br><span class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (strpos ($_GET[<span class="string">'nctf'</span>], <span class="string">'#biubiubiu'</span>) !== <span class="keyword">FALSE</span>)   </span><br><span class="line">           <span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">           <span class="keyword">echo</span> <span class="string">'骚年，继续努力吧啊~'</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.分析：</p>
 <ul>
-<li>秘钥生成算法：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-250e0206fa02a40f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>签名算法：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-042c921e35053ae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>验证算法：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5ade807394f868d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li><code>@eval</code>：<code>@</code>的作用就是忽略报错信息</li>
+<li><code>ereg()</code>函数用指定的模式搜索一个字符串中指定的字符串,如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的 <a href="http://wiki.jikexueyuan.com/project/php/regular-expression/ereg.html" target="_blank" rel="noopener">PHP 函数 ereg()</a></li>
+<li><code>strpos()</code> 函数: 返回字符串在另一个字符串中第一次出现的位置，如果没有找到该字符串，则返回 false  <a href="http://www.w3school.com.cn/php/func_string_strpos.asp" target="_blank" rel="noopener">PHP strpos() 函数</a></li>
 </ul>
-<hr>
-<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接导入之前写好的RSA算法和hash函数的hashlib库</span></span><br><span class="line"><span class="keyword">from</span> RSA <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 秘钥生成算法</span></span><br><span class="line">pubkey = []</span><br><span class="line">selfkey = []</span><br><span class="line"><span class="string">'''公钥私钥中用到的两个大素数数p,q，都是1024位'''</span></span><br><span class="line">p = <span class="number">106697219132480173106064317148705638676529121742557567770857687729397446898790451577487723991083173010242416863238099716044775658681981821407922722052778958942891831033512463262741053961681512908218003840408526915629689432111480588966800949428079015682624591636010678691927285321708935076221951173426894836169</span></span><br><span class="line">q = <span class="number">144819424465842307806353672547344125290716753535239658417883828941232509622838692761917211806963011168822281666033695157426515864265527046213326145174398018859056439431422867957079149967592078894410082695714160599647180947207504108618794637872261572262805565517756922288320779308895819726074229154002310375209</span></span><br><span class="line"><span class="string">'''生成公钥私钥'''</span></span><br><span class="line">pubkey, selfkey = gen_key(p, q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 签名算法</span></span><br><span class="line">m = <span class="string">b"helloworld"</span></span><br><span class="line">md = hashlib.md5()</span><br><span class="line">md.update(m)</span><br><span class="line"><span class="comment"># 用MD5算法生成消息摘要hm</span></span><br><span class="line">hm = int(md.hexdigest(), <span class="number">16</span>)</span><br><span class="line">print(<span class="string">"Alice生成的消息摘要为： \n"</span>, hm)</span><br><span class="line"><span class="comment"># 计算签名</span></span><br><span class="line"><span class="comment"># Alice用自己的私钥计算签名s</span></span><br><span class="line">s = encrypt(hm, selfkey)</span><br><span class="line">print(<span class="string">"Alice计算出的签名s为:  \n"</span>, s)</span><br><span class="line"><span class="comment"># Alice将(m, s)发送个Bob</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证算法</span></span><br><span class="line"><span class="comment"># Bob验证签名是否有效</span></span><br><span class="line">flag = <span class="literal">True</span></span><br><span class="line"><span class="comment"># Bob用公钥计算出消息摘要</span></span><br><span class="line">res = decrypt(s, pubkey)</span><br><span class="line">print(<span class="string">"Bob计算出的消息摘要为： \n"</span>, res)</span><br><span class="line"><span class="keyword">if</span> res == hm:</span><br><span class="line">    flag =<span class="literal">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    flag = <span class="literal">False</span></span><br><span class="line"><span class="comment"># 将验证结果输出</span></span><br><span class="line"><span class="keyword">if</span> flag == <span class="literal">True</span>:</span><br><span class="line">    print(<span class="string">"Alice的签名有效"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"Alice的签名无效"</span>)</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="签名与验证过程"><a href="#签名与验证过程" class="headerlink" title="签名与验证过程"></a>签名与验证过程</h3><p>如下图所示，消息m = “helloworld” , 使用RSA算法中生成的公钥和私钥，Alice通过私钥对消息摘要进行签名得到s , Bob通过公钥根据签名s计算出消息摘要，并将其与Alice发来的消息摘要进行对比，如果相等，则打印出签名有效，否则打印出签名无效。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-b68a6aa461dc827c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<hr>
-<h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p>签名验证过程的正确性证明如下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-756a6a152874852f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<hr>
-<h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
-<li>签名中使用了hash函数，哈希函数的使用使签名具有更好的抗攻击性。如果不使用，则可根据RSA方案所具有的同态特性，根据已知的两个签名，生成伪造的消息签名。具体如下：如果消息𝑀1、𝑀2的签名分别是𝑆1和𝑆2，则任何知道𝑀1，𝑆1，𝑀2，𝑆2的人可以伪造对消息𝑀1𝑀2的签名𝑆1𝑆2，因为<br> 𝑆𝑖𝑔(𝑀1𝑀2) = 𝑆𝑖𝑔(𝑀1)𝑆𝑖𝑔(𝑀2)</li>
-<li>若未使用hash函数，还可以尝试一般攻击：攻击者任选一个数据𝑌，用A的公钥计算𝑋＝Y^e𝑚𝑜𝑑 𝑛 于是便可以用Y伪造A对消息X的签名，因为<br><img src="https://upload-images.jianshu.io/upload_images/9216631-bd3d4d182754addc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>存在签名的可重用性问题，即对同一消息在不同时刻签名是相同的。这个问题可通过在每次签名中引入不同随机数来解决。</li>
+<p>3.如何绕过：<br>这里传入的<code>nctf</code>要用<code>nctf[]</code>,构造一个数组，传入之后，<code>ereg()</code>返回<code>NULL</code>。<code>===</code>判断<code>NULL</code>和<code>FALSE</code>，是不相等的，所以可以进入第二个判断。<code>strpos()</code>处理数组时，也是返回<code>NULL</code>，<code>NULL!==FALSE</code>，条件成立，拿到flag</p>
+<p>其实，在等与不等这块，自己感觉有些混乱了，因为<code>NULL==FALSE</code>，应该也是成立的。所以检查了一下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>发现确实是相等的，相当于他们是恒等的，PHP的弱类型比较真是可怕。</p>
+<p>4.趁此机会，复习一下弱类型比较：下图写的是函数<code>strcmp()</code>和<code>md5()</code>存在的弱类型问题，可通过这些问题进行相关绕过。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-966090cab3ae75e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>5.最后，直接附上看到的几篇关于PHP弱类型的文章：</p>
+<blockquote>
+<ol>
+<li><a href="https://www.cnblogs.com/zswordsman/p/5824175.html" target="_blank" rel="noopener">PHP中0、空、null和false的总结</a></li>
+<li><a href="https://www.cnblogs.com/Mrsm1th/p/6745532.html" target="_blank" rel="noopener">php 弱类型总结</a></li>
+<li><a href="https://www.jb51.net/article/93447.htm" target="_blank" rel="noopener">PHP弱类型的安全问题详细总结</a></li>
 </ol>
+</blockquote>
+<hr>
+<h3 id="上传绕过"><a href="#上传绕过" class="headerlink" title="上传绕过"></a>上传绕过</h3><p>1.遇到这题，说实话，心里想到的是：所有跳过的坑，都得补回来。<br>之前做Bugku的时候遇到的文件上传，那个题也是不会，看了别人的writeup后，以为文件上传不难，匆匆地过了。现在想来，真是井底之蛙。<br>2.此题，先上传了一个jpg文件，发现提示如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-58527787133fd108.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>3.再传个php试试：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-c09f7d742d2b101d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>对比上图，发现过滤机制是检查扩展名（当扩展名不通过时，上传不了）仔细查看上传后的文件位置，发现存于<code>./uploads</code>目录下。</p>
+<p>4.既然不许上传php文件格式（上传时过滤）又要求上传为php格式文件（上传到服务器后检验），那只能从提示的信息中想办法绕过了。从上面的信息中，知道上传的文件在<code>./uploads</code>目录下，将文件名存于<code>basename</code>字段中，并且通过分割文件名和扩展名来检验，因此，应该是通过<code>extension</code>字段来进行识别。</p>
+<p>5.现在，需要做的就很明确了，上传的文件名应该被截断，分成两部分，把<code>.php</code>的部分存于<code>basename</code>中，后面的<code>.jpg</code>不可进入，否则无法绕过。所以，使用<code>0x00</code>截断<code>.php</code>后的字符:</p>
+<p>6.在burpsuite中进行修改，如图：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-263b55dfd6c81874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>然后修改：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-83f55022f2e186ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>变成：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-1fb52b0e98e93f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>得到flag:<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5b135c20de748bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>7.上面写的有些繁琐，主要为了学习文件上传的知识，下面是相关知识的学习：<br>关于截断：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9216631-0a8ba41111729a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>关于文件上传：看了下面几篇文章后，说实话，有的没有看懂。此时，方知关于此知识点的运用真是各式各样，看来只能多实践才能慢慢掌握。</p>
+<blockquote>
+<ol>
+<li><a href="https://blog.csdn.net/hitwangpeng/article/details/47060671" target="_blank" rel="noopener">[PHP] 文件上传过程中基于白名单、黑名单、基于MIME的认证以及目录认证</a></li>
+<li><a href="https://thief.one/2016/09/22/%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC%E5%A7%BF%E5%8A%BF%E6%B1%87%E6%80%BB-%E6%AC%A2%E8%BF%8E%E8%A1%A5%E5%85%85/" target="_blank" rel="noopener">文件上传漏洞（绕过姿势）</a></li>
+<li><a href="https://www.freebuf.com/articles/web/179401.html" target="_blank" rel="noopener">挖洞姿势 | 深度聊聊PHP下的“截断”问题</a></li>
+</ol>
+</blockquote>
+<hr>
+<p>就到这吧，最近状态有点欠缺，还有此平台上有的题现在做不了，剩下的以后找时间再补上。</p>
 <hr>
 
       
@@ -471,7 +512,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://clwsec.top/2019/03/06/基于RSA的数字签名方案/" title="基于RSA的数字签名方案">https://clwsec.top/2019/03/06/基于RSA的数字签名方案/</a>
+    <a href="https://clwsec.top/2019/03/27/南邮CTF记录/" title="南邮CTF记录">https://clwsec.top/2019/03/27/南邮CTF记录/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -486,9 +527,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
+            <a href="/tags/CTF/" rel="tag"> <i class="fa fa-tag"></i> CTF</a>
           
-            <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
+            <a href="/tags/总结/" rel="tag"> <i class="fa fa-tag"></i> 总结</a>
           
         </div>
       
@@ -501,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/06/公钥密码之RSA/" rel="next" title="公钥密码之RSA">
-                <i class="fa fa-chevron-left"></i> 公钥密码之RSA
+              <a href="/2019/03/21/sqli-labs-Less21-37/" rel="next" title="Sqli-Labs-Less21-37">
+                <i class="fa fa-chevron-left"></i> Sqli-Labs-Less21-37
               </a>
             
           </div>
@@ -510,10 +551,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/06/Python使用技巧/" rel="prev" title="Python使用技巧">
-                Python使用技巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -713,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分析"><span class="nav-number">1.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法实现"><span class="nav-number">2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#签名与验证过程"><span class="nav-number">3.</span> <span class="nav-text">签名与验证过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性"><span class="nav-number">4.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性分析"><span class="nav-number">5.</span> <span class="nav-text">安全性分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GBK-Injection"><span class="nav-number">2.</span> <span class="nav-text">GBK Injection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x00"><span class="nav-number">3.</span> <span class="nav-text">/x00</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传绕过"><span class="nav-number">4.</span> <span class="nav-text">上传绕过</span></a></li></ol></div>
             
 
           </div>
