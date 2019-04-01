@@ -15,13 +15,6 @@
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
 
 
 
@@ -103,7 +96,7 @@
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="谨记:业精于勤 荒于嬉 行成于思 毁于随  关于 磊 邮箱：clwsec@163.com  喜欢的诗:面朝大海 春暖花开【作者】海子从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人终成眷">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T09:19:03.443Z">
+<meta property="og:updated_time" content="2019-04-01T14:54:22.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About">
 <meta name="twitter:description" content="谨记:业精于勤 荒于嬉 行成于思 毁于随  关于 磊 邮箱：clwsec@163.com  喜欢的诗:面朝大海 春暖花开【作者】海子从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人，我也为你祝福愿你有一个灿烂的前程愿你有情人终成眷">
@@ -329,8 +322,7 @@
 </ol>
 <h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><p><strong>2019.02.28</strong><br>今天，搭建了博客。</p>
 <p><strong>2019.03.17</strong><br>今天，配置了域名。</p>
-<p><strong>2019.04.01</strong><br>今天，重新整理了一下博客，把之前花了不少心思的几个配置都关闭了(比如来必力，DaoVoice)。为什么呢，首先为了速度，这些配置让博客的访问速度慢了不少，而且目前基本用不到，如果想联系我的朋友请通过我的邮箱。其次，为了“自由”。怎么说呢，个人想以自己喜欢的方式来守护这一方世界，让其简单而纯粹一点。此外，之前一直想在每一篇文章前加一句话，鼓励自己的话也好，自己喜欢的句子也好。总之，这样会让自己更乐于记录，而不是每次都只有相关的知识总结。在我看来，文前阅读一句喜欢的话，心情会愈加愉悦，或是会起到各种不同的效果，关键在于那时，那地，那人。</p>
-<p>今天，我发现了一个好的做法，发现于一位大佬的博客(<a href="https://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">Hexo搭建博客教程</a> 需要的朋友可以参考一下) 所以，打算将文章好好整理一番，变成自己想要的样子。嗯，先这样吧，有很多话，但总是词不达意，无奈得只叹一声：未完待续…</p>
+<p><strong>2019.04.01</strong><br>今天，重新整理了一下博客，把之前花了不少心思的几个配置都关闭了(DaoVoice,比如来必力)。为什么呢，首先为了速度，这些配置让博客的访问速度慢了不少，而且目前基本用不到，如果想联系我的朋友请通过我的邮箱。其次，为了“自由”。怎么说呢，个人想以自己喜欢的方式来守护这一方世界，让其简单而纯粹一点。嗯，先这样吧，有很多话，但总是词不达意，无奈得只叹一声：未完待续……</p>
 <hr>
 
         
@@ -552,7 +544,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.5k</span>
+    <span title="Site words total count">34.7k</span>
   
 </div>
 
@@ -745,113 +737,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("G6dqnRdCxLa2gzB6qMGY7QCL-gzGzoHsz", "cEc5NtouoT5gS22x2xD9CUnO");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 

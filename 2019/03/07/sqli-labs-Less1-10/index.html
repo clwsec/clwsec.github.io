@@ -15,13 +15,6 @@
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
 
 
 
@@ -95,13 +88,13 @@
 
 
 
-<meta name="description" content="前言:此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。 做题过程中的各种知识 在mysql数据库中，单行注释有#和--，在实际操作中#号一般用%23来表示。而–则用--+来表示。因为在URL中，如果在最后加上– ，浏览器在发送请求的时候会把URL末尾的空格舍去，而用--+代替– ，原因是+在URL被URL编码后会变成空格。。">
+<meta name="description" content="一个人只要多笑，就会变得很幸福">
 <meta name="keywords" content="sqli-labs,SQL注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sqli-Labs-Less1-10">
 <meta property="og:url" content="https://clwsec.top/2019/03/07/sqli-labs-Less1-10/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="前言:此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。 做题过程中的各种知识 在mysql数据库中，单行注释有#和--，在实际操作中#号一般用%23来表示。而–则用--+来表示。因为在URL中，如果在最后加上– ，浏览器在发送请求的时候会把URL末尾的空格舍去，而用--+代替– ，原因是+在URL被URL编码后会变成空格。。">
+<meta property="og:description" content="一个人只要多笑，就会变得很幸福">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-2db67ae6d21baec9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-f559f4522e2b44f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -151,10 +144,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-4068fff492bb2df0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1830cfc0a1edeceb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-8ec7278bdd9ec84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-17T10:26:01.144Z">
+<meta property="og:updated_time" content="2019-04-01T15:57:06.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqli-Labs-Less1-10">
-<meta name="twitter:description" content="前言:此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。 做题过程中的各种知识 在mysql数据库中，单行注释有#和--，在实际操作中#号一般用%23来表示。而–则用--+来表示。因为在URL中，如果在最后加上– ，浏览器在发送请求的时候会把URL末尾的空格舍去，而用--+代替– ，原因是+在URL被URL编码后会变成空格。。">
+<meta name="twitter:description" content="一个人只要多笑，就会变得很幸福">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-2db67ae6d21baec9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -374,19 +367,7 @@
             
 
             
-              <span class="post-meta-divider">|</span>
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-17T18:26:01+08:00">
-                2019-03-17
-              </time>
             
           </span>
 
@@ -419,17 +400,6 @@
           
 
           
-          
-             <span id="/2019/03/07/sqli-labs-Less1-10/" class="leancloud_visitors" data-flag-title="Sqli-Labs-Less1-10">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -471,7 +441,10 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。</p>
+        <blockquote class="blockquote-center">一个人只要多笑，就会变得很幸福</blockquote>
+
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h3><p>此文用于记录学习SQL注入过程中的所得所思，因为可以说是菜鸟了，需要参考大佬的解题方法，所以一切慢慢来吧，希望越来越强。</p>
 <h3 id="做题过程中的各种知识"><a href="#做题过程中的各种知识" class="headerlink" title="做题过程中的各种知识"></a>做题过程中的各种知识</h3><ol>
 <li>在mysql数据库中，单行注释有<code>#</code>和<code>--</code>，在实际操作中#号一般用<code>%23</code>来表示。而–则用<code>--+</code>来表示。因为在URL中，如果在最后加上– ，浏览器在发送请求的时候会把URL末尾的空格舍去，而用<code>--+</code>代替– ，原因是+在URL被URL编码后会变成空格。。</li>
 <li>与数据库相关的内容：</li>
@@ -959,7 +932,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.5k</span>
+    <span title="Site words total count">34.7k</span>
   
 </div>
 
@@ -1152,113 +1125,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("G6dqnRdCxLa2gzB6qMGY7QCL-gzGzoHsz", "cEc5NtouoT5gS22x2xD9CUnO");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 

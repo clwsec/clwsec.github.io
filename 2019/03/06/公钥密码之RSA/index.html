@@ -15,13 +15,6 @@
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
 
 
 
@@ -95,13 +88,13 @@
 
 
 
-<meta name="description" content="算法分析 RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。 RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。 RSA算法主要由密钥生成、加密和解密三个部分组成。   密钥生成：a 选择两个大素数𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）b 计算𝑛=𝑝×𝑞， φ(n) =(𝑝－1)×(𝑞－1)c 选择整数 𝑒 使 (φ(n)，𝑒) =1,">
+<meta name="description" content="鱼跃此时海，花开彼岸天">
 <meta name="keywords" content="python,crypto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="公钥密码之RSA">
 <meta property="og:url" content="https://clwsec.top/2019/03/06/公钥密码之RSA/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="算法分析 RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。 RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。 RSA算法主要由密钥生成、加密和解密三个部分组成。   密钥生成：a 选择两个大素数𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）b 计算𝑛=𝑝×𝑞， φ(n) =(𝑝－1)×(𝑞－1)c 选择整数 𝑒 使 (φ(n)，𝑒) =1,">
+<meta property="og:description" content="鱼跃此时海，花开彼岸天">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-e732d825835bc29f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-a9821c5f4be5ba8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -110,10 +103,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-b625a619a347cc56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-70e8e12e109608d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-d1cb32c635cce82b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-08T02:35:18.571Z">
+<meta property="og:updated_time" content="2019-04-01T15:56:29.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="公钥密码之RSA">
-<meta name="twitter:description" content="算法分析 RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。 RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。 RSA算法主要由密钥生成、加密和解密三个部分组成。   密钥生成：a 选择两个大素数𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）b 计算𝑛=𝑝×𝑞， φ(n) =(𝑝－1)×(𝑞－1)c 选择整数 𝑒 使 (φ(n)，𝑒) =1,">
+<meta name="twitter:description" content="鱼跃此时海，花开彼岸天">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-e732d825835bc29f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -333,19 +326,7 @@
             
 
             
-              <span class="post-meta-divider">|</span>
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-08T10:35:18+08:00">
-                2019-03-08
-              </time>
             
           </span>
 
@@ -378,17 +359,6 @@
           
 
           
-          
-             <span id="/2019/03/06/公钥密码之RSA/" class="leancloud_visitors" data-flag-title="公钥密码之RSA">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -430,7 +400,10 @@
       
 
       
-        <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
+        <blockquote class="blockquote-center">鱼跃此时海，花开彼岸天</blockquote>
+
+<a id="more"></a>
+<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
 <li>RSA是最早的公钥密码系统之一, 广泛用于安全数据传输。</li>
 <li>RSA的基础是数论的欧拉定理，它的安全性依赖于大整数因式分解的困难性。</li>
 <li>RSA算法主要由密钥生成、加密和解密三个部分组成。</li>
@@ -768,7 +741,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.5k</span>
+    <span title="Site words total count">34.7k</span>
   
 </div>
 
@@ -961,113 +934,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("G6dqnRdCxLa2gzB6qMGY7QCL-gzGzoHsz", "cEc5NtouoT5gS22x2xD9CUnO");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 

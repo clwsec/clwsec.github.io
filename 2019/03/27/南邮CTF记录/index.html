@@ -15,13 +15,6 @@
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
 
 
 
@@ -95,13 +88,13 @@
 
 
 
-<meta name="description" content="前言：记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。如想查看完整的writeup，可参考：   NCTF 南京邮电大学网络攻防训练平台 WriteUp 南京邮电大学网络攻防训练平台writeup   GBK Injection1.记录此题，主要学习关于宽字节注入。原理：在GBK编码时，mysql会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过">
+<meta name="description" content="你帮我一次，我记你终生">
 <meta name="keywords" content="CTF,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="南邮CTF记录">
 <meta property="og:url" content="https://clwsec.top/2019/03/27/南邮CTF记录/index.html">
 <meta property="og:site_name" content="煊奕">
-<meta property="og:description" content="前言：记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。如想查看完整的writeup，可参考：   NCTF 南京邮电大学网络攻防训练平台 WriteUp 南京邮电大学网络攻防训练平台writeup   GBK Injection1.记录此题，主要学习关于宽字节注入。原理：在GBK编码时，mysql会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过">
+<meta property="og:description" content="你帮我一次，我记你终生">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-966090cab3ae75e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -112,10 +105,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1fb52b0e98e93f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5b135c20de748bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0a8ba41111729a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-27T14:40:48.295Z">
+<meta property="og:updated_time" content="2019-04-01T15:55:53.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="南邮CTF记录">
-<meta name="twitter:description" content="前言：记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。如想查看完整的writeup，可参考：   NCTF 南京邮电大学网络攻防训练平台 WriteUp 南京邮电大学网络攻防训练平台writeup   GBK Injection1.记录此题，主要学习关于宽字节注入。原理：在GBK编码时，mysql会认为两个字符是一个汉字（在前一个字节的ascii码大于128的情况下）。而经过">
+<meta name="twitter:description" content="你帮我一次，我记你终生">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -335,19 +328,7 @@
             
 
             
-              <span class="post-meta-divider">|</span>
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-27T22:40:48+08:00">
-                2019-03-27
-              </time>
             
           </span>
 
@@ -381,17 +362,6 @@
 
           
           
-             <span id="/2019/03/27/南邮CTF记录/" class="leancloud_visitors" data-flag-title="南邮CTF记录">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
           
           
@@ -407,7 +377,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  1.4k
                 </span>
               
 
@@ -432,7 +402,10 @@
       
 
       
-        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。<br>如想查看完整的writeup，可参考：</p>
+        <blockquote class="blockquote-center">你帮我一次，我记你终生</blockquote>
+
+<a id="more"></a>
+<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>记录一些题，继续学习。主要记录自己不懂得或忘记的，写的不好，还请谅解。<br>如想查看完整的writeup，可参考：</p>
 <blockquote>
 <ol>
 <li><a href="https://blog.csdn.net/qq_31481187/article/details/52097287#t33" target="_blank" rel="noopener">NCTF 南京邮电大学网络攻防训练平台 WriteUp</a></li>
@@ -784,7 +757,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.5k</span>
+    <span title="Site words total count">34.7k</span>
   
 </div>
 
@@ -977,113 +950,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("G6dqnRdCxLa2gzB6qMGY7QCL-gzGzoHsz", "cEc5NtouoT5gS22x2xD9CUnO");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
