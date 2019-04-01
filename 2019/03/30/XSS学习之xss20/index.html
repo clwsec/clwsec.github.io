@@ -10,6 +10,21 @@
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
 <meta name="theme-color" content="#222">
 
 
@@ -145,7 +160,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-85d3110e122be577.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-c8f12972b79d831c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-96c7b6a717e30caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-30T12:34:25.205Z">
+<meta property="og:updated_time" content="2019-03-30T15:12:12.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS学习之xss20">
 <meta name="twitter:description" content="前言这是比较简单的xss练习小游戏，非常适合入门。一直以来，对xss的内容总感觉有一些屏障，应该是因为动手实践太少。所以，趁此机会，好好学习一番，打好基础，以后再继续深入。 关于xss1.概念：XSS攻击全称跨站脚本攻击（Cross-Site Scripting，XSS）是一种经常出现在 WEB 应用程序中的计算机安全漏洞。其是由于 WEB 应用程序对用户的输入过滤不足而产生的。攻击者利用网站漏洞">
@@ -355,6 +370,7 @@
         <div class="post-meta">
           <span class="post-time">
             
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -377,7 +393,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-30T20:34:25+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-30T23:12:12+08:00">
                 2019-03-30
               </time>
             
@@ -513,12 +529,12 @@
 <p>注意：只有在<code>htmlspecialchars($str)</code>函数未指定第二个参数flag时，即<code>ENT_COMPAT</code> 时，可用于闭合单引号情况的输入。如：此次输入的<code>value</code>就是单引号闭合</p>
 <p>3.使用<code>1&#39;onclick=&#39;window.alert()</code>试试，成功<br><img src="https://upload-images.jianshu.io/upload_images/9216631-9a75d4dcedaa2537.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <hr>
-<p>####level4<br>1.先提交上题的<code>1&#39;onclick=&#39;window.alert(1)</code>试试，发现闭合为双引号：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-a3ccdbcacd47f8bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h4><p>1.先提交上题的<code>1&#39;onclick=&#39;window.alert(1)</code>试试，发现闭合为双引号：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-a3ccdbcacd47f8bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>2.改用双引号，<code>1&quot;onclick=&quot;window.alert(1)</code>成功。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-bf45c24c5f871a34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>发现这个题也是没有在输入处进行HTML实体转换。可以看看源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 align=center&gt;欢迎来到level4&lt;/h1&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = $_GET[<span class="string">"keyword"</span>];</span><br><span class="line">$str2=str_replace(<span class="string">"&gt;"</span>,<span class="string">""</span>,$str);</span><br><span class="line">$str3=str_replace(<span class="string">"&lt;"</span>,<span class="string">""</span>,$str2);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;没有找到和"</span>.htmlspecialchars($str).<span class="string">"相关的结果.&lt;/h2&gt;"</span>.<span class="string">'&lt;center&gt;</span></span><br><span class="line"><span class="string">&lt;form action=level4.php method=GET&gt;</span></span><br><span class="line"><span class="string">&lt;input name=keyword  value="'</span>.$str3.<span class="string">'"&gt;</span></span><br><span class="line"><span class="string">&lt;input type=submit name=submit value=搜索 /&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&lt;/center&gt;'</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>这里多了对<code>&lt;</code>和<code>&gt;</code>的过滤<code>$str2=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str);</code> <code>$str3=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str2);</code> 但我们所构造的也已经绕过了。</p>
 <hr>
-<p>####level5<br>1.提交上题的payload,发现：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-78893a7397ded325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h4 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h4><p>1.提交上题的payload,发现：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-78893a7397ded325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>这种过滤比较麻烦，不好绕过。先试试大小写:<code>1&quot;Onclick=&quot;window.alert(1)</code> 没用，提示同样的错误。</p>
 <p>2.说明带有on的事件都不可以使用了，测试发现<code>&lt;script</code>也不可用(前面的<code>script</code>变了，但后面的没变，说明不是针对<code>script</code>，而是<code>&lt;script</code>)。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-c41e526f63b344d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>继续观察发现，在输入处并没有对<code>&lt;</code>和<code>&gt;</code>进行转义。所以，这里使用另一种方法：<code>javascript:alert(1)</code> 构造：<code>&quot;&gt;&lt;a href=&quot;javascript:alert(&#39;1&#39;)&quot;&gt;try&lt;/a&gt;&quot;</code> 结果如下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-6fd15cfe1f095d31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
@@ -684,8 +700,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/27/南邮CTF记录/" rel="next" title="南邮CTF记录">
-                <i class="fa fa-chevron-left"></i> 南邮CTF记录
+              <a href="/2019/03/29/实验吧web记录/" rel="next" title="实验吧Web记录">
+                <i class="fa fa-chevron-left"></i> 实验吧Web记录
               </a>
             
           </div>
@@ -771,7 +787,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -887,7 +903,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于xss"><span class="nav-number">2.</span> <span class="nav-text">关于xss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始实践"><span class="nav-number">3.</span> <span class="nav-text">开始实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#level1"><span class="nav-number">3.1.</span> <span class="nav-text">level1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level2"><span class="nav-number">3.2.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level3"><span class="nav-number">3.3.</span> <span class="nav-text">level3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level6"><span class="nav-number">3.4.</span> <span class="nav-text">level6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level7"><span class="nav-number">3.5.</span> <span class="nav-text">level7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level8"><span class="nav-number">3.6.</span> <span class="nav-text">level8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level9"><span class="nav-number">3.7.</span> <span class="nav-text">level9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level10"><span class="nav-number">3.8.</span> <span class="nav-text">level10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level11"><span class="nav-number">3.9.</span> <span class="nav-text">level11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level12"><span class="nav-number">3.10.</span> <span class="nav-text">level12</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level13"><span class="nav-number">3.11.</span> <span class="nav-text">level13</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level14"><span class="nav-number">3.12.</span> <span class="nav-text">level14</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level15"><span class="nav-number">3.13.</span> <span class="nav-text">level15</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level16"><span class="nav-number">3.14.</span> <span class="nav-text">level16</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level17"><span class="nav-number">3.15.</span> <span class="nav-text">level17</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level18"><span class="nav-number">3.16.</span> <span class="nav-text">level18</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level19"><span class="nav-number">3.17.</span> <span class="nav-text">level19</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level20"><span class="nav-number">3.18.</span> <span class="nav-text">level20</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于xss"><span class="nav-number">2.</span> <span class="nav-text">关于xss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始实践"><span class="nav-number">3.</span> <span class="nav-text">开始实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#level1"><span class="nav-number">3.1.</span> <span class="nav-text">level1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level2"><span class="nav-number">3.2.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level3"><span class="nav-number">3.3.</span> <span class="nav-text">level3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level4"><span class="nav-number">3.4.</span> <span class="nav-text">level4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level5"><span class="nav-number">3.5.</span> <span class="nav-text">level5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level6"><span class="nav-number">3.6.</span> <span class="nav-text">level6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level7"><span class="nav-number">3.7.</span> <span class="nav-text">level7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level8"><span class="nav-number">3.8.</span> <span class="nav-text">level8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level9"><span class="nav-number">3.9.</span> <span class="nav-text">level9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level10"><span class="nav-number">3.10.</span> <span class="nav-text">level10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level11"><span class="nav-number">3.11.</span> <span class="nav-text">level11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level12"><span class="nav-number">3.12.</span> <span class="nav-text">level12</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level13"><span class="nav-number">3.13.</span> <span class="nav-text">level13</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level14"><span class="nav-number">3.14.</span> <span class="nav-text">level14</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level15"><span class="nav-number">3.15.</span> <span class="nav-text">level15</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level16"><span class="nav-number">3.16.</span> <span class="nav-text">level16</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level17"><span class="nav-number">3.17.</span> <span class="nav-text">level17</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level18"><span class="nav-number">3.18.</span> <span class="nav-text">level18</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level19"><span class="nav-number">3.19.</span> <span class="nav-text">level19</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#level20"><span class="nav-number">3.20.</span> <span class="nav-text">level20</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
@@ -922,7 +938,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.4k</span>
+    <span title="Site words total count">34.6k</span>
   
 </div>
 

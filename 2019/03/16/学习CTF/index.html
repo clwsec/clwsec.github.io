@@ -10,6 +10,21 @@
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
 <meta name="theme-color" content="#222">
 
 
@@ -119,7 +134,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-36b6ba4c6cb50f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1aae578db606c3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-caba7a504a3d98b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-27T14:41:19.604Z">
+<meta property="og:updated_time" content="2019-03-31T10:44:10.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习CTF">
 <meta name="twitter:description" content="前言：此文用于记录做BugkuCTF时遇到的知识，主要为了巩固和查阅。  记录各种知识1.stripos(字符串a，字符串b)函数查找字符串b在字符串a中第一次出现的位置（不区分大小写）2.file_get_contents 将整个文件读入一个字符串3.eregi(&amp;quot;111&amp;quot;.substr($b,0,1),&amp;quot;1114&amp;quot;) 判断”1114”这个字符串里面是否有">
@@ -329,6 +344,7 @@
         <div class="post-meta">
           <span class="post-time">
             
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -351,8 +367,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-27T22:41:19+08:00">
-                2019-03-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-31T18:44:10+08:00">
+                2019-03-31
               </time>
             
           </span>
@@ -705,7 +721,7 @@ b2/.DS_Store</code><br><img src="https://upload-images.jianshu.io/upload_images/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -856,7 +872,7 @@ b2/.DS_Store</code><br><img src="https://upload-images.jianshu.io/upload_images/
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.4k</span>
+    <span title="Site words total count">34.6k</span>
   
 </div>
 
