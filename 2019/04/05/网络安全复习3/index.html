@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="总结,网络安全,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="煊奕" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="借我杀死庸碌的情怀，借我纵容的悲怆与哭喊">
+<meta name="keywords" content="总结,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全复习3">
+<meta property="og:url" content="https://clwsec.top/2019/04/05/网络安全复习3/index.html">
+<meta property="og:site_name" content="煊奕">
+<meta property="og:description" content="借我杀死庸碌的情怀，借我纵容的悲怆与哭喊">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-05T12:18:00.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全复习3">
+<meta name="twitter:description" content="借我杀死庸碌的情怀，借我纵容的悲怆与哭喊">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.top/2019/04/05/网络安全复习3/">
+
+
+
+
+
+  <title>网络安全复习3 | 煊奕</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">煊奕</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/04/05/网络安全复习3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="煊奕">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络安全复习3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-05T19:09:41+08:00">
+                2019-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/summary/" itemprop="url" rel="index">
+                    <span itemprop="name">summary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center">借我杀死庸碌的情怀，借我纵容的悲怆与哭喊</blockquote>
+
+<a id="more"></a>
+<h3 id="拒绝服务"><a href="#拒绝服务" class="headerlink" title="拒绝服务"></a>拒绝服务</h3><p>拒绝服务（Denial of Service，DoS）:一种破坏性攻击，通常利用传输协议弱点、系统漏洞、服务漏洞对目标系统发起大规模进攻，用超出目标处理能力的海量数据包消耗可用系统资源、带宽资源等，或造成程序缓冲区溢出错误，致使其无法处理合法用户的请求，无法提供正常服务，最终致使网络服务瘫痪，甚至系统死机。</p>
+<h4 id="拒绝服务攻击的类型"><a href="#拒绝服务攻击的类型" class="headerlink" title="拒绝服务攻击的类型"></a>拒绝服务攻击的类型</h4><p>1.网络带宽攻击：极大的通信量使可用的网络资源被消耗殆尽，最终导致合法用户请求无法通过<br>2.连通性攻击：大量的连接请求冲击计算机，使得所有可用的系统资源被消耗殆尽，最终计算机无法处理合法用户请求<br>3.滥用合理的服务请求：过度请求系统的正常服务，占用过多服务资源，致使系统超载。如执行耗时操作（数据库查询，读写文件）、消耗开放连接数等<br>4.利用传输协议缺陷，构造畸形的数据包并发送，导致目标主机无法处理，出现错误或崩溃<br>5.利用服务程序的漏洞，针对服务程序的特定漏洞，发送一些有针对性的特殊格式的数据，导致服务处理错误而拒绝服务</p>
+<h4 id="典型拒绝服务攻击技术"><a href="#典型拒绝服务攻击技术" class="headerlink" title="典型拒绝服务攻击技术"></a>典型拒绝服务攻击技术</h4><h5 id="Ping-of-Death（死亡之Ping）"><a href="#Ping-of-Death（死亡之Ping）" class="headerlink" title="Ping of Death（死亡之Ping）"></a>Ping of Death（死亡之Ping）</h5><p>1.ICMP报文长度固定（64KB），很多操作系统只开辟64KB的缓存区用于存放ICMP数据包,如果ICMP数据包的实际尺寸超过64KB，就产生缓存溢出，导致TCP/IP协议堆栈崩溃，造成主机重启或死机<br>2.<code>ping –l</code>：指定发送数据包的尺寸：<code>Ping -l 65540 192.168.xxx.xxx</code><br>3.现在的操作系统已修补了这一漏洞</p>
+<h5 id="泪滴（分片攻击，Teardrop）"><a href="#泪滴（分片攻击，Teardrop）" class="headerlink" title="泪滴（分片攻击，Teardrop）"></a>泪滴（分片攻击，Teardrop）</h5><p>利用TCP/IP协议缺陷，首个实现攻击的程序名为Teardrop</p>
+<p>1.如果传输的数据无法在一个报文中传输完成，就会被分片，传送到目标主机后再到堆栈中进行重组，该过程称为“分片”<br>2.为能进行数据重组，TCP首部包含——分片识别号、偏移量、数据长度、标志位，目标主机据此将各分片重组还原<br>3.信息到达目的主机后在堆栈中重组，由于畸形分片的存在，会导致重组出错，错误并不仅仅是影响到重组数据，由于协议重组算法会导致内存错误，引起协议栈的崩溃</p>
+<h5 id="UDP泛洪（UDP-Flood）"><a href="#UDP泛洪（UDP-Flood）" class="headerlink" title="UDP泛洪（UDP Flood）"></a>UDP泛洪（UDP Flood）</h5><p>1.利用主机自动回复的服务（如使用UDP协议的chargen和echo）进行攻击</p>
+<ul>
+<li>echo：回显接收到的数据包</li>
+<li>chargen：收到数据包时随机反馈一些字符，用作测试</li>
+</ul>
+<p>2.一方的输出成为另一方的输入，两台主机间会形成大量的UDP数据包。当多个系统之间互相产生UDP数据包时，最终将导致整个网络瘫痪</p>
+<h5 id="SYN泛洪（SYN-Flood）"><a href="#SYN泛洪（SYN-Flood）" class="headerlink" title="SYN泛洪（SYN Flood）"></a>SYN泛洪（SYN Flood）</h5><p>1.利用TCP协议缺陷，发送大量伪造的TCP连接请求，使被攻击方资源耗尽(CPU满负荷或内存不足)<br>2.利用TCP的三次握手：客户端向服务器发送SYN后突然死机或掉线，服务器在发出SYN/ACK报文后无法收到客户端的ACK报文，一般会重试3-5次，并等待一段时间（可能几分钟）后丢弃该连接。这段时间称为SYN Timeout<br>3.攻击者大量伪造IP地址，服务器将为维护一个非常大的半连接而消耗非常多的资源</p>
+<p>4.防御：SYN泛洪较难防御，以下是几种解决方法</p>
+<ul>
+<li>缩短SYN Timeout时间</li>
+<li>设置SYN Cookie：给每个请求连接的IP分配一个Cookie，如果短时间内连续收到某个IP的重复SYN报文，就认定是攻击，丢弃以后来自该IP地址的包</li>
+<li>负反馈策略 ：一旦SYN半连接的数量超过系统中TCP活动半连接最大连接数的设置，系统将认为受到攻击并作出反应：减短SYN Timeout时间、减少SYN-ACK的重试次数、自动对缓冲区中的报文进行延时等措施</li>
+<li>退让策略 ：<br>SYN Flood攻击的缺陷： 一旦攻击开始，将不会再进行域名解析<br>服务器受到攻击后迅速更换IP地址，那么攻击者攻击的将是一个空的IP地址，而防御方只要将DNS解析更改到新的IP地址就能在很短的时间内恢复用户通过<br>为迷惑攻击者，甚至可以放置一台“牺牲”服务器让攻击者满足于攻击的“效果” （蜜罐）</li>
+<li>分布式DNS负载均衡：将用户的请求分配到不同IP的服务器主机上</li>
+<li>防火墙：识别SYN Flood攻击所采用的攻击方法，并将攻击包阻挡在外</li>
+</ul>
+<h5 id="Land攻击"><a href="#Land攻击" class="headerlink" title="Land攻击"></a>Land攻击</h5><p>1.原理: 向目标发送大量的源地址和目标地址相同的包，造成目标主机解析时占用大量的系统资源，从而使网络功能完全瘫痪<br>2.检测方法：判断网络数据包的源/目标地址是否相同<br>3.反攻击方法：适当配置防火墙或路由器的过滤规则（入口过滤）可以防止攻击，并对攻击进行审计</p>
+<h5 id="Smurf攻击"><a href="#Smurf攻击" class="headerlink" title="Smurf攻击"></a>Smurf攻击</h5><p>1.将源地址设置为被攻击主机的地址，而将目的地址设置为广播地址，于是大量的ICMP echo回应包被发送给被攻击主机，使其因网络阻塞而无法提供服务<br>2.不仅影响目标主机，还能影响目标主机的整个网络系统</p>
+<h5 id="Fraggle攻击"><a href="#Fraggle攻击" class="headerlink" title="Fraggle攻击"></a>Fraggle攻击</h5><p>1.原理与Smurf一样，采用向广播地址发送数据包，利用广播的特性将攻击放大以使目标主机拒绝服务<br>2.不同：Fraggle使用的是UDP应答消息而非ICMP</p>
+<h5 id="畸形消息攻击"><a href="#畸形消息攻击" class="headerlink" title="畸形消息攻击"></a>畸形消息攻击</h5><p>1.有针对性的攻击方式，利用目标主机或特定服务的安全漏洞进行攻击<br>2.操作系统上的许多服务在处理信息之前没有进行适当的错误校验，所以一旦收到畸形信息就有可能会崩溃</p>
+<h5 id="Slashdot-effect"><a href="#Slashdot-effect" class="headerlink" title="Slashdot effect"></a>Slashdot effect</h5><p>瞬间产生大量进入某网站的动作称作Slashdotting，使web服务器或其他类型的服务器由于大量的网络传输而过载</p>
+<h5 id="WinNuke攻击（带外传输攻击）"><a href="#WinNuke攻击（带外传输攻击）" class="headerlink" title="WinNuke攻击（带外传输攻击）"></a>WinNuke攻击（带外传输攻击）</h5><p>1.特征是攻击目标端口，通常是139、138、137、113、53<br>2.TCP中使用带外数据（Out of Band，OOB）来传送一些比较特殊（如紧急）的数据。在紧急模式下，发送的TCP数据包包含URG标志和16位URG指针<br>3.WinNuke攻击制造这种报文，但其指针字段与数据的实际位置不符，即存在重合。WINDOWS操作系统在处理这些数据时，就会崩溃<br>4.特征：目标端口通常是139、138、137、113、53，而且URG位设为“1”<br>5.检测方法：判断目标端口是否为139、138、137等，并判断URG位是否为“1”<br>6.反攻击方法：适当配置防火墙或过滤路由器可以防止这种攻击手段（丢弃该数据包），并对攻击进行审计（记录事件发生的时间，源主机和目标主机的MAC地址和IP地址）</p>
+<h5 id="分布式拒绝服务DDoS-Distributed-DoS"><a href="#分布式拒绝服务DDoS-Distributed-DoS" class="headerlink" title="分布式拒绝服务DDoS (Distributed DoS)"></a>分布式拒绝服务DDoS (Distributed DoS)</h5><p>1.通过控制分布在网络各处的数百甚至数万台傀儡主机（肉机），发动它们同时向攻击目标进行DoS攻击<br>2.被DDoS攻击时的现象</p>
+<ul>
+<li>被攻击主机上有大量等待的TCP连接</li>
+<li>网络中充斥着大量的无用数据包，源地址为假</li>
+<li>制造高流量无用数据，造成网络拥塞，使受害主机无法正常和外界通讯</li>
+<li>利用受害主机提供的服务或传输协议的缺陷，反复高速发出特定的服务请求，使受害主机无法及时处理正常请求</li>
+<li>严重时会造成系统死机</li>
+<li>DDoS攻击期间，用户发出正常的页面请求，请求会完全失败，或者页面下载速度极其缓慢，看起来就是站点无法使用</li>
+</ul>
+<p>3.DDoS的工具：Trinoo，TFN2K，Stacheldraht<br>4.防御的困难之处——不容易定位攻击者</p>
+<ul>
+<li>Internet上绝大多数网络都不限制源地址，即伪造源地址非常容易</li>
+<li>很难溯源找到攻击控制端的位置</li>
+<li>各种反射式攻击，无法定位源攻击者</li>
+</ul>
+<h4 id="拒绝服务攻击的防御"><a href="#拒绝服务攻击的防御" class="headerlink" title="拒绝服务攻击的防御"></a>拒绝服务攻击的防御</h4><p>1.DoS的防御方法：</p>
+<ul>
+<li>有效完善的设计</li>
+<li>带宽限制：限制基于协议的带宽。例如，端口25只能使用25％的带宽，端口80只能使用50％的带宽</li>
+<li>及时给系统安装补丁</li>
+<li>运行尽可能少的服务</li>
+<li>只允许必要的通信</li>
+<li>封锁敌意IP地址</li>
+</ul>
+<p>2.分布式拒绝服务攻击的监测</p>
+<ul>
+<li>监测DDoS时常犯的错误是只搜索那些DDoS工具的缺省特征字符串、缺省端口、缺省口令等</li>
+<li>还应着重观察分析DDoS的普遍特征：异常的网络通信流量</li>
+</ul>
+<p>3.分布式拒绝服务攻击的防御</p>
+<ul>
+<li>优化网络和路由结构:  提供的服务不仅要有多条与Internet的连接，而且最好有不同地理区域的连接。服务器IP地址越分散，攻击者定位目标的难度就越大，当问题发生时，所有通信可以被重新路由，可以大大降低其影响</li>
+<li>保护网络及主机系统安全</li>
+<li>安装入侵检测系统</li>
+<li>与ISP服务商合作： DDoS非常重要的特点是泛洪般的网络流量，单凭自己管理网络无法对付这些攻击。当受到攻击时与ISP协商，确定发起攻击的IP地址，请求ISP实施正确的路由访问控制策略，封锁来自敌意IP地址的数据包，减轻网络负担，保护带宽和内部网络</li>
+<li>使用扫描工具：一些专业工具或大多数商业的漏洞扫描程序都能检测到系统是否被用作DDoS服务器，如Find_DDoS，SARA，DDoSPing v2.0， RID</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.top/2019/04/05/网络安全复习3/" title="网络安全复习3">https://clwsec.top/2019/04/05/网络安全复习3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"> <i class="fa fa-tag"></i> 总结</a>
+          
+            <a href="/tags/网络安全/" rel="tag"> <i class="fa fa-tag"></i> 网络安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/05/网络安全复习2/" rel="next" title="网络安全复习2">
+                <i class="fa fa-chevron-left"></i> 网络安全复习2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤 荒于嬉 行成于思 毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="email:clwsec@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/7e18a3f52ba3" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="qq:740455490" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#拒绝服务"><span class="nav-number">1.</span> <span class="nav-text">拒绝服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝服务攻击的类型"><span class="nav-number">1.1.</span> <span class="nav-text">拒绝服务攻击的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#典型拒绝服务攻击技术"><span class="nav-number">1.2.</span> <span class="nav-text">典型拒绝服务攻击技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ping-of-Death（死亡之Ping）"><span class="nav-number">1.2.1.</span> <span class="nav-text">Ping of Death（死亡之Ping）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#泪滴（分片攻击，Teardrop）"><span class="nav-number">1.2.2.</span> <span class="nav-text">泪滴（分片攻击，Teardrop）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UDP泛洪（UDP-Flood）"><span class="nav-number">1.2.3.</span> <span class="nav-text">UDP泛洪（UDP Flood）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SYN泛洪（SYN-Flood）"><span class="nav-number">1.2.4.</span> <span class="nav-text">SYN泛洪（SYN Flood）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Land攻击"><span class="nav-number">1.2.5.</span> <span class="nav-text">Land攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Smurf攻击"><span class="nav-number">1.2.6.</span> <span class="nav-text">Smurf攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fraggle攻击"><span class="nav-number">1.2.7.</span> <span class="nav-text">Fraggle攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#畸形消息攻击"><span class="nav-number">1.2.8.</span> <span class="nav-text">畸形消息攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Slashdot-effect"><span class="nav-number">1.2.9.</span> <span class="nav-text">Slashdot effect</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#WinNuke攻击（带外传输攻击）"><span class="nav-number">1.2.10.</span> <span class="nav-text">WinNuke攻击（带外传输攻击）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式拒绝服务DDoS-Distributed-DoS"><span class="nav-number">1.2.11.</span> <span class="nav-text">分布式拒绝服务DDoS (Distributed DoS)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝服务攻击的防御"><span class="nav-number">1.3.</span> <span class="nav-text">拒绝服务攻击的防御</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">47.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

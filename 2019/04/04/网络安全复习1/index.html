@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="总结,网络安全,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="煊奕" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="水滴石穿，非一日之功">
+<meta name="keywords" content="总结,网络安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全复习1">
+<meta property="og:url" content="https://clwsec.top/2019/04/04/网络安全复习1/index.html">
+<meta property="og:site_name" content="煊奕">
+<meta property="og:description" content="水滴石穿，非一日之功">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/04/ARF3Af.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/04/A2j6OS.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/04/ARAGlQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/05/ARtK76.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/05/ARNlbq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/05/ARJxZ6.png">
+<meta property="og:updated_time" content="2019-04-05T12:19:07.046Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全复习1">
+<meta name="twitter:description" content="水滴石穿，非一日之功">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/04/ARF3Af.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.top/2019/04/04/网络安全复习1/">
+
+
+
+
+
+  <title>网络安全复习1 | 煊奕</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">煊奕</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/04/04/网络安全复习1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="煊奕">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络安全复习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-04T21:10:20+08:00">
+                2019-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/summary/" itemprop="url" rel="index">
+                    <span itemprop="name">summary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center">水滴石穿，非一日之功</blockquote>
+
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>昨天复习了一些关于面试或笔试中的问题。突然发现，之前学的基本都忘了，或者说根本就没有真的学好（考虑了一下，发现学的时候一是初识，本就难懂。二是时间不够，几门课同时进行，根本没有足够的时间弄清）所以，打算好好进行一次复习。文中内容基本上是上课时的课件内容，做了一些整理，便于查看。</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="网络安全的三个基本属性：CIA三元组"><a href="#网络安全的三个基本属性：CIA三元组" class="headerlink" title="网络安全的三个基本属性：CIA三元组"></a>网络安全的三个基本属性：CIA三元组</h4><ul>
+<li>机密性 Confidentiality</li>
+<li>完整性 Integrity</li>
+<li>可用性 Availability</li>
+</ul>
+<h4 id="网络安全的基本需求"><a href="#网络安全的基本需求" class="headerlink" title="网络安全的基本需求"></a>网络安全的基本需求</h4><p>可靠性、可用性、机密性、完整性、不可抵赖性、可控性、可审查性、真实性</p>
+<h4 id="网络安全主要威胁来源"><a href="#网络安全主要威胁来源" class="headerlink" title="网络安全主要威胁来源"></a>网络安全主要威胁来源</h4><p><img src="https://s2.ax1x.com/2019/04/04/ARF3Af.png" alt></p>
+<h4 id="计算机信息系统安全保护"><a href="#计算机信息系统安全保护" class="headerlink" title="计算机信息系统安全保护"></a>计算机信息系统安全保护</h4><p>1.我国：1999年发布计算机信息系统安全保护等级划分准则（Classified Criteria for Security Protection of Computer Information System）—GB17859-1999</p>
+<p>GB17859-1999各等级安全保护能力（5个安全保护级别）</p>
+<p><img src="https://s2.ax1x.com/2019/04/04/A2j6OS.md.png" alt></p>
+<p>2.TCSEC（Trusted Computer Evaluation Criteria，可信计算机系统评估准则，美国国防部标准（1983）；4类7级）</p>
+<ul>
+<li>D级  ：安全保护欠缺级</li>
+<li>C1级：自主安全保护级</li>
+<li>C2级：受控存取保护级</li>
+<li>B1级：标记安全保护级</li>
+<li>B2级：结构化保护级</li>
+<li>B3级：安全域保护级</li>
+<li>A级  ：验证设计级</li>
+</ul>
+<h4 id="公布漏洞的权威机构"><a href="#公布漏洞的权威机构" class="headerlink" title="公布漏洞的权威机构"></a>公布漏洞的权威机构</h4><p>1.<a href="http://cve.mitre.org" target="_blank" rel="noopener">CVE(Common Vulnerability and Exposures)</a>：对每个漏洞进行编号、审查。CVE编号通常也是应用漏洞的标准方式；已成为安全漏洞命名索引的业界事实标准<br>2.<a href="http://www.cert.org" target="_blank" rel="noopener">CERT(Computer Emergency Response Team，计算机应急响应中心)</a><br>3.微软的安全中心</p>
+<h4 id="网络攻击分类"><a href="#网络攻击分类" class="headerlink" title="网络攻击分类"></a>网络攻击分类</h4><p>1.从安全属性上分，可分为5类</p>
+<ul>
+<li>阻断攻击</li>
+<li>截取攻击</li>
+<li>篡改攻击</li>
+<li>伪造攻击</li>
+<li>重放攻击</li>
+</ul>
+<p>2.从攻击方式上可分为</p>
+<ul>
+<li>主动攻击</li>
+<li>被动攻击</li>
+</ul>
+<h4 id="安全策略"><a href="#安全策略" class="headerlink" title="安全策略"></a>安全策略</h4><p>1.定义：安全策略是赋予了组织机构技术和信息资源使用权的人员必须遵守的准则的正规陈述，即安全策略是一套含有组织机构计算机安全规则细节的文档</p>
+<p>2.安全策略用作网络中安全系统设计和运行的指导方针，安全策略也可用作衡量组织安全的尺度</p>
+<h4 id="OSI安全体系结构"><a href="#OSI安全体系结构" class="headerlink" title="OSI安全体系结构"></a>OSI安全体系结构</h4><p>主要考虑信息安全的三个方面：</p>
+<p>1.安全服务（RFC 2828定义）：  一种由系统提供的对系统资源进行特殊保护的处理或通信服务</p>
+<p>2.安全机制：保护信息安全所采用的手段。用来保护系统免受侦听、阻止安全攻击及恢复系统的机制</p>
+<p>3.安全攻击</p>
+<h4 id="OSI安全体系结构的5类安全服务"><a href="#OSI安全体系结构的5类安全服务" class="headerlink" title="OSI安全体系结构的5类安全服务"></a>OSI安全体系结构的5类安全服务</h4><p>1.机密性<br>2.完整性<br>3.不可否认性<br>4.访问控制<br>5.鉴别</p>
+<h4 id="OSI安全体系结构的8种安全机制"><a href="#OSI安全体系结构的8种安全机制" class="headerlink" title="OSI安全体系结构的8种安全机制"></a>OSI安全体系结构的8种安全机制</h4><p>加密、访问控制、公证、路由控制、流量填充、身份认证交换、数字签名、信息完整性</p>
+<hr>
+<h3 id="攻击流程"><a href="#攻击流程" class="headerlink" title="攻击流程"></a>攻击流程</h3><h4 id="黑客攻击的流程"><a href="#黑客攻击的流程" class="headerlink" title="黑客攻击的流程"></a>黑客攻击的流程</h4><p><img src="https://s2.ax1x.com/2019/04/04/ARAGlQ.png" alt></p>
+<p>1.踩点（Footprinting）：确定目标地址范围、查询名字空间、并收集信息；关键在于不要漏掉任何细节<br>2.扫描（Scaning）：评估目标系统，识别监听业务，使攻击者将精力集中于最有希望攻克的途径<br>3.查点（Enumeration）：识别目标系统上合法用户账户和保护力不够的共享资源<br>4.获取访问权限（Gaining Access）：利用收集的足够数据，尝试访问目标系统<br>5.提权（Escalating privilege）：如果上步只是普通用户访问权限，则寻找系统的完全控制，提升用户权限以实现对系统的完全控制<br>6.窃取信息（Pilfering）：再次进行信息获取，以确定目标系统的入侵机制和途径<br>7.掩踪灭迹（Covering Tracks）：为避免被系统管理员发现，当务之急是掩盖来访踪迹<br>8.创建后门（Create backdoor）：在系统中留下后门和陷阱，为下次入侵创造条件<br>9.拒接服务：如果无法取得特权，但又志在必得，那就最后一招—使用准备好的漏洞代码来使目标系统瘫痪</p>
+<h3 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h3><h4 id="踩点（footprinting）：收集目标信息的技巧"><a href="#踩点（footprinting）：收集目标信息的技巧" class="headerlink" title="踩点（footprinting）：收集目标信息的技巧"></a>踩点（footprinting）：收集目标信息的技巧</h4><p>1.从公开渠道查出该组织使用的域名、网络地址块、与因特网相联的系统的IP地址以及与信息安防现状有关的其他细节等</p>
+<p>2.途径：</p>
+<ul>
+<li>公开渠道获取信息</li>
+<li>WHOIS查询：域名，IP地址查询</li>
+<li>DNS查询：nslookup, dig, fierce</li>
+<li>网络侦查：尝试确定网络的拓扑结构和可能存在的网络访问路径</li>
+</ul>
+<h4 id="区域传送（zone-transfer）"><a href="#区域传送（zone-transfer）" class="headerlink" title="区域传送（zone transfer）"></a>区域传送（zone transfer）</h4><p>1.后备服务器使用主服务器的数据刷新自己的数据库，以防止主域名服务器因意外故障变得不可用时影响到全局</p>
+<p>2.允许不受信任的因特网用户执行DNS区域传送是最严重的错误配置之一</p>
+<p>3.安全问题：在没有使用公用/私用DNS机制来分割外部公用/内部私用DNS信息时，内部主机名和IP地址都暴露给了攻击者</p>
+<h4 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h4><p>1.对比<br>踩点⟺在一个区域内寻找有用信息<br>扫描⟺逐寸敲打墙壁以期找出所有门窗</p>
+<p>2.扫描的基本步骤：<br>确定目标系统是否真实存在-&gt;确定目标系统上哪些服务正在运行或监听-&gt;探查操作系统</p>
+<p>3.目标系统扫描</p>
+<ul>
+<li>基本的ping：向目标发ICMP ECHO（类型8）数据包，如返回 ICMP ECHO_REPLY数据包（类型0），说明目标系统真实存在</li>
+<li>nmap –sP 适用于windows和linux<br>若目标系统阻断了ICMP数据包，可尝试通过<code>-PT</code>选项指定的端口（通常是80端口）进行TCP ping扫描； 该选项向目标网络发出TCP ACK数据包并根据返回的RST数据包判断活跃主机</li>
+</ul>
+<p>4.端口扫描：</p>
+<p>主动连接目标系统的TCP和UDP端口以确定哪些服务正在运行或处于LISTENING（监听）状态</p>
+<p><strong>主要目的：</strong></p>
+<ul>
+<li>确定运行的TCP/UDP服务</li>
+<li>确定操作系统的具体类型</li>
+<li>确定提供服务的应用程序名称和版本</li>
+</ul>
+<p>5.探查操作系统</p>
+<p>主要技术：</p>
+<ul>
+<li>旗标抓取技术</li>
+<li>协议栈指纹分析技术（更准确），可分为：<br>主动式协议栈指纹分析技术和被动式协议栈指纹分析技术</li>
+</ul>
+<p>协议栈指纹分析技术的工作原理：</p>
+<ul>
+<li>不同厂家的IP协议栈实现存在着许多细微的差别</li>
+<li>探查这些差异，就能对目标系统做出有依据的判断</li>
+</ul>
+<h4 id="扫描类型"><a href="#扫描类型" class="headerlink" title="扫描类型"></a>扫描类型</h4><p>1.TCP连接扫描（TCP Connect()扫描;nmap -sT）: 连接目标端口并完成一次完整的三次握手过程；</p>
+<p><img src="https://s2.ax1x.com/2019/04/05/ARtK76.png" alt></p>
+<p>缺点：很容易被目标系统觉察</p>
+<p>2.TCP SYN扫描(半开扫描;nmap -sS)：向目标端口送SYN数据包<br>若返回SYN/ACK数据包，可以断定该端口处于监听状态<br>若返回RST/ACK数据包，通常表明该端口不在监听状态<br>然后，扫描者送出一个RST/ACK数据包（使通信双方永远不会建立一条完整连接）</p>
+<p>优点：更隐秘，目标系统一般不会将其记入日志<br>缺点：半开连接过多时，会形成一种“拒绝服务”条件而引起对方的警觉</p>
+<p>3.TCP FIN扫描(秘密扫描;nmap -sF): 向目标端口发送FIN数据包</p>
+<ul>
+<li>如果目标端口关闭，目标系统应该返回一个RST数据包，否则丢弃该包。通常只对UNIX系统的TCP/IP栈有效（Window平台总是返回RST包）</li>
+<li>由于不包含TCP三次握手协议的任何部分，所以无法被记录下来，从而比SYN扫描隐蔽</li>
+<li>FIN数据包能通过监测SYN包的包过滤器(秘密扫描)</li>
+</ul>
+<p>秘密扫描的两个变体：</p>
+<ul>
+<li>TCP Xmas扫描（圣诞树扫描;nmap -sX）: TCP包包头设置所有标志位，若目标端口关闭，目标系统应该返回一个RST数据包</li>
+<li>TCP Null扫描（空扫描;nmap -sN）: 关掉所有的标志，若目标端口关闭，目标系统应该返回一个RST数据包</li>
+</ul>
+<p>4.TCP ACK扫描(nmap -sA)：测试防火墙的规则集。判断防火墙是简单的包过滤防火墙；还是高级的、具备数据包过滤功能的状态（stateful）防火墙<br><strong>注：不能用来确定端口是否开放或者关闭</strong></p>
+<p>5.TCP窗口扫描(nmap -sW): 测试特定目标系统（如AIX和FreeBSD系统）上的端口是否开放、被过滤——会导致目标系统返回不同的TCP窗口长度值</p>
+<p>6.TCP Maimon扫描(nmap -sM) ：探测报文改为FIN/ACK外，其原理与TCP FIN扫描一样</p>
+<p>7.UDP扫描(nmap -sU) ：向目标端口发出UDP数据包</p>
+<ul>
+<li>如果返回“ICMP port unreachable” 出错消息，表明端口关闭</li>
+<li>如果没有收到该消息，端口可能开放</li>
+</ul>
+<p>注意：UDP不要求必须建立一条连接，所以扫描的准确性取决于与目标网络的使用情况和过滤机制有关的许多因素（扫描结果不可靠）</p>
+<h4 id="查点"><a href="#查点" class="headerlink" title="查点"></a>查点</h4><p>1.查点技术——旗标抓取:可用telnet, netcat, FirefoxFirebug<br>2.综合智能信息收集：maltego<br>3.漏洞扫描：分析确认目标主机中可以被利用的漏洞</p>
+<ul>
+<li>手动分析：过程复杂、技术含量高、效率较低</li>
+<li>自动分析：人为干预过程少，效率高。如Nessus、OpenVAS、X-Scan等综合型漏洞检测工具及专用扫描工具</li>
+</ul>
+<h4 id="常用扫描工具比较"><a href="#常用扫描工具比较" class="headerlink" title="常用扫描工具比较"></a>常用扫描工具比较</h4><p><img src="https://s2.ax1x.com/2019/04/05/ARNlbq.png" alt></p>
+<h4 id="扫描的防御"><a href="#扫描的防御" class="headerlink" title="扫描的防御"></a>扫描的防御</h4><p>1.端口扫描监测：</p>
+<ul>
+<li>在某个不常用的端口进行监听：如发现对该端口的连接请求，就认为有端口扫描。一般这些工具都会对连接请求的来源进行反探测，同时弹出提示窗口</li>
+<li>混杂模式下抓包（wireshark）并进一步分析判断</li>
+<li>蜜罐系统（Honeypot）</li>
+</ul>
+<p>2.审计技术（Auditing）</p>
+<ul>
+<li>使用系统记录下的使用时间、敏感操作和违纪操作等，为系统进行事故原因查询、事故发生后的实时处理提供详细可靠的依据或支持</li>
+<li><p>记录网络连接的请求、返回等信息，从中识别出扫描行为</p>
+</li>
+<li><p>IIS服务器的日志记录：<br>“%SystemRoot%/System32/LogFiles”目录存放关于WWW、FTP、SMTP等服务的日志目录</p>
+</li>
+<li>Apache会使用两个标准的日志文件：<br>access_log：所有对Apache Web服务器访问的活动记录<br>error_log：运行期间所有的状态诊断信息，包括对Web服务器的错误访问记录<br>一般在/usr/local/apache/logs目录下</li>
+</ul>
+<h4 id="攻击的善后阶段"><a href="#攻击的善后阶段" class="headerlink" title="攻击的善后阶段"></a>攻击的善后阶段</h4><p>攻击者为了自身的隐蔽性，须隐藏踪迹：</p>
+<ul>
+<li>获得系统最高管理员权限后就可以任意修改文件，最简单的方法就是删除日志文件——明确告诉管理员系统已经被入侵</li>
+<li>更常用的办法是只对日志文件中有关自己的部分作修改，修改方法根据不同的操作系统有所区别</li>
+<li>更高级的方法：替换系统程序（用来替换正常系统程序的黑客程序称为rootkit）<br>如Linux-RootKit：可以替换系统的ls，ps，netstat，inetd等系统程序</li>
+</ul>
+<h3 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h3><p>1.渗透测试（Penetration Testing）：一种通过模拟攻击者的技术与方法，挫败目标系统的安全控制措施并取得访问控制权的安全测试方法</p>
+<p>2.渗透测试的分类</p>
+<ul>
+<li>白盒测试（White-box Testing，内部测试）：拥有组织机构的内部知识的情况下进行的渗透测试 </li>
+<li>黑盒测试（Black-box Testing，外部测试）：模拟一个对组织机构一无所知的攻击者所进行的渗透攻击</li>
+<li>灰盒测试（Gray-box Testing）介于白盒测试与黑盒测试的一种渗透测试，多用于集成测试阶段</li>
+</ul>
+<p>3.渗透测试执行标准（PTES：Penetration Testing Execution Standard）将渗透测试过程分为七个阶段：</p>
+<ul>
+<li>前期交互阶段（Pre-Engagement Interaction）</li>
+<li>情报搜集阶段（Information Gathering）</li>
+<li>威胁建模阶段（Threat Modeling）</li>
+<li>漏洞分析阶段（Vulnerability Analysis）</li>
+<li>渗透攻击阶段（Exploitation）</li>
+<li>后渗透攻击阶段（Post Exploitation）</li>
+<li>报告阶段（Reporting）</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/04/05/ARJxZ6.png" alt></p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.top/2019/04/04/网络安全复习1/" title="网络安全复习1">https://clwsec.top/2019/04/04/网络安全复习1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/总结/" rel="tag"> <i class="fa fa-tag"></i> 总结</a>
+          
+            <a href="/tags/网络安全/" rel="tag"> <i class="fa fa-tag"></i> 网络安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/03/为找工作做的一些准备/" rel="next" title="为找工作做的一些准备">
+                <i class="fa fa-chevron-left"></i> 为找工作做的一些准备
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/05/网络安全复习2/" rel="prev" title="网络安全复习2">
+                网络安全复习2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤 荒于嬉 行成于思 毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="email:clwsec@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/7e18a3f52ba3" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="qq:740455490" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识"><span class="nav-number">2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络安全的三个基本属性：CIA三元组"><span class="nav-number">2.1.</span> <span class="nav-text">网络安全的三个基本属性：CIA三元组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络安全的基本需求"><span class="nav-number">2.2.</span> <span class="nav-text">网络安全的基本需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络安全主要威胁来源"><span class="nav-number">2.3.</span> <span class="nav-text">网络安全主要威胁来源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机信息系统安全保护"><span class="nav-number">2.4.</span> <span class="nav-text">计算机信息系统安全保护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公布漏洞的权威机构"><span class="nav-number">2.5.</span> <span class="nav-text">公布漏洞的权威机构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络攻击分类"><span class="nav-number">2.6.</span> <span class="nav-text">网络攻击分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全策略"><span class="nav-number">2.7.</span> <span class="nav-text">安全策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI安全体系结构"><span class="nav-number">2.8.</span> <span class="nav-text">OSI安全体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI安全体系结构的5类安全服务"><span class="nav-number">2.9.</span> <span class="nav-text">OSI安全体系结构的5类安全服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI安全体系结构的8种安全机制"><span class="nav-number">2.10.</span> <span class="nav-text">OSI安全体系结构的8种安全机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击流程"><span class="nav-number">3.</span> <span class="nav-text">攻击流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#黑客攻击的流程"><span class="nav-number">3.1.</span> <span class="nav-text">黑客攻击的流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体分析"><span class="nav-number">4.</span> <span class="nav-text">具体分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#踩点（footprinting）：收集目标信息的技巧"><span class="nav-number">4.1.</span> <span class="nav-text">踩点（footprinting）：收集目标信息的技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区域传送（zone-transfer）"><span class="nav-number">4.2.</span> <span class="nav-text">区域传送（zone transfer）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扫描"><span class="nav-number">4.3.</span> <span class="nav-text">扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扫描类型"><span class="nav-number">4.4.</span> <span class="nav-text">扫描类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查点"><span class="nav-number">4.5.</span> <span class="nav-text">查点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用扫描工具比较"><span class="nav-number">4.6.</span> <span class="nav-text">常用扫描工具比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扫描的防御"><span class="nav-number">4.7.</span> <span class="nav-text">扫描的防御</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#攻击的善后阶段"><span class="nav-number">4.8.</span> <span class="nav-text">攻击的善后阶段</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渗透测试"><span class="nav-number">5.</span> <span class="nav-text">渗透测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">47.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
