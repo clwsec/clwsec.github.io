@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://clwsec.top/"/>
-  <updated>2019-04-05T12:18:00.900Z</updated>
+  <updated>2019-04-11T08:41:49.613Z</updated>
   <id>https://clwsec.top/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LearnGit</title>
+    <link href="https://clwsec.top/2019/04/11/LearnGit/"/>
+    <id>https://clwsec.top/2019/04/11/LearnGit/</id>
+    <published>2019-04-11T08:41:49.000Z</published>
+    <updated>2019-04-11T08:41:49.613Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL常用语句备忘</title>
+    <link href="https://clwsec.top/2019/04/07/MySQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5%E5%A4%87%E5%BF%98/"/>
+    <id>https://clwsec.top/2019/04/07/MySQL常用语句备忘/</id>
+    <published>2019-04-07T14:03:30.000Z</published>
+    <updated>2019-04-08T15:25:57.860Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;借我一束光照亮暗淡，借我笑颜灿烂如春天&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="https://clwsec.top/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="https://clwsec.top/tags/MySQL/"/>
+    
+      <category term="SQL注入" scheme="https://clwsec.top/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>网络安全复习3</title>
@@ -87,7 +125,7 @@
     <link href="https://clwsec.top/2019/04/03/%E4%B8%BA%E6%89%BE%E5%B7%A5%E4%BD%9C%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E5%87%86%E5%A4%87/"/>
     <id>https://clwsec.top/2019/04/03/为找工作做的一些准备/</id>
     <published>2019-04-03T08:45:35.000Z</published>
-    <updated>2019-04-05T11:55:12.408Z</updated>
+    <updated>2019-04-08T13:04:01.302Z</updated>
     
     <summary type="html">
     
@@ -186,9 +224,9 @@
       <category term="SQL" scheme="https://clwsec.top/categories/SQL/"/>
     
     
-      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
-    
       <category term="SQL注入" scheme="https://clwsec.top/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
     
   </entry>
   
@@ -252,9 +290,9 @@
       <category term="SQL" scheme="https://clwsec.top/categories/SQL/"/>
     
     
-      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
-    
       <category term="SQL注入" scheme="https://clwsec.top/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
     
   </entry>
   
@@ -303,7 +341,7 @@
     <link href="https://clwsec.top/2019/03/07/sqli-labs-Less1-10/"/>
     <id>https://clwsec.top/2019/03/07/sqli-labs-Less1-10/</id>
     <published>2019-03-07T10:49:15.000Z</published>
-    <updated>2019-04-01T15:57:06.082Z</updated>
+    <updated>2019-04-06T07:15:00.929Z</updated>
     
     <summary type="html">
     
@@ -314,9 +352,9 @@
       <category term="SQL" scheme="https://clwsec.top/categories/SQL/"/>
     
     
-      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
-    
       <category term="SQL注入" scheme="https://clwsec.top/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
     
   </entry>
   
@@ -396,50 +434,6 @@
     <summary type="html">
     
       &lt;blockquote class=&quot;blockquote-center&quot;&gt;一杯敬明天，一杯敬过往&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="crypto" scheme="https://clwsec.top/categories/crypto/"/>
-    
-    
-      <category term="python" scheme="https://clwsec.top/tags/python/"/>
-    
-      <category term="crypto" scheme="https://clwsec.top/tags/crypto/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A5加密解密</title>
-    <link href="https://clwsec.top/2019/03/03/%E5%BA%8F%E5%88%97%E5%AF%86%E7%A0%81%E4%B9%8BA5/"/>
-    <id>https://clwsec.top/2019/03/03/序列密码之A5/</id>
-    <published>2019-03-03T11:52:35.000Z</published>
-    <updated>2019-04-01T15:55:37.156Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;一杯敬朝阳，一杯敬月光&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="crypto" scheme="https://clwsec.top/categories/crypto/"/>
-    
-    
-      <category term="python" scheme="https://clwsec.top/tags/python/"/>
-    
-      <category term="crypto" scheme="https://clwsec.top/tags/crypto/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分组密码之DES</title>
-    <link href="https://clwsec.top/2019/03/02/%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E4%B9%8BDES/"/>
-    <id>https://clwsec.top/2019/03/02/分组密码之DES/</id>
-    <published>2019-03-02T05:59:54.000Z</published>
-    <updated>2019-04-01T15:56:39.741Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;一个人炫耀什么，说明内心缺少什么&lt;/blockquote&gt;
     
     </summary>
     
