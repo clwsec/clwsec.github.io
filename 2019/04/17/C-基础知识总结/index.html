@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="C++,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="煊奕" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="如果一个世界都能在弹指一挥间灰飞烟灭，一个人的终结也就应该如露珠滚下草叶般平静淡然">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++基础知识总结">
+<meta property="og:url" content="https://clwsec.top/2019/04/17/C-基础知识总结/index.html">
+<meta property="og:site_name" content="煊奕">
+<meta property="og:description" content="如果一个世界都能在弹指一挥间灰飞烟灭，一个人的终结也就应该如露珠滚下草叶般平静淡然">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-19T11:20:08.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++基础知识总结">
+<meta name="twitter:description" content="如果一个世界都能在弹指一挥间灰飞烟灭，一个人的终结也就应该如露珠滚下草叶般平静淡然">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.top/2019/04/17/C-基础知识总结/">
+
+
+
+
+
+  <title>C++基础知识总结 | 煊奕</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">煊奕</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/04/17/C-基础知识总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="煊奕">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++基础知识总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T23:03:00+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reprint/" itemprop="url" rel="index">
+                    <span itemprop="name">reprint</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center">如果一个世界都能在弹指一挥间灰飞烟灭，一个人的终结也就应该如露珠滚下草叶般平静淡然</blockquote>
+
+<a id="more"></a>
+<p>文章转自：</p>
+<blockquote>
+<p><a href="https://www.jb51.net/article/114803.htm" target="_blank" rel="noopener">https://www.jb51.net/article/114803.htm</a><br><a href="https://blog.csdn.net/u012864854/article/details/79777991" target="_blank" rel="noopener">https://blog.csdn.net/u012864854/article/details/79777991</a></p>
+</blockquote>
+<h3 id="常量指针const-int-a和指针常量-int-const-a-区别"><a href="#常量指针const-int-a和指针常量-int-const-a-区别" class="headerlink" title="常量指针const int *a和指针常量 int * const a 区别"></a>常量指针<code>const int *a</code>和指针常量 <code>int * const a</code> 区别</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> a;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *a;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> a;</span><br></pre></td></tr></table></figure>
+<p>1.int const a和const int a均表示定义常量类型a。<br>2.常量指针是一个指针，读成常量的指针，指向一个只读变量。如<code>int const *p</code>或<code>const int *p</code>。<br>3.指针常量是一个不能给改变指向的指针。如<code>int *const p</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;b;  <span class="comment">//等价于 int const *p = &amp;b;</span></span><br><span class="line">  p = &amp;c;        <span class="comment">//修饰值，指针可变</span></span><br><span class="line">              <span class="comment">//*p = 5;//error 修饰值，值不可变</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">int</span> * <span class="keyword">const</span> q = &amp;a;   <span class="comment">//修饰指针</span></span><br><span class="line">              <span class="comment">//p = &amp;c;//error修饰指针，指针不可变</span></span><br><span class="line">  *p = <span class="number">5</span>;        <span class="comment">//修饰指针，值可变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="sizeof-和-strlen-的区别"><a href="#sizeof-和-strlen-的区别" class="headerlink" title="sizeof 和 strlen 的区别"></a>sizeof 和 strlen 的区别</h3><p>1.sizeof 是一个操作符，strlen 是库函数。<br>2.sizeof 的参数可以是数据的类型，也可以是变量，而 strlen 只能以结尾为‘\ 0‘的字符串作参数。<br>3.编译器在编译时就计算出了sizeof 的结果。而strlen 函数必须在运行时才能计算出来。并且 sizeof计算的是数据类型占内存的大小，而 strlen 计算的是字符串实际的长度。<br>4.数组做 sizeof 的参数不退化，传递给 strlen 就退化为指针了。</p>
+<h3 id="C中的-malloc-和C-中的-new-有什么区别"><a href="#C中的-malloc-和C-中的-new-有什么区别" class="headerlink" title="C中的 malloc 和C++中的 new 有什么区别"></a>C中的 malloc 和C++中的 new 有什么区别</h3><p>1.new、delete 是操作符，可以重载，只能在 C++中使用。<br>2.malloc、free 是函数，可以覆盖，C、C++中都可以使用。<br>3.new  可以调用对象的构造函数，对应的 delete 调用相应的析构函数。<br>4.malloc 仅仅分配内存，free 仅仅回收内存，并不执行构造和析构函数<br>5.分配成功时：new、delete 返回的是某种数据类型指针，malloc、free 返回的是 void 指针。<br>6.分配失败时：malloc返回NULL，new默认抛出异常。</p>
+<p>注意：malloc 申请的内存空间要用 free 释放，而 new 申请的内存空间要用 delete 释放，不要混用。因为两者实现的机理不同。</p>
+<h3 id="c-c-中static"><a href="#c-c-中static" class="headerlink" title="c/c++中static"></a>c/c++中static</h3><p>要理解static，就必须要先理解另一个与之相对的关键字auto，其实我们通常声明的不用static修饰的变量，都是auto的，因为它是默认的。auto的含义是由程序自动控制变量的生存周期，通常指的就是变量在进入其作用域的时候被分配，离开其作用域的时候被释放；而static就是不auto，变量在程序初始化时被分配，直到程序退出前才被释放；也就是static是按照程序的生命周期来分配释放变量的，而不是变量自己的生命周期；所以，像这样的例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每一次调用该函数，变量a都是新的，因为它是在进入函数体的时候被分配，退出函数体的时候被释放，所以多个线程调用该函数，都会拥有各自独立的变量a，因为它总是要被重新分配的；</p>
+<p>而变量b不管你是否使用该函数，在程序初始化时就被分配的了，或者在第一次执行到它的声明的时候分配（不同的编译器可能不同），所以多个线程调用该函数的时候，总是访问同一个变量b，这也是在多线程编程中必须注意的！</p>
+<p>1.static可以修饰局部变量（静态局部变量）、全局变量（静态全局变量）和函数，被修饰的变量存储位置在静态区。</p>
+<ul>
+<li>对于静态局部变量，相对于一般局部变量其<code>生命周期延长</code>，直到程序运行结束而非函数调用结束，且只在第一次被调用时定义；</li>
+<li>对于静态全局变量，相对于全局变量其可见范围被缩小，只能在<code>本文件中</code>可见；</li>
+<li>修饰函数时作用和修饰全局变量相同，都是为了限定访问域。</li>
+</ul>
+<p>2.C++的static除了上述两种用途，还可以修饰类成员（静态成员变量和静态成员函数），静态成员变量和静态成员函数不属于任何一个对象，是所有类实例所共有。</p>
+<p>3.static的数据记忆性可以满足函数在不同调用期的通信，也可以满足同一个类的多个实例间的通信。</p>
+<p>4.未初始化时，static变量默认值为0。其实全局变量也具备这一属性，因为全局变量也存储在静态数据区。在静态数据区，内存中所有的字节默认值都是0×00,某些时候这一特点可以减少程序员的工作量。</p>
+<h3 id="引用和指针区别"><a href="#引用和指针区别" class="headerlink" title="引用和指针区别"></a>引用和指针区别</h3><p>1.引用只是别名，不占用具体存储空间，只有声明没有定义；指针是具体变量，需要占用存储空间。<br>2.引用在声明时必须初始化为另一变量，一旦出现必须为<code>typename refname = &amp;varname</code>形式；<br>3.指针声明和定义可以分开，可以先只声明指针变量而不初始化，等用到时再指向具体变量。<br>4.引用一旦初始化之后就不可以再改变（变量可以被引用为多次，但引用只能作为一个变量引用）而指针变量可以重新指向别的变量。<br>5.不存在指向空值的引用，必须有具体实体；但是存在指向空值的指针。</p>
+<h3 id="数组指针"><a href="#数组指针" class="headerlink" title="数组指针"></a>数组指针</h3><p>区别以下指针类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p[<span class="number">10</span>]</span><br><span class="line"><span class="keyword">int</span> (*p)[<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="keyword">int</span> *<span class="title">p</span><span class="params">(<span class="keyword">int</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">int</span> <span class="params">(*p)</span><span class="params">(<span class="keyword">int</span>)</span></span></span><br></pre></td></tr></table></figure>
+<p>1.<code>int *p[10]</code>表示指针数组，强调数组概念，是一个数组变量，数组大小为10，数组内每个元素都是指向int类型的指针变量。<br>2.<code>int (*p)[10]</code>表示数组指针，强调是指针，只有一个变量，是指针类型，不过指向的是一个int类型的数组，这个数组大小是10。<br>3.<code>int p(int)</code>是函数声明，函数名是p，参数是int类型的，返回值是int 类型的。<br>4.<code>int (*p)(int)</code>是函数指针，强调是指针，该指针指向的函数具有int类型参数，并且返回值是int类型的。</p>
+<h3 id="a和-amp-a有什么区别？"><a href="#a和-amp-a有什么区别？" class="headerlink" title="a和&amp;a有什么区别？"></a>a和&amp;a有什么区别？</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> *ptr = (<span class="keyword">int</span>*)(&amp;a+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *(ptr<span class="number">-1</span>) &lt;&lt; <span class="string">"\t"</span> &lt;&lt; *(ptr<span class="number">-2</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 5 4</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"----------------"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = (<span class="keyword">int</span> *)(a+<span class="number">1</span>);            <span class="comment">//2</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.a是数组名，是数组首元素地址，+1表示地址值加上一个int类型的大小，如果a的值是0x00000001，加1操作后变为0x00000005。<code>*(a + 1) = a[1]</code>。<br>2.&amp;a是数组的指针，其类型为<code>int(*)[5]</code>（就是前面提到的数组指针），其加1时，系统会认为是数组首地址加上整个数组的偏移（5个int型变量），值为数组a尾元素<code>后一个</code>元素的地址。<br>3.若(int )p ，此时输出 *p时，其值为<code>a[0]</code>的值，因为被转为int 类型，解引用时按照int类型大小来读取。</p>
+<h3 id="数组名和指针（这里为指向数组首元素的指针）区别？"><a href="#数组名和指针（这里为指向数组首元素的指针）区别？" class="headerlink" title="数组名和指针（这里为指向数组首元素的指针）区别？"></a>数组名和指针（这里为指向数组首元素的指针）区别？</h3><p>1.二者均可通过增减偏移量来访问数组中的元素。<br>2.数组名不是真正意义上的指针，可以理解为常指针，所以数组名没有自增、自减等操作。<br>3.当数组名当做形参传递给调用函数后，就失去了原有特性，退化成一般指针，多了自增、自减操作，但sizeof运算符不能再得到原数组的大小了。</p>
+<h3 id="野指针是什么？"><a href="#野指针是什么？" class="headerlink" title="野指针是什么？"></a>野指针是什么？</h3><p>1.也叫空悬指针，不是指向null的指针，是指向垃圾内存的指针。<br>2.产生原因及解决办法：</p>
+<ul>
+<li>指针变量未及时初始化 =&gt; 定义指针变量及时初始化，要么置空。</li>
+<li>指针free或delete之后没有及时置空 =&gt; 释放操作后立即置空。</li>
+</ul>
+<h3 id="delete和delete-区别？"><a href="#delete和delete-区别？" class="headerlink" title="delete和delete[]区别？"></a>delete和delete[]区别？</h3><p>1.delete只会调用一次析构函数。<br>2.delete[]会调用数组中每个元素的析构函数。<br>3.char <code>*p = new char[32];</code>如果用delete p，会发生什么?</p>
+<ul>
+<li>因为char是基本数据类型没有析构函数，而系统也记忆了内存大小。所以用delete不会造成内存泄露。但是这种方法在C++标准里是未定义行为，要避免使用。</li>
+<li>如果用malloc和free怎么申请和释放32个字节的buffer。<br>char ptr = (char)malloc(32);free(ptr);ptr = nullptr;</li>
+<li>如果用free(p) 可以吗？<br>这是未定义行为。但是对于基本数据类型是可以使用的。</li>
+<li>为什么delete []就可以删除整个数组。<br>因为系统分配额外空间记录数组大小。具体来说是在p指针附近(下个位置)存储了指针指向物体的大小的信息</li>
+</ul>
+<h3 id="堆和栈的区别？"><a href="#堆和栈的区别？" class="headerlink" title="堆和栈的区别？"></a>堆和栈的区别？</h3><p>1.申请方式不同。</p>
+<ul>
+<li>栈由系统自动分配。</li>
+<li>堆由程序员手动分配。</li>
+</ul>
+<p>2.申请大小限制不同。</p>
+<ul>
+<li>栈顶和栈底是之前预设好的，大小固定，可以通过<code>ulimit -a</code>查看，由<code>ulimit -s</code>修改。</li>
+<li>堆向高地址扩展，是不连续的内存区域，大小可以灵活调整。</li>
+</ul>
+<p>3.申请效率不同。</p>
+<ul>
+<li>栈由系统分配，速度快，不会有碎片。</li>
+<li>堆由程序员分配，速度慢，且会有碎片。</li>
+</ul>
+<p>4.生长方向不同</p>
+<ul>
+<li>堆：向着内存地址增加的方向增长</li>
+<li>栈：向着内存地址减小的方向增长，由内存的高地址向低地址方向增长</li>
+</ul>
+<h3 id="简述C-C-程序编译的内存情况分配"><a href="#简述C-C-程序编译的内存情况分配" class="headerlink" title="简述C\C++程序编译的内存情况分配"></a>简述C\C++程序编译的内存情况分配</h3><p>C、C++中内存分配方式可以分为三种：</p>
+<p>1.从静态存储区域分配：内存在程序编译时就已经分配好，这块内存在程序的整个运行期间都存在。速度快、不容易出错，因为有系统会善后。例如全局变量，static变量等。</p>
+<p>2.在栈上分配：在执行函数时，函数内局部变量的存储单元都在栈上创建，函数执行结束时这些存储单元自动被释放。栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限。</p>
+<p>3.从堆上分配：即动态内存分配。程序在运行的时候用 malloc 或 new 申请任意大小的内存，程序员自己负责在何时用 free 或 delete 释放内存。动态内存的生存期由程序员决定，使用非常灵活。如果在堆上分配了空间，就有责任回收它，否则运行的程序会出现内存泄漏，另外频繁地分配和释放不同大小的堆空间将会产生堆内碎块。</p>
+<p>一个 C、C++程序编译时内存分为 5 大存储区：堆区、栈区、全局区、文字常量区、程序代码区。</p>
+<h3 id="变量声明和定义区别"><a href="#变量声明和定义区别" class="headerlink" title="变量声明和定义区别"></a>变量声明和定义区别</h3><p>1.声明仅仅是把变量的声明的位置及类型提供给编译器，并不分配内存空间；定义要在定义的地方为其分配存储空间。</p>
+<p>2.相同变量可以再多处声明（外部变量extern），但只能在一处定义。</p>
+<h3 id="extern关键字"><a href="#extern关键字" class="headerlink" title="extern关键字"></a>extern关键字</h3><p>1.extern可以置于变量或者函数前，以标示变量或者函数的定义在别的文件中，提示编译器遇到此变量和函数时在其他模块中寻找其定义。</p>
+<p>2.当它与”C”一起连用时，如:<code>extern “C” void fun(int a, int b);</code> 主要是解决在C++代码中调用C代码。告诉编译器，被extern “C”修饰的变量和函数，按照C语言方式编译和链接。</p>
+<h3 id="函数传参有几种方式？传引用和指针有什么区别呢？"><a href="#函数传参有几种方式？传引用和指针有什么区别呢？" class="headerlink" title="函数传参有几种方式？传引用和指针有什么区别呢？"></a>函数传参有几种方式？传引用和指针有什么区别呢？</h3><p>1.传值：形参是实参的拷贝，改变形参的值并不会影响外部实参的值。从被调用函数的角度来说，值传递是单向的（实参-&gt;形参），参数的值只能传入，不能传出。</p>
+<p>2.传指针：形参为指向实参地址的指针，当对形参的指向操作时，就相当于对实参本身进行的操作</p>
+<p>3.传引用：形参相当于是实参的“别名”，对形参的操作其实就是对实参的操作，在引用传递过程中，被调函数的形式参数虽然也作为局部变量在栈中开辟了内存空间，但是这时存放的是由主调函数放进来的实参变量的地址。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中的实参变量。</p>
+<p>4.传指针和传引用区别：主要是指针和引用的区别。首先语法就不一样，指针要取值需要能*ptr，引用可以直接取； 另外传进来的指针可以指向其他位置，但是引用只能绑定在传进来的固定的值上。</p>
+<h3 id="“零值比较”？"><a href="#“零值比较”？" class="headerlink" title="“零值比较”？"></a>“零值比较”？</h3><p>1.bool类型：if(flag)<br>2.int类型：if(flag == 0)<br>3.指针类型：if(flag == nullptr)<br>4.float类型：if((flag &gt;= -0.000001) &amp;&amp; (flag &lt;= 0. 000001))</p>
+<h3 id="同一类的不同对象可以互相赋值吗？"><a href="#同一类的不同对象可以互相赋值吗？" class="headerlink" title="同一类的不同对象可以互相赋值吗？"></a>同一类的不同对象可以互相赋值吗？</h3><p>1.可以，但含有指针成员时需要注意。<br>2.对比类的对象赋值时深拷贝和浅拷贝。</p>
+<h3 id="const的作用"><a href="#const的作用" class="headerlink" title="const的作用"></a>const的作用</h3><p>1.修饰普通变量: 该变量值不可更改。顶层/底层const<br>2.修饰函数参数: 函数形参声明加const保护某些值在操作过程中不会改变<br>3.修饰返回值：表明返回的数据是不可修改的<br>4.修饰成员函数: 类的成员函数加上const限定可以声明此函数不会更改类对象的内容</p>
+<h3 id="宏定义和函数有何区别？"><a href="#宏定义和函数有何区别？" class="headerlink" title="宏定义和函数有何区别？"></a>宏定义和函数有何区别？</h3><p>1.宏在编译时完成替换，之后被替换的文本参与编译，相当于直接插入了代码，运行时不存在函数调用，执行起来更快；函数调用在运行时需要跳转到具体调用函数。</p>
+<p>2.宏定义没有返回值；函数调用具有返回值。</p>
+<p>3.宏定义参数没有类型，不进行类型检查；函数参数具有类型，需要检查类型。</p>
+<h3 id="宏定义和内联函数-inline-区别？"><a href="#宏定义和内联函数-inline-区别？" class="headerlink" title="宏定义和内联函数(inline)区别？"></a>宏定义和内联函数(inline)区别？</h3><p>1.在使用时，宏只做简单字符串替换（编译前）。而内联函数可以进行参数类型检查（编译时），且具有返回值。<br>2.内联函数本身是函数，强调函数特性，具有重载等功能。<br>3.内联函数可以作为某个类的成员函数，这样可以使用类的保护成员和私有成员。而当一个表达式涉及到类保护成员或私有成员时，宏就不能实现了。</p>
+<h3 id="宏定义和const全局变量的区别？"><a href="#宏定义和const全局变量的区别？" class="headerlink" title="宏定义和const全局变量的区别？"></a>宏定义和const全局变量的区别？</h3><p>1.宏替换发生在预编译阶段，属于文本插入替换；const作用发生于编译过程中。<br>宏不检查类型；const会检查数据类型。<br>2.宏定义的数据没有分配内存空间，只是插入替换掉；const变量分配内存空间。<br>3.宏不是语句，不在最后加分号；</p>
+<h3 id="宏定义和typedef区别？"><a href="#宏定义和typedef区别？" class="headerlink" title="宏定义和typedef区别？"></a>宏定义和typedef区别？</h3><p>1.宏主要用于定义常量及书写复杂的内容；typedef主要用于定义类型别名。<br>2.宏替换发生在编译阶段之前，属于文本插入替换；typedef是编译的一部分。<br>3.宏不检查类型；typedef会检查数据类型。<br>4.宏不是语句，不在最后加分号；typedef是语句，要加分号标识结束。<br>5.注意对指针的操作，<code>typedef (char*) p_char</code>和<code>#define p_char char*</code>在使用起来区别巨大。</p>
+<h3 id="条件编译-ifdef-else-endif作用？"><a href="#条件编译-ifdef-else-endif作用？" class="headerlink" title="条件编译#ifdef, #else, #endif作用？"></a>条件编译#ifdef, #else, #endif作用？</h3><p>1.可以通过加#define，并通过#ifdef来判断，将某些具体模块包括进要编译的内容。<br>2.用于子程序前加#define DEBUG用于程序调试。<br>3.应对硬件的设置（机器类型等）。<br>4.条件编译功能if也可实现，但条件编译可以减少被编译语句，从而减少目标程序大小。</p>
+<h3 id="volatile有什么作用？"><a href="#volatile有什么作用？" class="headerlink" title="volatile有什么作用？"></a>volatile有什么作用？</h3><p>1.volatile定义变量的值是易变的，每次用到这个变量的值的时候都要去重新读取这个变量的值，而不是读寄存器内的备份。<br>2.多线程中被几个任务共享的变量需要定义为volatile类型。</p>
+<h3 id="什么是常引用？"><a href="#什么是常引用？" class="headerlink" title="什么是常引用？"></a>什么是常引用？</h3><p>1.常引用可以理解为常量指针，形式为<code>const typename &amp; refname = varname</code>。<br>2.常引用下，原变量值不会被别名所修改。<br>3.原变量的值可以通过原名修改。<br>4.常引用通常用作只读变量别名或是形参传递。</p>
+<h3 id="模板的优点和缺点"><a href="#模板的优点和缺点" class="headerlink" title="模板的优点和缺点"></a>模板的优点和缺点</h3><p>优点：<br>1.代码复用。<br>2.模板类更加的安全，因其参数类型在编译时都是已知的。<br>缺点：<br>1.模板必须在头文件中，这样一旦有所变更需要重编译所有相关工程；同时也没有信息隐藏。<br>2.一些编译器对template支持不好。<br>3.模板对每种类型生成额外的代码，可能导致代码膨胀。</p>
+<h3 id="模板的特化与偏特化"><a href="#模板的特化与偏特化" class="headerlink" title="模板的特化与偏特化"></a>模板的特化与偏特化</h3><p>全特化就是限定死模板实现的具体类型，偏特化就是如果这个模板有多个类型，那么只限定其中的一部分。</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.top/2019/04/17/C-基础知识总结/" title="C++基础知识总结">https://clwsec.top/2019/04/17/C-基础知识总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"> <i class="fa fa-tag"></i> C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/13/关于PHP的一些记录/" rel="next" title="关于PHP的一些记录">
+                <i class="fa fa-chevron-left"></i> 关于PHP的一些记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/19/C-面向对象知识总结/" rel="prev" title="C++面向对象知识总结">
+                C++面向对象知识总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤 荒于嬉 行成于思 毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="email:clwsec@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/7e18a3f52ba3" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="qq:740455490" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常量指针const-int-a和指针常量-int-const-a-区别"><span class="nav-number">1.</span> <span class="nav-text">常量指针const int *a和指针常量 int * const a 区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sizeof-和-strlen-的区别"><span class="nav-number">2.</span> <span class="nav-text">sizeof 和 strlen 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C中的-malloc-和C-中的-new-有什么区别"><span class="nav-number">3.</span> <span class="nav-text">C中的 malloc 和C++中的 new 有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-c-中static"><span class="nav-number">4.</span> <span class="nav-text">c/c++中static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用和指针区别"><span class="nav-number">5.</span> <span class="nav-text">引用和指针区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组指针"><span class="nav-number">6.</span> <span class="nav-text">数组指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a和-amp-a有什么区别？"><span class="nav-number">7.</span> <span class="nav-text">a和&amp;a有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组名和指针（这里为指向数组首元素的指针）区别？"><span class="nav-number">8.</span> <span class="nav-text">数组名和指针（这里为指向数组首元素的指针）区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#野指针是什么？"><span class="nav-number">9.</span> <span class="nav-text">野指针是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete和delete-区别？"><span class="nav-number">10.</span> <span class="nav-text">delete和delete[]区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆和栈的区别？"><span class="nav-number">11.</span> <span class="nav-text">堆和栈的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述C-C-程序编译的内存情况分配"><span class="nav-number">12.</span> <span class="nav-text">简述C\C++程序编译的内存情况分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明和定义区别"><span class="nav-number">13.</span> <span class="nav-text">变量声明和定义区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern关键字"><span class="nav-number">14.</span> <span class="nav-text">extern关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数传参有几种方式？传引用和指针有什么区别呢？"><span class="nav-number">15.</span> <span class="nav-text">函数传参有几种方式？传引用和指针有什么区别呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“零值比较”？"><span class="nav-number">16.</span> <span class="nav-text">“零值比较”？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同一类的不同对象可以互相赋值吗？"><span class="nav-number">17.</span> <span class="nav-text">同一类的不同对象可以互相赋值吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const的作用"><span class="nav-number">18.</span> <span class="nav-text">const的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏定义和函数有何区别？"><span class="nav-number">19.</span> <span class="nav-text">宏定义和函数有何区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏定义和内联函数-inline-区别？"><span class="nav-number">20.</span> <span class="nav-text">宏定义和内联函数(inline)区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏定义和const全局变量的区别？"><span class="nav-number">21.</span> <span class="nav-text">宏定义和const全局变量的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏定义和typedef区别？"><span class="nav-number">22.</span> <span class="nav-text">宏定义和typedef区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件编译-ifdef-else-endif作用？"><span class="nav-number">23.</span> <span class="nav-text">条件编译#ifdef, #else, #endif作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile有什么作用？"><span class="nav-number">24.</span> <span class="nav-text">volatile有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是常引用？"><span class="nav-number">25.</span> <span class="nav-text">什么是常引用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板的优点和缺点"><span class="nav-number">26.</span> <span class="nav-text">模板的优点和缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板的特化与偏特化"><span class="nav-number">27.</span> <span class="nav-text">模板的特化与偏特化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">67k</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
