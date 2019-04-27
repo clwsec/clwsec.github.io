@@ -61,7 +61,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
 
 
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="如果一个世界都能在弹指一挥间灰飞烟灭，一个人的终结也就应该如露珠滚下草叶般平静淡然">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-19T11:20:08.527Z">
+<meta property="og:updated_time" content="2019-04-19T13:13:35.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++基础知识总结">
 <meta name="twitter:description" content="如果一个世界都能在弹指一挥间灰飞烟灭，一个人的终结也就应该如露珠滚下草叶般平静淡然">
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.5k
+                  4.6k
                 </span>
               
 
@@ -402,7 +402,7 @@
 <h3 id="常量指针const-int-a和指针常量-int-const-a-区别"><a href="#常量指针const-int-a和指针常量-int-const-a-区别" class="headerlink" title="常量指针const int *a和指针常量 int * const a 区别"></a>常量指针<code>const int *a</code>和指针常量 <code>int * const a</code> 区别</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> a;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *a;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> a;</span><br></pre></td></tr></table></figure>
 <p>1.int const a和const int a均表示定义常量类型a。<br>2.常量指针是一个指针，读成常量的指针，指向一个只读变量。如<code>int const *p</code>或<code>const int *p</code>。<br>3.指针常量是一个不能给改变指向的指针。如<code>int *const p</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;b;  <span class="comment">//等价于 int const *p = &amp;b;</span></span><br><span class="line">  p = &amp;c;        <span class="comment">//修饰值，指针可变</span></span><br><span class="line">              <span class="comment">//*p = 5;//error 修饰值，值不可变</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">int</span> * <span class="keyword">const</span> q = &amp;a;   <span class="comment">//修饰指针</span></span><br><span class="line">              <span class="comment">//p = &amp;c;//error修饰指针，指针不可变</span></span><br><span class="line">  *p = <span class="number">5</span>;        <span class="comment">//修饰指针，值可变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="sizeof-和-strlen-的区别"><a href="#sizeof-和-strlen-的区别" class="headerlink" title="sizeof 和 strlen 的区别"></a>sizeof 和 strlen 的区别</h3><p>1.sizeof 是一个操作符，strlen 是库函数。<br>2.sizeof 的参数可以是数据的类型，也可以是变量，而 strlen 只能以结尾为‘\ 0‘的字符串作参数。<br>3.编译器在编译时就计算出了sizeof 的结果。而strlen 函数必须在运行时才能计算出来。并且 sizeof计算的是数据类型占内存的大小，而 strlen 计算的是字符串实际的长度。<br>4.数组做 sizeof 的参数不退化，传递给 strlen 就退化为指针了。</p>
+<h3 id="sizeof-和-strlen-的区别"><a href="#sizeof-和-strlen-的区别" class="headerlink" title="sizeof 和 strlen 的区别"></a>sizeof 和 strlen 的区别</h3><p>1.sizeof 是一个操作符，strlen 是库函数。<br>2.sizeof 的参数可以是数据的类型，也可以是变量，而 strlen 只能以结尾为‘\ 0‘的字符串作参数。<br>3.编译器在编译时就计算出了sizeof 的结果。而strlen 函数必须在运行时才能计算出来。并且 sizeof计算的是分配时数据类型占内存的大小，而 strlen 计算的是字符串实际的长度。<br>4.数组做 sizeof 的参数不退化，传递给 strlen 就退化为指针了。<br>5.sizeof 操作符的结果类型是 size_t，它在头文件中 typedef 为 unsigned int 类型。该类型保证能容纳实现所建立的最大对象的字节大小。<br>6.当适用一个结构类型或变量时， sizeof 返回实际的大小；当适用一静态地空间数组， sizeof 归还全部数组的尺寸；sizeof 操作符不能返回动态地被分派了的数组或外部的数组的尺寸。</p>
 <h3 id="C中的-malloc-和C-中的-new-有什么区别"><a href="#C中的-malloc-和C-中的-new-有什么区别" class="headerlink" title="C中的 malloc 和C++中的 new 有什么区别"></a>C中的 malloc 和C++中的 new 有什么区别</h3><p>1.new、delete 是操作符，可以重载，只能在 C++中使用。<br>2.malloc、free 是函数，可以覆盖，C、C++中都可以使用。<br>3.new  可以调用对象的构造函数，对应的 delete 调用相应的析构函数。<br>4.malloc 仅仅分配内存，free 仅仅回收内存，并不执行构造和析构函数<br>5.分配成功时：new、delete 返回的是某种数据类型指针，malloc、free 返回的是 void 指针。<br>6.分配失败时：malloc返回NULL，new默认抛出异常。</p>
 <p>注意：malloc 申请的内存空间要用 free 释放，而 new 申请的内存空间要用 delete 释放，不要混用。因为两者实现的机理不同。</p>
 <h3 id="c-c-中static"><a href="#c-c-中static" class="headerlink" title="c/c++中static"></a>c/c++中static</h3><p>要理解static，就必须要先理解另一个与之相对的关键字auto，其实我们通常声明的不用static修饰的变量，都是auto的，因为它是默认的。auto的含义是由程序自动控制变量的生存周期，通常指的就是变量在进入其作用域的时候被分配，离开其作用域的时候被释放；而static就是不auto，变量在程序初始化时被分配，直到程序退出前才被释放；也就是static是按照程序的生命周期来分配释放变量的，而不是变量自己的生命周期；所以，像这样的例子：</p>
@@ -775,7 +775,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">67k</span>
+    <span title="Site words total count">67.1k</span>
   
 </div>
 
