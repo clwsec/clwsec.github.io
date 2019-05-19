@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="linux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="煊奕" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="人间多的是两条腿的恶人，多了条尾巴又怎样。">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习记录一">
+<meta property="og:url" content="https://clwsec.top/2019/05/11/Linux学习记录一/index.html">
+<meta property="og:site_name" content="煊奕">
+<meta property="og:description" content="人间多的是两条腿的恶人，多了条尾巴又怎样。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg3uOH.jpg">
+<meta property="og:updated_time" content="2019-05-19T08:09:24.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习记录一">
+<meta name="twitter:description" content="人间多的是两条腿的恶人，多了条尾巴又怎样。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/09/Eg3uOH.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://clwsec.top/2019/05/11/Linux学习记录一/">
+
+
+
+
+
+  <title>Linux学习记录一 | 煊奕</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">煊奕</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-链接">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://clwsec.top/2019/05/11/Linux学习记录一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="煊奕">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux学习记录一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-11T19:29:41+08:00">
+                2019-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center">人间多的是两条腿的恶人，多了条尾巴又怎样。</blockquote>
+
+<a id="more"></a>
+<h3 id="自由软件与开源软件"><a href="#自由软件与开源软件" class="headerlink" title="自由软件与开源软件"></a>自由软件与开源软件</h3><p>1.自由软件遵循CPL(General Public License)协议，通用公共许可证允许用户自由下载，分发，修改和再分发源代码公开的自由软件，并可向使用者收取一定的服务费用，但不许任何人将源代码与服务做任何形式的捆绑式销售。</p>
+<p>2.开源软件(Open Source Software)， 与自由软件不同的是：开源软件允许源代码修改后可以作为闭源的商业软件发布和销售，而自由软件要求即便是经过用户修改，源代码任然必须保持开源。</p>
+<p>3.Linux遵循GPL协议，是自由软件。</p>
+<h3 id="Linux的主要特点"><a href="#Linux的主要特点" class="headerlink" title="Linux的主要特点"></a>Linux的主要特点</h3><p>1.真正的多用户多任务：linux支持多个用户从相同或不同终端同时使用同一台计算机，而没有商业软件所谓许可证的限制。</p>
+<p>2.良好的兼容性：linux兼容主流的UNIX系统(Systen V和BSD)，在UNIX中可以运行的程序，几乎完全可以在linux中运行。</p>
+<p>3.强大的可移植性：linux是目前支持最多硬件平台的操作系统。</p>
+<p>4.高度的稳定性：可以连运行续数月，数年而无需重新启动。</p>
+<p>5.强大的字符界面(命令行)和渐渐完善的图形用户界面。</p>
+<h3 id="Linux版本"><a href="#Linux版本" class="headerlink" title="Linux版本"></a>Linux版本</h3><p>1.内核版本</p>
+<p>linux内核版本有X.Y.Z形式，其中：</p>
+<ul>
+<li>X：表示主版本号，通常在一段时间内比较稳定。</li>
+<li>Y: 次版本号，偶数便是次内核版本是正式版本，可以公开发行；奇数表示此内核版本是测试版本，还不太稳定，仅供测试。</li>
+<li>Z: 表示修改次数，数值越大，表示修改的次数越多，版本相对更完善。</li>
+</ul>
+<p>2.发行版本</p>
+<p>目前，linux发行版本已达数百种之多，任何发行版本都不具有发布内核的权利，发行版本之间的差别主要在于包含的软件种类和数量不同。常见的发行版本有redhat, centos, fedora, ubuntu, debian, kali, opensuse等。</p>
+<h3 id="Linux系统结构"><a href="#Linux系统结构" class="headerlink" title="Linux系统结构"></a>Linux系统结构</h3><p><a href="https://blog.csdn.net/hguisu/article/details/6122513" target="_blank" rel="noopener">Linux系统结构</a></p>
+<h3 id="文件的属性和权限"><a href="#文件的属性和权限" class="headerlink" title="文件的属性和权限"></a>文件的属性和权限</h3><p>1.Linux系统上对文件的权限有着严格的控制，用于如果相对某个文件执行某种操作，必须具有对应的权限方可执行成功。<br>2.Linux的文件权限有以下设定：</p>
+<ul>
+<li>Linux下文件的权限类型一般包括读，写，执行。对应字母为 r、w、x。</li>
+<li>Linux下权限的属组有 拥有者 、群组 、其它组 三种。每个文件都可以针对这三个属组（粒度），设置不同的rwx(读写执行)权限。</li>
+<li>通常情况下，一个文件只能归属于一个用户和组， 如果其它的用户想有这个文件的权限，则可以将该用户加入具备权限的群组，一个用户可以同时归属于多个组。</li>
+</ul>
+<h4 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h4><p><code>[-]</code>：普通类型文件，Linux中最多的一种文件类型, 包括 纯文本文件(ASCII)；二进制文件(binary)；数据格式的文件(data);各种压缩文件。<br><code>[d]</code>：目录文件,可执行表示有权限进入此目录。<br><code>[b]</code>：块设备文件：就是存储数据以供系统存取的接口设备，简单而言就是硬盘。例如一号硬盘的代码是 /dev/hda1等文件。<br><code>[c]</code>：字符设备文件：即串行端口的接口设备，例如键盘、鼠标等等。<br><code>[s]</code>：套接字文件：这类文件通常用在网络数据连接。可以启动一个程序来监听客户端的要求，客户端就可以通过套接字来进行数据通信。，最常在 /var/run目录中看到这种文件类型。<br><code>[p]</code>：管道文件：FIFO也是一种特殊的文件类型，它主要的目的是，解决多个程序同时存取一个文件所造成的错误。FIFO是first-in-first-out(先进先出)的缩写。<br><code>[l]</code>：链接文件：类似Windows下面的快捷方式。</p>
+<h4 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-rw------- (600)     只有拥有者有读写权限。</span><br><span class="line">-rw-r--r-- (644)     只有拥有者有读写权限；而属组用户和其他用户只有读权限。</span><br><span class="line">-rwx------ (700)     只有拥有者有读、写、执行权限。</span><br><span class="line">-rwxr-xr-x (755)     拥有者有读、写、执行权限；而属组用户和其他用户只有读、执行权限。</span><br><span class="line">-rwx--x--x (711)     拥有者有读、写、执行权限；而属组用户和其他用户只有执行权限。</span><br><span class="line">-rw-rw-rw- (666)     所有用户都有文件读、写权限。</span><br><span class="line">-rwxrwxrwx (777)     所有用户都有读、写、执行权限。</span><br></pre></td></tr></table></figure>
+<h4 id="文件权限修改"><a href="#文件权限修改" class="headerlink" title="文件权限修改"></a>文件权限修改</h4><p>1.使用chmod命令: chmod命令用来变更文件或目录的权限。</p>
+<p>权限范围的表示法如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">u User，即文件或目录的拥有者；</span><br><span class="line">g Group，即文件或目录的所属群组；</span><br><span class="line">o Other，除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围；</span><br><span class="line">a All，即全部的用户，包含拥有者，所属群组以及其他用户；</span><br><span class="line">r 读取权限，数字代号为“<span class="number">4</span>”;</span><br><span class="line">w 写入权限，数字代号为“<span class="number">2</span>”；</span><br><span class="line">x 执行或切换权限，数字代号为“<span class="number">1</span>”；</span><br><span class="line">- 不具任何权限，数字代号为“<span class="number">0</span>”；</span><br><span class="line">s 特殊功能说明：变更文件或目录的权限。</span><br></pre></td></tr></table></figure>
+<p>直接举几个例子</p>
+<ul>
+<li>设置所有用户可读取文件 <code>a.txt</code> 可用<code>chmod ugo+r a.txt</code>或 <code>chmod a+r  a.txt</code></li>
+<li>设置拥有者可以读写及执行<code>chmod u+rwx a.txt</code></li>
+<li>设置文件 a.conf 与 b.xml 权限为拥有者与其所属同一个群组 可读写，其它组可读不可写<code>chmod a+r,ug+w,o-w a.conf b.xml</code></li>
+<li>设置当前目录下的所有档案与子目录皆设为任何人可读写<code>chmod -R a+rw *</code></li>
+<li>设置所有人可以读写及执行<code>chmod 777 file</code>  (等价于  chmod u=rwx,g=rwx,o=rwx file 或  chmod a=rwx file)</li>
+</ul>
+<p>2.使用chgrp命令:chgrp命令用来改变文件或目录所属的用户组。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-c或——changes：效果类似“-v”参数，但仅回报更改的部分；</span><br><span class="line">-f或--quiet或——silent：不显示错误信息；</span><br><span class="line">-h或--no-dereference：只对符号连接的文件作修改，而不是该其他任何相关文件；</span><br><span class="line">-R或——recursive：递归处理，将指令目录下的所有文件及子目录一并处理；</span><br><span class="line">-v或——verbose：显示指令执行过程；</span><br><span class="line">--reference=&lt;参考文件或目录&gt;：把指定文件或目录的所属群组全部设成和参考文件或目录的所属群组相同；</span><br></pre></td></tr></table></figure>
+<p>如：将<code>/usr/ABC</code>及其子目录下的所有文件的用户组改为abc,使用<br><code>chgrp -R abc /usr/ABC</code></p>
+<p>3.使用chown命令:chown命令改变某个文件或目录的所有者和所属的组，该命令可以向某个用户授权，使该用户变成指定文件的所有者或者改变文件所属的组。</p>
+<p>用户可以是用户或者是用户id，用户组可以是组名或组id。文件名可以使由空格分开的文件列表，在文件名中可以包含通配符。</p>
+<p>参数(选项)和chgrp差不多，直接举例子</p>
+<p>将目录/usr/ABC及其下面的所有文件、子目录的文件主改成Bob：<br><code>chown -R Bob /usr/ABC</code></p>
+<h4 id="默认权限"><a href="#默认权限" class="headerlink" title="默认权限"></a>默认权限</h4><p>1.不同用户的默认权限不同<br>2.可通过umask:命令查看和修改。<br>3.umask命令用来设置限制新建文件权限的掩码。当新文件被创建时，其最初的权限由文件创建掩码决定。用户每次注册进入系统时，umask命令都被执行， 并自动设置掩码mode来限制新文件的权限。用户可以通过再次执行umask命令来改变默认值，新的权限将会把旧的覆盖掉。</p>
+<ul>
+<li><code>-p</code>：输出的权限掩码可直接作为指令来执行；</li>
+<li><code>-S</code>：以符号方式输出权限掩码。</li>
+</ul>
+<p>4.利用umask命令可以指定哪些权限将在新文件的默认权限中被删除。例如，可以使用下面的命令创建掩码，使得组用户的写权限，其他用户的读、写和执行权限都被取消：<code>umask u=, g=w, o=rwx</code></p>
+<p>5.不能直接利用umask命令创建一个可执行的文件，用户只能在其后利用chmod命令使它具有执行权限。假设执行了命令<code>umask u=, g=w, o=rwx</code>，虽然在命令行中，没有删去文件主和组用户的执行权限，但默认的文件权限还是640（即 <code>rw-r-----</code>），而不是750(<code>rwxr-x---</code>）。但是，如果创建的是目录或者通过编译程序创建的一个可执行文件，将不受此限制。在这种情况下，会设置文件的执行权限。</p>
+<p>6.选项<code>-s</code>表示以字符形式显示当前的掩码。如果直接输入umask命令，不带任何参数，那么将以<strong>八进制</strong>形式显示当前的掩码。系统默认的掩码是0022。</p>
+<h3 id="绝对路径与相对路径"><a href="#绝对路径与相对路径" class="headerlink" title="绝对路径与相对路径"></a>绝对路径与相对路径</h3><p>1.绝对路径：以<code>/</code>开始的路径<br>2.相对路径：以<code>./</code>或<code>../</code>等开始的目录，如<code>../../</code>表示上两级目录</p>
+<ul>
+<li><code>~</code>:当前用户的家目录</li>
+<li><code>.</code>或<code>./</code>：表示当前目录</li>
+<li><code>..</code>或<code>../</code>：表示上级目录</li>
+</ul>
+<p>3.可使用pwd查看当前目录</p>
+<h3 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd    进入用户主目录；</span><br><span class="line">cd ~  进入用户主目录；</span><br><span class="line">cd -  返回进入此目录之前所在的目录；</span><br><span class="line">cd ..  返回上级目录（若当前目录为“/“，则执行完后还在“/<span class="string">"；"</span>..<span class="string">"为上级目录的意思）；</span></span><br><span class="line"><span class="string">cd ../..  返回上两级目录；</span></span><br><span class="line"><span class="string">cd !$  把上个命令的参数作为cd参数使用。</span></span><br></pre></td></tr></table></figure>
+<h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h3><p>常用：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-a：显示所有档案及目录（ls内定将档案名或目录名称为“.”的视为隐藏，不会列出）；</span><br><span class="line">-l：以长格式显示目录下的内容列表。输出的信息从左到右依次包括文件名，文件类型、权限模式、硬连接数、所有者、组、文件大小和文件的最后修改时间等；</span><br><span class="line">-t：用文件和目录的更改时间排序；</span><br><span class="line">-R：递归处理，将指定目录下的所有文件及子目录一并处理；</span><br><span class="line">-d：仅显示目录名，而不显示目录下的内容列表。显示符号链接文件本身，而不显示其所指向的目录列表；</span><br><span class="line">-A：显示除隐藏文件“.”和“..”以外的所有文件列表；</span><br><span class="line">-C：多列显示输出结果，这是默认选项；</span><br><span class="line">-F：在每个输出项后追加文件的类型标识符，具体含义：“*”表示具有可执行权限的普通文件，“/”表示目录，“@”表示符号链接，“|”表示命令管道FIFO，“=”表示sockets套接字。当文件为普通文件时，不输出任何标识符；</span><br><span class="line">-b：将文件中的不可输出的字符以反斜线加字符编码的方式输出；</span><br><span class="line">-k：以KB（千字节）为单位显示文件大小；</span><br><span class="line">-m：用“,”号区隔每个文件和目录的名称；</span><br><span class="line">-n：以用户识别码和群组识别码替代其名称；</span><br><span class="line">-r：以文件名反序排列并输出目录内容列表；</span><br><span class="line">-s：显示文件和目录的大小，以区块为单位；</span><br><span class="line">-L：如果遇到性质为符号链接的文件或目录，直接列出该链接所指向的原始文件或目录；</span><br></pre></td></tr></table></figure>
+<h3 id="压缩和解压缩"><a href="#压缩和解压缩" class="headerlink" title="压缩和解压缩"></a>压缩和解压缩</h3><p>1.gzip: gzip是个使用广泛的压缩程序，文件经它压缩过后，其名称后面会多出<code>.gz</code>扩展名<br>2.bzip2: 用于创建和管理（包括解压缩）<code>.bz2</code>格式的压缩包。<br>3.tar: 文件及目录打包命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf log.tar log2012.log    仅打包，不压缩！ </span><br><span class="line">tar -zcvf log.tar.gz log2012.log   打包后，以 gzip 压缩 </span><br><span class="line">tar -jcvf log.tar.bz2 log2012.log  打包后，以 bzip2 压缩</span><br></pre></td></tr></table></figure>
+<p>在选项<code>f</code>之后的文件档名是自己取的，我们习惯上都用<code>.tar</code>来作为辨识。 如果加<code>z</code>选项，则以<code>.tar.gz</code>或<code>.tgz</code>来代表gzip压缩过的tar包；如果加j选项，则以<code>.tar.bz2</code>来作为tar包名。</p>
+<p>其他参数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-c或--create：建立新的备份文件；</span><br><span class="line">-x或--extract或--get：从备份文件中还原文件；</span><br><span class="line">-f&lt;备份文件&gt;或--file=&lt;备份文件&gt;：指定备份文件；</span><br><span class="line">-z或--gzip或--ungzip：通过gzip指令处理备份文件；</span><br><span class="line">-j：支持bzip2解压文件；</span><br><span class="line">-v或--verbose：显示指令执行过程；</span><br><span class="line">-m：保留文件不被覆盖；</span><br><span class="line">-t或--<span class="built_in">list</span>：列出备份文件的内容；</span><br><span class="line">-C &lt;目录&gt;：这个选项用在解压缩，若要在特定目录解压缩，可以使用这个选项。</span><br><span class="line">-r：添加文件到已经压缩的文件；</span><br><span class="line">-p或--same-permissions：用原来的文件权限还原文件；</span><br><span class="line"></span><br><span class="line">-A或--catenate：新增文件到以存在的备份文件；</span><br><span class="line">-B：设置区块大小；</span><br><span class="line">-d：记录文件的差别；</span><br><span class="line">-Z或--compress或--uncompress：通过compress指令处理备份文件；</span><br><span class="line">-u：添加改变了和现有的文件到已经存在的压缩文件；</span><br><span class="line">-l：文件系统边界设置；</span><br><span class="line">-w：确认压缩文件的正确性；</span><br><span class="line">-P或--absolute-names：文件名使用绝对名称，不移除文件名称前的“/”号；</span><br><span class="line">-N &lt;日期格式&gt; 或 --newer=&lt;日期时间&gt;：只将较指定日期更新的文件保存到备份文件里；</span><br><span class="line">--exclude=&lt;范本样式&gt;：排除符合范本样式的文件。</span><br></pre></td></tr></table></figure>
+<h3 id="vim和vi"><a href="#vim和vi" class="headerlink" title="vim和vi"></a>vim和vi</h3><p>1.区别：两者都是多模式编辑器，但vim是vi的升级版本，它不仅兼容vi的所有指令，而且还有一些新的特性。</p>
+<p>1)多级撤消<br>    在vi的命令模式里，按 u只能撤消上次命令，而在vim里可以无限制的撤消。<br>2)多操作系统支持<br>    vi只能运行于unix中，而vim不仅可以运行于unix,还有windows ,mac等操作系统上。<br>3)语法加亮<br>    vim可以对代码进行多颜色的语法加亮。<br>4)可视化操作<br>    因为vim不仅可以在终端运行，也可以运行于x window、 mac os、 windows， 所以说他“可视化”。<br>5)对vi的完全兼容<br>    大多情况下，vim可以完全被当成vi来使用。</p>
+<p>2.模式</p>
+<p>（1）vi有3个模式：插入模式、命令模式、底行模式。</p>
+<ul>
+<li>文本输入模式（input mode/编辑模式）：在此模式下可以输入字符，按ESC将回到命令模式。</li>
+<li>命令行模式（command mode/一般模式）：在该模式下，用户可以输入各种合法的Vi命令，用于管理自己的文档。</li>
+<li>末行模式（last line mode/指令列命令模式）：在命令模式下，用户按<code>:</code>键即可进入末行模式下，可以达到保存文件、退出vi、设置vi、查找等功能。</li>
+</ul>
+<p>（2）vim一共有4个模式：</p>
+<ul>
+<li>正常模式 (Normal-mode) 启动vim后默认处于正常模式。不论位于什么模式，按下<code>Esc</code>键(有时需要按两下）都会进入正常模式。</li>
+<li>插入模式 (Insert-mode) 在正常模式中按下<code>i, I, a, A</code>等键，会进入插入模式。</li>
+<li>命令模式 (Command-mode) 在正常模式中，按下<code>:</code>键，会进入命令模式。</li>
+<li>可视模式 (Visual-mode) 在正常模式中按下v, V, <code>Ctrl+v</code>，可以进入可视模式。</li>
+</ul>
+<p>3.常用命令</p>
+<p>(1)打开与退出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim filename  打开filename文件</span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">:w               保存文件</span><br><span class="line">:w filename.txt  保存至filename.txt文件</span><br><span class="line">:q               退出编辑器，如果文件已修改请使用下面的命令</span><br><span class="line">:q!              退出编辑器，且不保存</span><br><span class="line">:wq              退出编辑器，且保存文件</span><br><span class="line">:x               退出编辑器，且保存文件</span><br></pre></td></tr></table></figure>
+<p>（2)编辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">a  在当前光标位置的右边添加文本</span><br><span class="line">i  在当前光标位置的左边添加文本</span><br><span class="line">A  在当前行的末尾位置添加文本</span><br><span class="line">I  在当前行的开始处添加文本(非空字符的行首)</span><br><span class="line">O  在当前行的上面新建一行</span><br><span class="line">o  在当前行的下面新建一行</span><br><span class="line">R  替换(覆盖)当前光标位置及后面的若干文本</span><br><span class="line">J  合并光标所在行及下一行为一行(依然在命令模式)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy    将当前行复制到缓存区，也可以用 <span class="string">"ayy 复制"</span>，a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy   将当前行向下n行复制到缓冲区，也可以用 <span class="string">"anyy 复制，"</span>a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw    复制从光标开始到词尾的字符。</span><br><span class="line">nyw   复制从光标开始的n个单词。</span><br><span class="line">y^    复制从光标到行首的内容。</span><br><span class="line">y$    复制从光标到行尾的内容。</span><br><span class="line">p     粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用<span class="string">"ap 进行粘贴。</span></span><br><span class="line"><span class="string">P     粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用"</span>aP 进行粘贴。</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">x     删除当前字符</span><br><span class="line">nx    删除从光标开始的n个字符</span><br><span class="line">dd    删除当前行</span><br><span class="line">ndd   向下删除当前行在内的n行</span><br><span class="line">u     撤销上一步操作</span><br><span class="line">U     撤销对当前行的所有操作</span><br><span class="line">.     重复上一步操作</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">:/string           输入后按回车，从光标开始处向文尾查找字符串，找到则停留，继续则按n</span><br><span class="line">:?string           输入后按回车，从光标开始处向文件头查找字符串,方法同上</span><br><span class="line">:n                 继续查找满足条件的字符串</span><br><span class="line">:N                 改变查找方向，继续查找满足条件的字符串</span><br><span class="line">:set  nu           显示行号</span><br><span class="line">:set nonu          取消显示行号</span><br><span class="line">:s/old/new         用new替换行中首次出现的old</span><br><span class="line">:s/old/new/g       用new替换行中所有的old</span><br><span class="line">:n,m s/old/new/g   用new替换从n到m行里所有的old</span><br><span class="line">:%s/old/new/g      用new替换当前文件里所有的old</span><br><span class="line">:n1,n2 co n3       将从n1行到n2行之间（包括n1,n2行本身）的所有文本复制到n3行之下</span><br><span class="line">:n1,n2 m n3        将从n1行到n2行之间（包括n1,n2行本身）的所有文本移动到n3行之下</span><br><span class="line">:n1,n2 d           删除n1行到n2行之间（包括n1,n2行本身）的所有内容</span><br></pre></td></tr></table></figure>
+<p>（3）更多</p>
+<blockquote>
+<p>1.<a href="https://www.cnblogs.com/yangjig/p/6014198.html" target="_blank" rel="noopener">vim常用命令总结</a><br>2.<a href="https://blog.csdn.net/iamlaosong/article/details/56275120" target="_blank" rel="noopener">vi 和vim 的区别</a></p>
+</blockquote>
+<h3 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h3><p><img src="https://s2.ax1x.com/2019/05/09/Eg3uOH.jpg" alt></p>
+<p><a href="https://www.runoob.com/linux/linux-system-contents.html" target="_blank" rel="noopener">Linux 系统目录结构</a><br><a href="https://blog.51cto.com/yangrong/1288072" target="_blank" rel="noopener">linux目录结构详细介绍</a></p>
+<hr>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>通配符规则：<br><code>*</code>  代表任意字符(0到多个)<br><code>？</code>  代表一个字符<br><code>[]</code> 中间为字符组合，仅匹配其中任一一个字符</p>
+<p>如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">通配符         含义</span><br><span class="line">*          匹配零个或多个字符。</span><br><span class="line">?          匹配任意单个字符。</span><br><span class="line">[<span class="number">0</span><span class="number">-9</span>]      匹配范围内的数字。</span><br><span class="line">[abc]      匹配已给出的任意字符。</span><br><span class="line">[!abc]     匹配字母不是a、b或c</span><br></pre></td></tr></table></figure>
+<h2 id="用户与组群管理"><a href="#用户与组群管理" class="headerlink" title="用户与组群管理"></a>用户与组群管理</h2><p>1.linux中用户分为超级用户（root），系统用户和普通用户。同样，组群分为超级组群，系统组群和私人组群。</p>
+<p>2.涉及几个命令，需要的时候直接<code>--help</code>或<code>man</code>看如何使用就好。包括：</p>
+<ul>
+<li>useradd</li>
+<li>usermod</li>
+<li>userdel</li>
+<li>passwd</li>
+<li>groupadd</li>
+<li>groupmod</li>
+<li>groupdel</li>
+</ul>
+<p>命令用法同命令意义。此外，除了passwd命令可以普通用户自己使用外，其他命令均需超级用户权限。</p>
+<p>3.几个文件</p>
+<ul>
+<li>/etc/passwd</li>
+<li>/etc/shadow</li>
+<li>/etc/group</li>
+<li>/etc/gshadow</li>
+</ul>
+<p>4.取消shadow加密，可用<code>pwunconv</code>: 此命令需在root账户下执行，作用是将<code>/etc/shadow</code>中的加密密码解密，并保存于<code>/etc/passwd</code>文件中，且删除<code>/etc/shadow</code>文件。此命令在批量穿件用户时可用。若要恢复，可用<code>pwconv</code>命令。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    lei
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://clwsec.top/2019/05/11/Linux学习记录一/" title="Linux学习记录一">https://clwsec.top/2019/05/11/Linux学习记录一/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"> <i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/09/cumt第三次双月赛writeup/" rel="next" title="Cumt第三次双月赛writeup">
+                <i class="fa fa-chevron-left"></i> Cumt第三次双月赛writeup
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/Python记录二/" rel="prev" title="Python记录二">
+                Python记录二 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="lei">
+            
+              <p class="site-author-name" itemprop="name">lei</p>
+              <p class="site-description motion-element" itemprop="description">业精于勤 荒于嬉 行成于思 毁于随</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/clwsec" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="email:clwsec@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/7e18a3f52ba3" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="qq:740455490" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.w3school.com.cn/" title="W3school" target="_blank">W3school</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.runoob.com/" title="菜鸟" target="_blank">菜鸟</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自由软件与开源软件"><span class="nav-number">1.</span> <span class="nav-text">自由软件与开源软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的主要特点"><span class="nav-number">2.</span> <span class="nav-text">Linux的主要特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux版本"><span class="nav-number">3.</span> <span class="nav-text">Linux版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统结构"><span class="nav-number">4.</span> <span class="nav-text">Linux系统结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的属性和权限"><span class="nav-number">5.</span> <span class="nav-text">文件的属性和权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件属性"><span class="nav-number">5.1.</span> <span class="nav-text">文件属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限"><span class="nav-number">5.2.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限修改"><span class="nav-number">5.3.</span> <span class="nav-text">文件权限修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认权限"><span class="nav-number">5.4.</span> <span class="nav-text">默认权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对路径与相对路径"><span class="nav-number">6.</span> <span class="nav-text">绝对路径与相对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd命令"><span class="nav-number">7.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls命令"><span class="nav-number">8.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩和解压缩"><span class="nav-number">9.</span> <span class="nav-text">压缩和解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim和vi"><span class="nav-number">10.</span> <span class="nav-text">vim和vi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件目录"><span class="nav-number">11.</span> <span class="nav-text">文件目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符"><span class="nav-number">12.</span> <span class="nav-text">通配符</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#用户与组群管理"><span class="nav-number"></span> <span class="nav-text">用户与组群管理</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">84.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

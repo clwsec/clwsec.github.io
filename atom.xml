@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://clwsec.top/"/>
-  <updated>2019-05-09T02:45:20.356Z</updated>
+  <updated>2019-05-17T02:52:03.592Z</updated>
   <id>https://clwsec.top/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PHP学习记录一</title>
+    <link href="https://clwsec.top/2019/05/15/PHP%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
+    <id>https://clwsec.top/2019/05/15/PHP学习记录一/</id>
+    <published>2019-05-15T02:44:48.000Z</published>
+    <updated>2019-05-17T02:52:03.592Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;愿你，想要的都得到，得不到的都释怀&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="PHP" scheme="https://clwsec.top/categories/PHP/"/>
+    
+    
+      <category term="PHP" scheme="https://clwsec.top/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python记录二</title>
+    <link href="https://clwsec.top/2019/05/12/Python%E8%AE%B0%E5%BD%95%E4%BA%8C/"/>
+    <id>https://clwsec.top/2019/05/12/Python记录二/</id>
+    <published>2019-05-12T10:41:19.000Z</published>
+    <updated>2019-05-19T08:08:11.717Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;为天地立心，为生民立命，为往圣继绝学，为万世开太平。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;——张载&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://clwsec.top/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://clwsec.top/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux学习记录一</title>
+    <link href="https://clwsec.top/2019/05/11/Linux%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
+    <id>https://clwsec.top/2019/05/11/Linux学习记录一/</id>
+    <published>2019-05-11T11:29:41.000Z</published>
+    <updated>2019-05-19T08:09:24.467Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;人间多的是两条腿的恶人，多了条尾巴又怎样。&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="https://clwsec.top/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://clwsec.top/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Cumt第三次双月赛writeup</title>
     <link href="https://clwsec.top/2019/05/09/cumt%E7%AC%AC%E4%B8%89%E6%AC%A1%E5%8F%8C%E6%9C%88%E8%B5%9Bwriteup/"/>
     <id>https://clwsec.top/2019/05/09/cumt第三次双月赛writeup/</id>
     <published>2019-05-09T02:38:12.000Z</published>
-    <updated>2019-05-09T02:45:20.356Z</updated>
+    <updated>2019-05-12T01:40:28.202Z</updated>
     
     <summary type="html">
     
@@ -41,7 +101,7 @@
     <link href="https://clwsec.top/2019/04/30/Python%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
     <id>https://clwsec.top/2019/04/30/Python记录一/</id>
     <published>2019-04-30T01:21:31.000Z</published>
-    <updated>2019-05-09T03:08:00.213Z</updated>
+    <updated>2019-05-13T09:27:53.394Z</updated>
     
     <summary type="html">
     
@@ -123,7 +183,7 @@
     <link href="https://clwsec.top/2019/04/11/LearnGit/"/>
     <id>https://clwsec.top/2019/04/11/LearnGit/</id>
     <published>2019-04-11T08:41:49.000Z</published>
-    <updated>2019-04-12T09:24:45.600Z</updated>
+    <updated>2019-05-12T15:27:00.565Z</updated>
     
     <summary type="html">
     
@@ -377,68 +437,6 @@
       <category term="CTF" scheme="https://clwsec.top/tags/CTF/"/>
     
       <category term="总结" scheme="https://clwsec.top/tags/%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sqli-Labs-Less11-20</title>
-    <link href="https://clwsec.top/2019/03/12/sqli-labs-Less11-20/"/>
-    <id>https://clwsec.top/2019/03/12/sqli-labs-Less11-20/</id>
-    <published>2019-03-12T13:22:28.000Z</published>
-    <updated>2019-04-01T15:56:58.475Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;人生就是一场赌博，怕输的人永远赢不了&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://clwsec.top/categories/SQL/"/>
-    
-    
-      <category term="SQL注入" scheme="https://clwsec.top/tags/SQL%E6%B3%A8%E5%85%A5/"/>
-    
-      <category term="sqli-labs" scheme="https://clwsec.top/tags/sqli-labs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL学习2</title>
-    <link href="https://clwsec.top/2019/03/09/MySQL%E5%AD%A6%E4%B9%A02/"/>
-    <id>https://clwsec.top/2019/03/09/MySQL学习2/</id>
-    <published>2019-03-09T11:21:46.000Z</published>
-    <updated>2019-04-01T15:59:14.972Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;起于欢喜, 成于坚持&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="https://clwsec.top/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="https://clwsec.top/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL常用命令</title>
-    <link href="https://clwsec.top/2019/03/08/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://clwsec.top/2019/03/08/MySQL常用命令/</id>
-    <published>2019-03-08T09:31:35.000Z</published>
-    <updated>2019-04-01T15:59:23.569Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote class=&quot;blockquote-center&quot;&gt;守着我的善良，催着我成长&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="MySQL" scheme="https://clwsec.top/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="https://clwsec.top/tags/MySQL/"/>
     
   </entry>
   
