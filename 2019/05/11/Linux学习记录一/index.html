@@ -97,7 +97,7 @@
 <meta property="og:description" content="人间多的是两条腿的恶人，多了条尾巴又怎样。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg3uOH.jpg">
-<meta property="og:updated_time" content="2019-05-19T08:09:24.467Z">
+<meta property="og:updated_time" content="2019-05-29T14:00:44.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习记录一">
 <meta name="twitter:description" content="人间多的是两条腿的恶人，多了条尾巴又怎样。">
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5k
+                  5.2k
                 </span>
               
 
@@ -486,6 +486,7 @@
 <p>（2)编辑</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">a  在当前光标位置的右边添加文本</span><br><span class="line">i  在当前光标位置的左边添加文本</span><br><span class="line">A  在当前行的末尾位置添加文本</span><br><span class="line">I  在当前行的开始处添加文本(非空字符的行首)</span><br><span class="line">O  在当前行的上面新建一行</span><br><span class="line">o  在当前行的下面新建一行</span><br><span class="line">R  替换(覆盖)当前光标位置及后面的若干文本</span><br><span class="line">J  合并光标所在行及下一行为一行(依然在命令模式)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy    将当前行复制到缓存区，也可以用 <span class="string">"ayy 复制"</span>，a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy   将当前行向下n行复制到缓冲区，也可以用 <span class="string">"anyy 复制，"</span>a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw    复制从光标开始到词尾的字符。</span><br><span class="line">nyw   复制从光标开始的n个单词。</span><br><span class="line">y^    复制从光标到行首的内容。</span><br><span class="line">y$    复制从光标到行尾的内容。</span><br><span class="line">p     粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用<span class="string">"ap 进行粘贴。</span></span><br><span class="line"><span class="string">P     粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用"</span>aP 进行粘贴。</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 移动光标</span></span><br><span class="line">上:k nk:向上移动n行 <span class="number">9999</span>k或gg可以移到第一行 G移到最后一行</span><br><span class="line">下:j nj:向下移动n行</span><br><span class="line">左:h nh:向左移动n列</span><br><span class="line">右:l nl:向右移动n列</span><br><span class="line">w：光标以单词向前移动 nw：光标向前移动n个单词 光标到单词的第一个字母上</span><br><span class="line">b：与w相反</span><br><span class="line">e: 光标以单词向前移动 ne：光标向前移动n个单词 光标到单词的最后一个字母上</span><br><span class="line">ge:与e相反</span><br><span class="line">$:移动光标到行尾 n$:移动到第n行的行尾</span><br><span class="line"><span class="number">0</span>（Num）：移动光标到行首</span><br><span class="line">^:移动光标到行首第一个非空字符上去</span><br><span class="line">CTRL＋L     刷新屏幕</span><br><span class="line">shift + &lt;   左移一行</span><br><span class="line">shift + &gt;   右移一行</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">x     删除当前字符</span><br><span class="line">nx    删除从光标开始的n个字符</span><br><span class="line">dd    删除当前行</span><br><span class="line">ndd   向下删除当前行在内的n行</span><br><span class="line">u     撤销上一步操作</span><br><span class="line">U     撤销对当前行的所有操作</span><br><span class="line">.     重复上一步操作</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令模式下使用</span></span><br><span class="line">:/string           输入后按回车，从光标开始处向文尾查找字符串，找到则停留，继续则按n</span><br><span class="line">:?string           输入后按回车，从光标开始处向文件头查找字符串,方法同上</span><br><span class="line">:n                 继续查找满足条件的字符串</span><br><span class="line">:N                 改变查找方向，继续查找满足条件的字符串</span><br><span class="line">:set  nu           显示行号</span><br><span class="line">:set nonu          取消显示行号</span><br><span class="line">:s/old/new         用new替换行中首次出现的old</span><br><span class="line">:s/old/new/g       用new替换行中所有的old</span><br><span class="line">:n,m s/old/new/g   用new替换从n到m行里所有的old</span><br><span class="line">:%s/old/new/g      用new替换当前文件里所有的old</span><br><span class="line">:n1,n2 co n3       将从n1行到n2行之间（包括n1,n2行本身）的所有文本复制到n3行之下</span><br><span class="line">:n1,n2 m n3        将从n1行到n2行之间（包括n1,n2行本身）的所有文本移动到n3行之下</span><br><span class="line">:n1,n2 d           删除n1行到n2行之间（包括n1,n2行本身）的所有内容</span><br></pre></td></tr></table></figure>
 <p>（3）更多</p>
@@ -495,10 +496,10 @@
 <h3 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h3><p><img src="https://s2.ax1x.com/2019/05/09/Eg3uOH.jpg" alt></p>
 <p><a href="https://www.runoob.com/linux/linux-system-contents.html" target="_blank" rel="noopener">Linux 系统目录结构</a><br><a href="https://blog.51cto.com/yangrong/1288072" target="_blank" rel="noopener">linux目录结构详细介绍</a></p>
 <hr>
-<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>通配符规则：<br><code>*</code>  代表任意字符(0到多个)<br><code>？</code>  代表一个字符<br><code>[]</code> 中间为字符组合，仅匹配其中任一一个字符</p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><p>通配符规则：<br><code>*</code>  代表任意字符(0或多个)<br><code>？</code>  代表一个字符<br><code>[]</code> 中间为字符组合，仅匹配其中任一一个字符</p>
 <p>如：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">通配符         含义</span><br><span class="line">*          匹配零个或多个字符。</span><br><span class="line">?          匹配任意单个字符。</span><br><span class="line">[<span class="number">0</span><span class="number">-9</span>]      匹配范围内的数字。</span><br><span class="line">[abc]      匹配已给出的任意字符。</span><br><span class="line">[!abc]     匹配字母不是a、b或c</span><br></pre></td></tr></table></figure>
-<h2 id="用户与组群管理"><a href="#用户与组群管理" class="headerlink" title="用户与组群管理"></a>用户与组群管理</h2><p>1.linux中用户分为超级用户（root），系统用户和普通用户。同样，组群分为超级组群，系统组群和私人组群。</p>
+<h3 id="用户与组群管理"><a href="#用户与组群管理" class="headerlink" title="用户与组群管理"></a>用户与组群管理</h3><p>1.linux中用户分为超级用户（root），系统用户和普通用户。同样，组群分为超级组群，系统组群和私人组群。</p>
 <p>2.涉及几个命令，需要的时候直接<code>--help</code>或<code>man</code>看如何使用就好。包括：</p>
 <ul>
 <li>useradd</li>
@@ -518,6 +519,7 @@
 <li>/etc/gshadow</li>
 </ul>
 <p>4.取消shadow加密，可用<code>pwunconv</code>: 此命令需在root账户下执行，作用是将<code>/etc/shadow</code>中的加密密码解密，并保存于<code>/etc/passwd</code>文件中，且删除<code>/etc/shadow</code>文件。此命令在批量穿件用户时可用。若要恢复，可用<code>pwconv</code>命令。</p>
+<hr>
 
       
     </div>
@@ -773,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自由软件与开源软件"><span class="nav-number">1.</span> <span class="nav-text">自由软件与开源软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的主要特点"><span class="nav-number">2.</span> <span class="nav-text">Linux的主要特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux版本"><span class="nav-number">3.</span> <span class="nav-text">Linux版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统结构"><span class="nav-number">4.</span> <span class="nav-text">Linux系统结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的属性和权限"><span class="nav-number">5.</span> <span class="nav-text">文件的属性和权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件属性"><span class="nav-number">5.1.</span> <span class="nav-text">文件属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限"><span class="nav-number">5.2.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限修改"><span class="nav-number">5.3.</span> <span class="nav-text">文件权限修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认权限"><span class="nav-number">5.4.</span> <span class="nav-text">默认权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对路径与相对路径"><span class="nav-number">6.</span> <span class="nav-text">绝对路径与相对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd命令"><span class="nav-number">7.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls命令"><span class="nav-number">8.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩和解压缩"><span class="nav-number">9.</span> <span class="nav-text">压缩和解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim和vi"><span class="nav-number">10.</span> <span class="nav-text">vim和vi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件目录"><span class="nav-number">11.</span> <span class="nav-text">文件目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符"><span class="nav-number">12.</span> <span class="nav-text">通配符</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#用户与组群管理"><span class="nav-number"></span> <span class="nav-text">用户与组群管理</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自由软件与开源软件"><span class="nav-number">1.</span> <span class="nav-text">自由软件与开源软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的主要特点"><span class="nav-number">2.</span> <span class="nav-text">Linux的主要特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux版本"><span class="nav-number">3.</span> <span class="nav-text">Linux版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统结构"><span class="nav-number">4.</span> <span class="nav-text">Linux系统结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的属性和权限"><span class="nav-number">5.</span> <span class="nav-text">文件的属性和权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件属性"><span class="nav-number">5.1.</span> <span class="nav-text">文件属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限"><span class="nav-number">5.2.</span> <span class="nav-text">权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限修改"><span class="nav-number">5.3.</span> <span class="nav-text">文件权限修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认权限"><span class="nav-number">5.4.</span> <span class="nav-text">默认权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对路径与相对路径"><span class="nav-number">6.</span> <span class="nav-text">绝对路径与相对路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd命令"><span class="nav-number">7.</span> <span class="nav-text">cd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls命令"><span class="nav-number">8.</span> <span class="nav-text">ls命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩和解压缩"><span class="nav-number">9.</span> <span class="nav-text">压缩和解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim和vi"><span class="nav-number">10.</span> <span class="nav-text">vim和vi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件目录"><span class="nav-number">11.</span> <span class="nav-text">文件目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符"><span class="nav-number">12.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户与组群管理"><span class="nav-number">13.</span> <span class="nav-text">用户与组群管理</span></a></li></ol></div>
             
 
           </div>
@@ -808,7 +810,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">87.3k</span>
   
 </div>
 
@@ -881,8 +883,6 @@
   
 
 
-  
-
 
 
 
@@ -921,11 +921,6 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
