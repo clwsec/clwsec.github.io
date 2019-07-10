@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="python,crypto,">
+  <meta name="keywords" content="crypto,">
 
 
 
@@ -89,24 +89,24 @@
 
 
 <meta name="description" content="坚持坚持，方知何为坚持">
-<meta name="keywords" content="python,crypto">
+<meta name="keywords" content="crypto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于RSA的数字签名方案">
 <meta property="og:url" content="https://clwsec.top/2019/03/06/基于RSA的数字签名方案/index.html">
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="坚持坚持，方知何为坚持">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-250e0206fa02a40f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-042c921e35053ae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5ade807394f868d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-b68a6aa461dc827c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-756a6a152874852f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-bd3d4d182754addc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-01T15:56:03.110Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/Zgki4g.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkA3j.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkEgs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkGvR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkNb6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgksxA.png">
+<meta property="og:updated_time" content="2019-07-10T11:39:31.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于RSA的数字签名方案">
 <meta name="twitter:description" content="坚持坚持，方知何为坚持">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-250e0206fa02a40f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/10/Zgki4g.png">
 
 
 
@@ -407,20 +407,25 @@
 <li>主要包括算法：</li>
 </ol>
 <ul>
-<li>秘钥生成算法：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-250e0206fa02a40f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>签名算法：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-042c921e35053ae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
-<li>验证算法：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5ade807394f868d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>秘钥生成算法：<br><img src="https://s2.ax1x.com/2019/07/10/Zgki4g.png" alt></li>
+<li>签名算法：<br><img src="https://s2.ax1x.com/2019/07/10/ZgkA3j.png" alt></li>
+<li>验证算法：<br><img src="https://s2.ax1x.com/2019/07/10/ZgkEgs.png" alt></li>
 </ul>
 <hr>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接导入之前写好的RSA算法和hash函数的hashlib库</span></span><br><span class="line"><span class="keyword">from</span> RSA <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 秘钥生成算法</span></span><br><span class="line">pubkey = []</span><br><span class="line">selfkey = []</span><br><span class="line"><span class="string">'''公钥私钥中用到的两个大素数数p,q，都是1024位'''</span></span><br><span class="line">p = <span class="number">106697219132480173106064317148705638676529121742557567770857687729397446898790451577487723991083173010242416863238099716044775658681981821407922722052778958942891831033512463262741053961681512908218003840408526915629689432111480588966800949428079015682624591636010678691927285321708935076221951173426894836169</span></span><br><span class="line">q = <span class="number">144819424465842307806353672547344125290716753535239658417883828941232509622838692761917211806963011168822281666033695157426515864265527046213326145174398018859056439431422867957079149967592078894410082695714160599647180947207504108618794637872261572262805565517756922288320779308895819726074229154002310375209</span></span><br><span class="line"><span class="string">'''生成公钥私钥'''</span></span><br><span class="line">pubkey, selfkey = gen_key(p, q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 签名算法</span></span><br><span class="line">m = <span class="string">b"helloworld"</span></span><br><span class="line">md = hashlib.md5()</span><br><span class="line">md.update(m)</span><br><span class="line"><span class="comment"># 用MD5算法生成消息摘要hm</span></span><br><span class="line">hm = int(md.hexdigest(), <span class="number">16</span>)</span><br><span class="line">print(<span class="string">"Alice生成的消息摘要为： \n"</span>, hm)</span><br><span class="line"><span class="comment"># 计算签名</span></span><br><span class="line"><span class="comment"># Alice用自己的私钥计算签名s</span></span><br><span class="line">s = encrypt(hm, selfkey)</span><br><span class="line">print(<span class="string">"Alice计算出的签名s为:  \n"</span>, s)</span><br><span class="line"><span class="comment"># Alice将(m, s)发送个Bob</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证算法</span></span><br><span class="line"><span class="comment"># Bob验证签名是否有效</span></span><br><span class="line">flag = <span class="literal">True</span></span><br><span class="line"><span class="comment"># Bob用公钥计算出消息摘要</span></span><br><span class="line">res = decrypt(s, pubkey)</span><br><span class="line">print(<span class="string">"Bob计算出的消息摘要为： \n"</span>, res)</span><br><span class="line"><span class="keyword">if</span> res == hm:</span><br><span class="line">    flag =<span class="literal">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    flag = <span class="literal">False</span></span><br><span class="line"><span class="comment"># 将验证结果输出</span></span><br><span class="line"><span class="keyword">if</span> flag == <span class="literal">True</span>:</span><br><span class="line">    print(<span class="string">"Alice的签名有效"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"Alice的签名无效"</span>)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="签名与验证过程"><a href="#签名与验证过程" class="headerlink" title="签名与验证过程"></a>签名与验证过程</h3><p>如下图所示，消息m = “helloworld” , 使用RSA算法中生成的公钥和私钥，Alice通过私钥对消息摘要进行签名得到s , Bob通过公钥根据签名s计算出消息摘要，并将其与Alice发来的消息摘要进行对比，如果相等，则打印出签名有效，否则打印出签名无效。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-b68a6aa461dc827c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="签名与验证过程"><a href="#签名与验证过程" class="headerlink" title="签名与验证过程"></a>签名与验证过程</h3><p>如下图所示，消息m = “helloworld” , 使用RSA算法中生成的公钥和私钥，Alice通过私钥对消息摘要进行签名得到s , Bob通过公钥根据签名s计算出消息摘要，并将其与Alice发来的消息摘要进行对比，如果相等，则打印出签名有效，否则打印出签名无效。</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgkGvR.png" alt></p>
 <hr>
-<h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p>签名验证过程的正确性证明如下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-756a6a152874852f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p>签名验证过程的正确性证明如下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgkNb6.png" alt></p>
 <hr>
 <h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
 <li>签名中使用了hash函数，哈希函数的使用使签名具有更好的抗攻击性。如果不使用，则可根据RSA方案所具有的同态特性，根据已知的两个签名，生成伪造的消息签名。具体如下：如果消息𝑀1、𝑀2的签名分别是𝑆1和𝑆2，则任何知道𝑀1，𝑆1，𝑀2，𝑆2的人可以伪造对消息𝑀1𝑀2的签名𝑆1𝑆2，因为<br> 𝑆𝑖𝑔(𝑀1𝑀2) = 𝑆𝑖𝑔(𝑀1)𝑆𝑖𝑔(𝑀2)</li>
-<li>若未使用hash函数，还可以尝试一般攻击：攻击者任选一个数据𝑌，用A的公钥计算𝑋＝Y^e𝑚𝑜𝑑 𝑛 于是便可以用Y伪造A对消息X的签名，因为<br><img src="https://upload-images.jianshu.io/upload_images/9216631-bd3d4d182754addc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>若未使用hash函数，还可以尝试一般攻击：攻击者任选一个数据𝑌，用A的公钥计算𝑋＝Y^e𝑚𝑜𝑑 𝑛 于是便可以用Y伪造A对消息X的签名，因为</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgksxA.png" alt></p>
+<ol start="3">
 <li>存在签名的可重用性问题，即对同一消息在不同时刻签名是相同的。这个问题可通过在每次签名中引入不同随机数来解决。</li>
 </ol>
 <hr>
@@ -458,8 +463,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
           
             <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
           
@@ -565,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -716,7 +719,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">87.3k</span>
+    <span title="Site words total count">87.4k</span>
   
 </div>
 

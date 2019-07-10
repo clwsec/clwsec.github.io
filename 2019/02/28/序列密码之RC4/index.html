@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="python,crypto,">
+  <meta name="keywords" content="crypto,">
 
 
 
@@ -89,19 +89,19 @@
 
 
 <meta name="description" content="君若不娶，雪离不嫁，君若身亡，众生陪葬">
-<meta name="keywords" content="python,crypto">
+<meta name="keywords" content="crypto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列密码之RC4">
 <meta property="og:url" content="https://clwsec.top/2019/02/28/序列密码之RC4/index.html">
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="君若不娶，雪离不嫁，君若身亡，众生陪葬">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-dd57905378270560.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-01T15:55:29.133Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZcH6Re.png">
+<meta property="og:updated_time" content="2019-07-10T11:47:29.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列密码之RC4">
 <meta name="twitter:description" content="君若不娶，雪离不嫁，君若身亡，众生陪葬">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-dd57905378270560.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/10/ZcH6Re.png">
 
 
 
@@ -419,7 +419,8 @@
 <hr>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># KSA 初始化S盒</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">InitSbox</span><span class="params">(k)</span>:</span></span><br><span class="line">    <span class="comment"># 初始化S盒 存初始值0-255</span></span><br><span class="line">    S = list(range(<span class="number">256</span>))</span><br><span class="line">    T = [] <span class="comment"># 用于轮转存放key</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">        T.append(ord(k[i % len(k)]))  <span class="comment"># 存放轮转的256位key</span></span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">        j = (j + S[i] + T[i]) % <span class="number">256</span></span><br><span class="line">        <span class="comment"># 通过交换，打乱S盒</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]</span><br><span class="line">    <span class="keyword">return</span> S</span><br><span class="line"></span><br><span class="line"><span class="comment"># PRGA生成密钥流</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(m, k)</span>:</span></span><br><span class="line">    c = <span class="string">""</span></span><br><span class="line">    i = j = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 调用已经初始化的S盒</span></span><br><span class="line">    S = InitSbox(k)</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(len(m)):</span><br><span class="line">        i = (i + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">        j = (j + S[i]) % <span class="number">256</span></span><br><span class="line">        S[i], S[j] = S[j], S[i]  <span class="comment"># 交换 打乱S盒</span></span><br><span class="line">        t = (S[i] + S[j]) % <span class="number">256</span></span><br><span class="line">        <span class="comment"># 将生成的密钥流key逐一与明文进行异或，格式化成16进制字符串</span></span><br><span class="line">        c += <span class="string">'%02x'</span> % (ord(m[x]) ^ S[t])</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 加密</span></span><br><span class="line">    m = <span class="string">"ifnottothesunforsmilingwarmisstillinthesuntherebutwewilllaughmoreconfidentcalmifturnedtofoundhisownshadowappropriateescapethesunwillbethroughtheheartwarmeachplacebehindthecornerifanoutstretchedpalmcannotfallbutterflythenclenchedwavingarmsgivenpowerificanthavebrightsmileitwillfacetothesunshineandsunshinesmiletogetherinfullbloom"</span></span><br><span class="line">    k = <span class="string">"qwertyuiop"</span></span><br><span class="line">    ans = encrypt(m, k)</span><br><span class="line">    print(<span class="string">"加密后得到的内容为： \n"</span> + ans)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解密</span></span><br><span class="line">    c = ans <span class="comment">#获取密文</span></span><br><span class="line">    b = <span class="string">""</span></span><br><span class="line">    text = <span class="string">""</span></span><br><span class="line">    <span class="comment"># 将16进制字符串转换为相应字符，存入字符串b中</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(c), <span class="number">2</span>):</span><br><span class="line">        b += str(chr(int(c[i : i + <span class="number">2</span>], <span class="number">16</span>)))</span><br><span class="line">    <span class="comment"># 解密其实就是再次与密钥流进行异或，再次调用encrypt函数</span></span><br><span class="line">    res = encrypt(b, k)</span><br><span class="line">    <span class="comment"># 异或后的16进制对应相应的明文字符，转换为相应字符</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(res), <span class="number">2</span>):</span><br><span class="line">        text += str(chr(int(res[i : i + <span class="number">2</span>], <span class="number">16</span>)))</span><br><span class="line">    print(<span class="string">"解密后得到的明文为： \n"</span> + text)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h3><p>加密与解密使用同一个加密函数，因为解密其实就是再次与密钥流进行异或。结果如下。<br><img src="https://upload-images.jianshu.io/upload_images/9216631-dd57905378270560.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="加密与解密"><a href="#加密与解密" class="headerlink" title="加密与解密"></a>加密与解密</h3><p>加密与解密使用同一个加密函数，因为解密其实就是再次与密钥流进行异或。结果如下。</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZcH6Re.png" alt></p>
 <hr>
 <h3 id="正确性"><a href="#正确性" class="headerlink" title="正确性"></a>正确性</h3><p> 算法主要包含密钥调度算法（KSA）：用于打乱S盒的初始排列 和伪随机数生成算法（PRGA）用于输出随机序列并修改S的当前排列。前者的所有操作仅仅是改变位置。后者的秘钥序列生成过程较为复杂（很好地打乱），但加解密使用的是同一个秘钥K，故随机生成后的秘钥序列依然是相同的，加上加解密只是简单的异或运算，故算法正确。</p>
 <hr>
@@ -468,8 +469,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
           
             <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
           
@@ -575,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -726,7 +725,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">87.3k</span>
+    <span title="Site words total count">87.4k</span>
   
 </div>
 

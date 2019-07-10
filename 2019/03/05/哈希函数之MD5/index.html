@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="python,crypto,">
+  <meta name="keywords" content="crypto,">
 
 
 
@@ -89,21 +89,21 @@
 
 
 <meta name="description" content="一杯敬明天，一杯敬过往">
-<meta name="keywords" content="python,crypto">
+<meta name="keywords" content="crypto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈希函数之MD5">
 <meta property="og:url" content="https://clwsec.top/2019/03/05/哈希函数之MD5/index.html">
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="一杯敬明天，一杯敬过往">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-b4ac32a5cc754027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-d673e11bc493f58d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-220a8c127ae1201f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-01T15:56:11.970Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkI2j.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkHrq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgkLZV.png">
+<meta property="og:updated_time" content="2019-07-10T11:39:44.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哈希函数之MD5">
 <meta name="twitter:description" content="一杯敬明天，一杯敬过往">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-b4ac32a5cc754027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/10/ZgkI2j.png">
 
 
 
@@ -402,18 +402,21 @@
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ol>
 <li>MD5算法是输入长度小于<code>2^64</code>比特的消息，输出为128比特的消息摘要。</li>
 <li>输入消息以512比特的分组为单位处理。</li>
-<li>具体过程如下:<br><img src="https://upload-images.jianshu.io/upload_images/9216631-b4ac32a5cc754027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>具体过程如下:</li>
 </ol>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgkI2j.png" alt></p>
 <ul>
 <li>附加填充位：保证消息长度<code>L=448（mod512）</code>然后将原始消息长度以64比特附在填充结果后面。从而使消息长度恰好为512比特的整数倍。</li>
 <li>初始化链接变量：使用4个32位的寄存器A，B，C，D，最开始存放4个固定的32位的整数参数，即初始链接变量，这些参数用于第一轮的迭代。</li>
 <li>分组处理（迭代压缩）： 由4轮组成，512比特按32比特分为16组，参与每轮16步函数运算。每步的输入是4个32比特的链接变量和一个32比特的消息子分组。净果轮共64步后，得到4个寄存器的值分别与输入链接变量进行模加，即的此次分组处理的输出链接变量。</li>
-<li>步函数的具体过程为：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-d673e11bc493f58d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></li>
+<li>步函数的具体过程为：</li>
 </ul>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgkHrq.png" alt></p>
 <hr>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接使用Python中的hashlib模块，并将加密结果以16进制形式显示</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="comment"># 生成md5数字指纹。</span></span><br><span class="line">s = <span class="string">b'abc'</span>  <span class="comment"># 定义字节型字符串</span></span><br><span class="line">md = hashlib.md5()  <span class="comment"># 导入md5算法</span></span><br><span class="line">md.update(s)  <span class="comment"># 把值传给md5算法</span></span><br><span class="line">print(<span class="string">'消息摘要：'</span>,  md.hexdigest())</span><br><span class="line">print(<span class="string">'长度: '</span>, len(md.hexdigest())*<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="生成消息摘要"><a href="#生成消息摘要" class="headerlink" title="生成消息摘要"></a>生成消息摘要</h3><p>当消息<code>s = “abc”</code>时，生成的消息摘要为：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-220a8c127ae1201f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="生成消息摘要"><a href="#生成消息摘要" class="headerlink" title="生成消息摘要"></a>生成消息摘要</h3><p>当消息<code>s = “abc”</code>时，生成的消息摘要为：</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgkLZV.png" alt></p>
 <hr>
 <h3 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h3><ol>
 <li>MD5算法中，输出的每一位都是输入的每一位的函数，逻辑函数F、G、H、I的复杂迭代使得输出对输入的依赖非常小。</li>
@@ -455,8 +458,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
           
             <a href="/tags/crypto/" rel="tag"> <i class="fa fa-tag"></i> crypto</a>
           
@@ -562,7 +563,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -713,7 +714,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">87.3k</span>
+    <span title="Site words total count">87.4k</span>
   
 </div>
 

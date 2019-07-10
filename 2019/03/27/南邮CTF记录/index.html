@@ -96,20 +96,20 @@
 <meta property="og:site_name" content="煊奕">
 <meta property="og:description" content="你帮我一次，我记你终生">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-966090cab3ae75e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-58527787133fd108.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-c09f7d742d2b101d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-263b55dfd6c81874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-83f55022f2e186ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-1fb52b0e98e93f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-5b135c20de748bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9216631-0a8ba41111729a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-01T15:55:53.641Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKkPP.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKE28.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKKVs.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKQ5q.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgK82T.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKYMF.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKBPx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKDG6.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/10/ZgKsxO.md.png">
+<meta property="og:updated_time" content="2019-07-10T12:34:48.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="南邮CTF记录">
 <meta name="twitter:description" content="你帮我一次，我记你终生">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/10/ZgKkPP.md.png">
 
 
 
@@ -420,7 +420,8 @@
 <blockquote>
 <p><a href="https://blog.csdn.net/qq_29419013/article/details/81205291" target="_blank" rel="noopener">深入探究宽字节注入漏洞与修补原理</a></p>
 </blockquote>
-<h3 id="x00"><a href="#x00" class="headerlink" title="/x00"></a>/x00</h3><p>1.这是一道很纯粹的代码审计题，提示说了有多种做法，故记录一下。<br>这是给出的源码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">view-source:</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">isset</span> ($_GET[<span class="string">'nctf'</span>])) &#123;</span><br><span class="line">       <span class="keyword">if</span> (@ereg (<span class="string">"^[1-9]+$"</span>, $_GET[<span class="string">'nctf'</span>]) === <span class="keyword">FALSE</span>)</span><br><span class="line">           <span class="keyword">echo</span> <span class="string">'必须输入数字才行'</span>;</span><br><span class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (strpos ($_GET[<span class="string">'nctf'</span>], <span class="string">'#biubiubiu'</span>) !== <span class="keyword">FALSE</span>)   </span><br><span class="line">           <span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">           <span class="keyword">echo</span> <span class="string">'骚年，继续努力吧啊~'</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="x00"><a href="#x00" class="headerlink" title="/x00"></a>/x00</h3><p>1.这是一道很纯粹的代码审计题，提示说了有多种做法，故记录一下。<br>这是给出的源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">view-source:</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">isset</span> ($_GET[<span class="string">'nctf'</span>])) &#123;</span><br><span class="line">       <span class="keyword">if</span> (@ereg (<span class="string">"^[1-9]+$"</span>, $_GET[<span class="string">'nctf'</span>]) === <span class="keyword">FALSE</span>)</span><br><span class="line">           <span class="keyword">echo</span> <span class="string">'必须输入数字才行'</span>;</span><br><span class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (strpos ($_GET[<span class="string">'nctf'</span>], <span class="string">'#biubiubiu'</span>) !== <span class="keyword">FALSE</span>)   </span><br><span class="line">           <span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">           <span class="keyword">echo</span> <span class="string">'骚年，继续努力吧啊~'</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>2.分析：</p>
 <ul>
 <li><code>@eval</code>：<code>@</code>的作用就是忽略报错信息</li>
@@ -428,10 +429,11 @@
 <li><code>strpos()</code> 函数: 返回字符串在另一个字符串中第一次出现的位置，如果没有找到该字符串，则返回 false  <a href="http://www.w3school.com.cn/php/func_string_strpos.asp" target="_blank" rel="noopener">PHP strpos() 函数</a></li>
 </ul>
 <p>3.如何绕过：<br>这里传入的<code>nctf</code>要用<code>nctf[]</code>,构造一个数组，传入之后，<code>ereg()</code>返回<code>NULL</code>。<code>===</code>判断<code>NULL</code>和<code>FALSE</code>，是不相等的，所以可以进入第二个判断。<code>strpos()</code>处理数组时，也是返回<code>NULL</code>，<code>NULL!==FALSE</code>，条件成立，拿到flag</p>
-<p>其实，在等与不等这块，自己感觉有些混乱了，因为<code>NULL==FALSE</code>，应该也是成立的。所以检查了一下：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-ed1dfc85019c0883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>其实，在等与不等这块，自己感觉有些混乱了，因为<code>NULL==FALSE</code>，应该也是成立的。所以检查了一下：</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgKkPP.md.png" alt></p>
 <p>发现确实是相等的，相当于他们是恒等的，PHP的弱类型比较真是可怕。</p>
 <p>4.趁此机会，复习一下弱类型比较：下图写的是函数<code>strcmp()</code>和<code>md5()</code>存在的弱类型问题，可通过这些问题进行相关绕过。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9216631-966090cab3ae75e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgKE28.md.png" alt></p>
 <p>5.最后，直接附上看到的几篇关于PHP弱类型的文章：</p>
 <blockquote>
 <ol>
@@ -442,18 +444,20 @@
 </blockquote>
 <hr>
 <h3 id="上传绕过"><a href="#上传绕过" class="headerlink" title="上传绕过"></a>上传绕过</h3><p>1.遇到这题，说实话，心里想到的是：所有跳过的坑，都得补回来。<br>之前做Bugku的时候遇到的文件上传，那个题也是不会，看了别人的writeup后，以为文件上传不难，匆匆地过了。现在想来，真是井底之蛙。<br>2.此题，先上传了一个jpg文件，发现提示如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9216631-58527787133fd108.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgKKVs.md.png" alt></p>
 <p>3.再传个php试试：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9216631-c09f7d742d2b101d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgKQ5q.md.png" alt></p>
 <p>对比上图，发现过滤机制是检查扩展名（当扩展名不通过时，上传不了）仔细查看上传后的文件位置，发现存于<code>./uploads</code>目录下。</p>
 <p>4.既然不许上传php文件格式（上传时过滤）又要求上传为php格式文件（上传到服务器后检验），那只能从提示的信息中想办法绕过了。从上面的信息中，知道上传的文件在<code>./uploads</code>目录下，将文件名存于<code>basename</code>字段中，并且通过分割文件名和扩展名来检验，因此，应该是通过<code>extension</code>字段来进行识别。</p>
 <p>5.现在，需要做的就很明确了，上传的文件名应该被截断，分成两部分，把<code>.php</code>的部分存于<code>basename</code>中，后面的<code>.jpg</code>不可进入，否则无法绕过。所以，使用<code>0x00</code>截断<code>.php</code>后的字符:</p>
-<p>6.在burpsuite中进行修改，如图：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-263b55dfd6c81874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>然后修改：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-83f55022f2e186ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>变成：<br><img src="https://upload-images.jianshu.io/upload_images/9216631-1fb52b0e98e93f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>得到flag:<br><img src="https://upload-images.jianshu.io/upload_images/9216631-5b135c20de748bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>6.在burpsuite中进行修改，如图：</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgK82T.png" alt></p>
+<p>然后修改：</p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgKYMF.md.png" alt></p>
+<p>变成：<br><img src="https://s2.ax1x.com/2019/07/10/ZgKBPx.png" alt></p>
+<p>得到flag:<br><img src="https://s2.ax1x.com/2019/07/10/ZgKDG6.md.png" alt></p>
 <p>7.上面写的有些繁琐，主要为了学习文件上传的知识，下面是相关知识的学习：<br>关于截断：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9216631-0a8ba41111729a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://s2.ax1x.com/2019/07/10/ZgKsxO.md.png" alt></p>
 <p>关于文件上传：看了下面几篇文章后，说实话，有的没有看懂。此时，方知关于此知识点的运用真是各式各样，看来只能多实践才能慢慢掌握。</p>
 <blockquote>
 <ol>
@@ -606,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -757,7 +761,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">87.3k</span>
+    <span title="Site words total count">87.4k</span>
   
 </div>
 
